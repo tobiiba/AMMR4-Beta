@@ -29,7 +29,14 @@ S = Sacral segment
 
 #include "PelvisSeg.any"
 
+AnyFolder PelvicFloor = {
+  #include "PelvicFloor.any"
+};
+
 AnySeg SacrumSeg = {
+
+  // additional node on bony pelvis -> sacrum (immoveable)
+  AnyRefNode COCCYX = {  sRel = {0, 0, 0};   };
 
   AnyFolder &Data=..Data.unscaled.ModelParameters.Sacrum;
 

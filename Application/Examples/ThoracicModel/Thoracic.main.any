@@ -14,9 +14,10 @@ Main = {
 //  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_RIGID_
   #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_FLEXIBLE_
   
+  // only head, thorax and pelvis required
   #define BM_LEG_MODEL OFF
-  #define BM_ARM_LEFT ON
-  #define BM_ARM_RIGHT ON
+  #define BM_ARM_LEFT OFF
+  #define BM_ARM_RIGHT OFF
   
   // Note: Model doesn't yet work without muscles
   #define BM_TRUNK_MUSCLES ON
