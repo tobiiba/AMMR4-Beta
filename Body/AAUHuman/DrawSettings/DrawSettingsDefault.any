@@ -85,14 +85,14 @@ AnyFolder DrawSettings  = {
   AnyFolder BonesOpacity = {
     AnyVar GlobalCoef ??= 1;
 
-    AnyVar Skull ??= 1*GlobalCoef;
+    AnyVar Skull ??= 0.1*GlobalCoef;
     AnyVar Thorax ??= 1*GlobalCoef;
-    AnyVar Pelvis ??= 1*GlobalCoef;
-    AnyVar Sacrum ??= 1*GlobalCoef;
-    AnyVar L5 ??= 1*GlobalCoef;
-    AnyVar L4 ??= 1*GlobalCoef;
-    AnyVar L3 ??= 1*GlobalCoef;
-    AnyVar L2 ??= 1*GlobalCoef;
+    AnyVar Pelvis ??= 0.3*GlobalCoef;
+    AnyVar Sacrum ??= 0.3*GlobalCoef;
+    AnyVar L5 ??= 0.3*GlobalCoef;
+    AnyVar L4 ??= 0.3*GlobalCoef;
+    AnyVar L3 ??= 0.3*GlobalCoef;
+    AnyVar L2 ??= 0.6*GlobalCoef;
     AnyVar L1 ??= 1*GlobalCoef;
 
     AnyVar RightFoot ??= 1*GlobalCoef;

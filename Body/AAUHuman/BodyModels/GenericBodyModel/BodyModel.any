@@ -10,6 +10,20 @@ AnyFolder BodyModel = {
     #endif
   #endif
 
+  // Folder to define local reference frames
+  AnyFolder RefFrames = {
+    AnyFixedRefFrame PICSRefFrame = {
+      // position relative to global origin (0, 0, 0)
+      Origin = {0, 1.05, 0}; // located at inferior pubis
+      // align to match PICS directions
+      Axes = RotMat(pi, z); // 180° around z
+      AnyDrawRefFrame drw = {
+        ScaleXYZ = {0.2, 0.2, 0.2}*0.5;
+        RGB = {1.0, 0.0, 0.78};
+      };
+    };
+  };
+  
   // The folder containing the selected human model output.
   AnyFolder SelectedOutput = {
     AnyFolder Trunk = {};
