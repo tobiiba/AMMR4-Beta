@@ -43,23 +43,6 @@ AnySeg PelvisSeg = {
   #undef MACRO_CONSTRUCT_ANATOMICAL_FRAME_s
   #undef MACRO_CONSTRUCT_ANATOMICAL_FRAME_A
 
-
-  // additional nodes on bony pelvis (immoveable)
-  // AnyRefNode COCCYX is defined in SacrumSeg
-  // AnyRefNode ISCHIALSPINE_R  = {  sRel = {0, 0, 0};   };
-  // AnyRefNode ISCHIALSPINE_L  = {  sRel = {0, 0, 0};  };
-  // AnyRefNode POINT1          = {  sRel = {0, 0, 0};   };
-  // AnyRefNode POINT2          = {  sRel = {0, 0, 0};  };
-  // AnyRefNode POINT3          = {  sRel = {0, 0, 0};   };
-  // AnyRefNode POINT4          = {  sRel = {0, 0, 0};  };
-  // AnyRefNode POINT5          = {  sRel = {0, 0, 0};  };
-  // AnyRefNode POINT6          = {  sRel = {0, 0, 0};   };
-  // AnyRefNode POINT7          = {  sRel = {0, 0, 0};  };
-  // AnyRefNode POINT8          = {  sRel = {0, 0, 0};  };
-  // AnyRefNode PUBIS_R         = {  sRel = {0, 0, 0};  };
-  // AnyRefNode PUBIS_L         = {  sRel = {0, 0, 0}; };
-
-
   /// This is the anatomical frame that has axes aligned with the global coordinate system
   /// of the trunk dataset. This frame defines the neutral orientation of the pelvis
   /// segment.

@@ -1,218 +1,249 @@
-// additional segments for insertion and origin points of pelvic floor muscles
+// additional segments for insertion and origin points of pelvic floor muscles and ligaments
 
 AnyFloat Inertia = 1e-7*{0.1, 0.5, 0.5};
-AnyFloat RGB = {0.69, 0.69, 0.69};
+AnyFloat RGB = {1.0, 0.0, 0.78};
+
+// -------- immoveable segment --------
+// immoveable bony pelvis
+AnySeg BONYPELVIS = {
+  r0 = {0, 1.05, 0};
+  Axes0 = RotMat(pi, z); // 180° around z to match PICS
+  Mass = 2.0;
+  Jii = 0.001*{0.1, 0.1, 0.1};
+  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+  viewRefFrame.Visible = On;  viewRefFrame.RGB = .RGB;
+  AnyDrawNodes drw = {
+    ScaleXYZ = 1e-3*{1, 1, 1};
+  };
+  
+  // immoveable nodes on bony pelvis for muscles and joint connections
+  AnyRefNode PUBIS_R         = {  sRel = {-0.0005, -0.0202, 0.0158};  };
+  AnyRefNode PUBIS_L         = {  sRel = {-0.0003, -0.0184, -0.0218}; };
+  AnyRefNode COCCYX          = {  sRel = {0.0831, -0.0560, 0.0000};   };
+  AnyRefNode ISCHIALSPINE_R  = {  sRel = {0.0607, -0.0448, 0.0484};   };
+  AnyRefNode ISCHIALSPINE_L  = {  sRel = {0.0601, -0.0443, -0.0586};   };
+  // AnyRefNode POINT1          = {  sRel = {0, 0, 0};   };
+  // AnyRefNode POINT2          = {  sRel = {0, 0, 0};  };
+  // AnyRefNode POINT3          = {  sRel = {0, 0, 0};   };
+  // AnyRefNode POINT4          = {  sRel = {0, 0, 0};  };
+  // AnyRefNode POINT5          = {  sRel = {0, 0, 0};  };
+  // AnyRefNode POINT6          = {  sRel = {0, 0, 0};   };
+  // AnyRefNode POINT7          = {  sRel = {0, 0, 0};  };
+  // AnyRefNode POINT8          = {  sRel = {0, 0, 0};  };
+
+}; // end of Segment BONYPELVIS
 
 // vaginal side-wall, right
-AnySeg SegmentA = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// AnySeg SegmentA = {
+//   AnyRefFrame &Origin = ....RefFrames.PICSRefFrame;
+//   r0 = {0.0071, -0.0135, 0.0116};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+  // AnyRefNode NodePUBIS_R = {
+  //   // has the same position as PUBIS_R
+  //   sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+  //           ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+  //           ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
     // AnyDrawNode drw = {
     //   ScaleXYZ = 0.08*{0.025, 0.025, 0.025};
     //   RGB = {0.0, 0.88, 1.0};
     // };
-  }; 
-};
+  // }; 
+// };
 
 // vaginal side-wall, left
-AnySeg SegmentB = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// AnySeg SegmentB = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_L = {
-    // has the same position as PUBIS_L
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_L = {
+//     // has the same position as PUBIS_L
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// perineum
-AnySeg SegmentC = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // perineum
+// AnySeg SegmentC = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// rectal side-wall, right
-AnySeg SegmentD = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // rectal side-wall, right
+// AnySeg SegmentD = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// rectal side-wall, left
-AnySeg SegmentE = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // rectal side-wall, left
+// AnySeg SegmentE = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// posterior part of rectum
-AnySeg SegmentF = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // posterior part of rectum
+// AnySeg SegmentF = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// central point of anococcygeal ligament
-AnySeg SegmentG = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // central point of anococcygeal ligament
+// AnySeg SegmentG = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// 1st point on tendinous arc of LAM, right
-AnySeg SegmentS = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // 1st point on tendinous arc of LAM, right
+// AnySeg SegmentS = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// 2nd point on tendinous arc of LAM, right
-AnySeg SegmentT = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // 2nd point on tendinous arc of LAM, right
+// AnySeg SegmentT = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// 3rd point on tendinous arc of LAM, right
-AnySeg SegmentU = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // 3rd point on tendinous arc of LAM, right
+// AnySeg SegmentU = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// 4th point on tendinous arc of LAM, right
-AnySeg SegmentV = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // 4th point on tendinous arc of LAM, right
+// AnySeg SegmentV = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// 1st point on tendinous arc of LAM, left
-AnySeg SegmentW = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // 1st point on tendinous arc of LAM, left
+// AnySeg SegmentW = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// 2nd point on tendinous arc of LAM, left
-AnySeg SegmentX = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // 2nd point on tendinous arc of LAM, left
+// AnySeg SegmentX = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// 3rd point on tendinous arc of LAM, left
-AnySeg SegmentY = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // 3rd point on tendinous arc of LAM, left
+// AnySeg SegmentY = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
 
-// 4th point on tendinous arc of LAM, left
-AnySeg SegmentZ = {
-  r0 = {0, 0, 0};
-  Mass = 0.05;                Jii = .Inertia;
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+// // 4th point on tendinous arc of LAM, left
+// AnySeg SegmentZ = {
+//   r0 = {0, 0, 0};
+//   Mass = 0.05;                Jii = .Inertia;
+//   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-  AnyRefNode NodePUBIS_R = {
-    // has the same position as PUBIS_R
-    sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-            ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-            ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-  }; 
-};
+//   AnyRefNode NodePUBIS_R = {
+//     // has the same position as PUBIS_R
+//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+//   }; 
+// };
