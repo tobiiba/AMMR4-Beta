@@ -1,0 +1,326 @@
+// additional muscles in pelvic floor
+
+// ---------------- Muscle models ----------------
+// AnyMuscleModel3E models must be created for each muscle individually
+AnyFolder PelvicMuscleModels = {
+
+  AnyMuscleModel3E Model_ICMposteriorright = {
+    F0 = 37.75;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.043;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_ICMposteriorleft = {
+    F0 = 37.75;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.043;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_ICManteriorright = {
+    F0 = 37.75;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.043;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_ICManteriorleft = {
+    F0 = 37.75;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.043;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_PPMright = {
+    F0 = 18.6;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.06;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_PPMleft = {
+    F0 = 18.6;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.06;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_PAMright = {
+    F0 = 18.6;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.06;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_PAMleft = {
+    F0 = 18.6;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.06;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_PVaMright = {
+    F0 = 18.6;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.06;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_PVaMleft = {
+    F0 = 18.6;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.06;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_PRMright = {
+    F0 = 37.125;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.06;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+  AnyMuscleModel3E Model_PRMleft = {
+    F0 = 37.125;
+    Gamma0 = 0.0;
+    Fcfast = 0.34;
+    Lf0 = 0.06;
+    //Vol0 = 0.0;
+    K1 = 3.36;
+    K2 = 8.0;
+    Jpe = 3.0;
+    //PEFactor = 5.0;
+    Lt0 = 0.01;
+    Epsilon0 = 0.05;
+    Jt = 3.0;
+  };
+
+}; // -------------------------------------- END OF MUSCLE MODELS
+
+// ---------------- Muscle Paths ----------------
+// using via point muscle and color coding to match sketched model
+AnyFolder PelvicMuscles = {
+  
+// --------------------
+// Iliococcygeus muscle - ICM
+// --------------------
+  AnyMuscleViaPoint ICMposteriorright = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {0.0, 0.60, 1.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_ICMposteriorright;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.BONYPELVIS.ISCHIALSPINE_R;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentG;
+  };
+
+  AnyMuscleViaPoint ICMposteriorleft = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {0.0, 0.60, 1.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_ICMposteriorleft;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.BONYPELVIS.ISCHIALSPINE_L;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentG;
+  };
+
+  AnyMuscleViaPoint ICManteriorright = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {0.0, 0.60, 1.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_ICManteriorright;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.SegmentZ;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentF;
+  };
+
+  AnyMuscleViaPoint ICManteriorleft = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {0.0, 0.60, 1.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_ICManteriorleft;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.SegmentV;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentF;
+  };
+
+
+// --------------------------------------------------
+// muscles of pubovisceralis (origin-insertion pairs)
+// --------------------------------------------------
+  AnyMuscleViaPoint PPMright = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {1.0, 1.0, 0.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_PPMright;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.SegmentU;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentD;
+  };
+  
+  AnyMuscleViaPoint PPMleft = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {1.0, 1.0, 0.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_PPMleft;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.SegmentY;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentE;
+  };
+  
+  AnyMuscleViaPoint PAMright = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {1.0, 0.68, 0.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_PAMright;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.SegmentT;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentC;
+  };
+  
+  AnyMuscleViaPoint PAMleft = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {1.0, 0.68, 0.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_PAMleft;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.SegmentX;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentC;
+  };
+
+  AnyMuscleViaPoint PVaMright = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {1, 0, 0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_PVaMright;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.SegmentS;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentA;
+  };
+
+  AnyMuscleViaPoint PVaMleft = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {1, 0, 0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_PVaMleft;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.SegmentW;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentB;
+  };
+
+  // ---------------------------------------
+// Puborectalis muscle
+// ---------------------------------------
+  AnyMuscleViaPoint PRMright = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {0.0, 0.70, 0.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_PRMright;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.BONYPELVIS.PUBIS_R;
+    AnyRefFrame &via = ...Segments.PelvicFloor.SegmentD;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentF;
+  };
+
+
+  AnyMuscleViaPoint PRMleft = {
+    AnyDrawMuscle drw =  {
+      Opacity = 0.25;
+      RGB = {0.0, 0.70, 0.0};
+    };
+    AnyMuscleModel &model = ..PelvicMuscleModels.Model_PRMleft;
+    AnyRefFrame &ins = ...Segments.PelvicFloor.BONYPELVIS.PUBIS_L;
+    AnyRefFrame &via = ...Segments.PelvicFloor.SegmentE;
+    AnyRefFrame &orig = ...Segments.PelvicFloor.SegmentF;
+  };
+
+}; // -------------------------------------- END OF MUSCLE PATHS

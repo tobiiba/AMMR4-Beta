@@ -10,7 +10,7 @@ AnySeg BONYPELVIS = {
   Axes0 = RotMat(pi, z); // 180° around z to match PICS
   Mass = 2.0;
   Jii = 0.001*{0.1, 0.1, 0.1};
-  viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+  // viewInertia.Visible = On;   viewInertia.RGB = .RGB;
   viewRefFrame.Visible = On;  viewRefFrame.RGB = .RGB;
   AnyDrawNodes drw = {
     ScaleXYZ = 1e-3*{1, 1, 1};
@@ -40,16 +40,18 @@ AnySeg SegmentA = {
   r0 = {-1*0.0071, -1*(-0.0135 - .BONYPELVIS.r0[1]), 0.0116};
   Mass = 0.05;                Jii = .Inertia;
   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+  viewRefFrame.Visible = On;  viewRefFrame.RGB = .RGB;
 
+  // RefNode for joint with BONYPELVIS
   // AnyRefNode NodePUBIS_R = {
   //   // has the same position as PUBIS_R
-  //   sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-  //           ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-  //           ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-    // AnyDrawNode drw = {
-    //   ScaleXYZ = 0.08*{0.025, 0.025, 0.025};
-    //   RGB = {0.0, 0.88, 1.0};
-    // };
+  //   sRel = {.r0[0] - ..BONYPELVIS.r0[0] - ..BONYPELVIS.PUBIS_R.sRel[0],
+  //           ..BONYPELVIS.r0[1] - .r0[1] + ..BONYPELVIS.PUBIS_R.sRel[1],
+  //           .r0[2] - ..BONYPELVIS.r0[2] - ..BONYPELVIS.PUBIS_R.sRel[2]  };
+  //   AnyDrawNode drw = {
+  //     ScaleXYZ = 0.08*{0.025, 0.025, 0.025};
+  //     RGB = {0.0, 0.88, 1.0};
+  //   };
   // }; 
 };
 
@@ -61,12 +63,12 @@ AnySeg SegmentB = {
   Mass = 0.05;                Jii = .Inertia;
   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-//   AnyRefNode NodePUBIS_L = {
-//     // has the same position as PUBIS_L
-//     sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
-//             ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
-//             ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
-//   }; 
+  // AnyRefNode NodePUBIS_L = {
+  //   // has the same position as PUBIS_L
+  //   sRel = {..BONYPELVIS.PUBIS_R.sRel[0] - .r0[0],
+  //           ..BONYPELVIS.PUBIS_R.sRel[1] - .r0[1],
+  //           ..BONYPELVIS.PUBIS_R.sRel[2] - .r0[2] };
+  // };
 };
 
 // // perineum
@@ -76,7 +78,6 @@ AnySeg SegmentC = {
   r0 = {-1*0.0195, -1*(-0.0023 - .BONYPELVIS.r0[1]), -0.0045};
   Mass = 0.05;                Jii = .Inertia;
   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
-  viewRefFrame.Visible = On;  viewRefFrame.RGB = .RGB;
 
   // AnyRefNode NodePUBIS_R = {
   //   // has the same position as PUBIS_R

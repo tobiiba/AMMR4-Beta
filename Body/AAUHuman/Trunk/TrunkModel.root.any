@@ -91,6 +91,8 @@ AnyFolder Joints = {
 
 /* Muscle definition section */
 AnyFolder Muscles = {
+  #include "PelvicMuscles.any"
+  #include "PelvicLigaments.any"
   #include "MusclesMid.any"
   AnyFolder Right = {
     #include "MusclesRight.any"
