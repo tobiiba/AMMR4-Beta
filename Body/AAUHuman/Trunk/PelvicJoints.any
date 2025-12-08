@@ -1,0 +1,32 @@
+// additional joints in pelvic floor to allow movement of moveable segments
+
+AnyFolder PelvicJoints = {
+
+  // // fix BONYPELVIS to X to make it immoveable
+  // // all nodes are automatically fixed to ground as well
+  // AnyStdJoint jBONYPELVIS = {
+  //   AnyRefFrame &Ground = Main.SimplePelvis.GlobalRef;
+  //   AnyRefFrame &Pelvis = Main.SimplePelvis.Segments.BONYPELVIS;
+  // };
+
+
+  // // all other joints connect a node from BONYPELVIS to a moveable segment
+  // AnyPrismaticJoint jSegPointA = {
+  //   AnyRefFrame &Pelvis = Main.SimplePelvis.Segments.BONYPELVIS.PUBIS_R;
+  //   AnyRefFrame &Seg = Main.SimplePelvis.Segments.SegPointA.NodePUBIS_R;
+  //   Axis = y;
+  //   // set up FDK with ForceDep constraints for all locked DoF
+  //   Constraints = {
+  //     CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+  //     Reaction.Type = {Off, Off, On, On, On};
+  //   };
+  //   // define springs in the joint for all ForceDep DoF
+  //   AnyForce JointStiffness = {
+  //     AnyKinLinear &lin = Main.SimplePelvis.Joints.jSegPointA.Linear;
+  //     // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
+  //     // D = G * A / L -- in this case for contraction 306 N/m
+  //     F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+  //   };
+  // };
+
+}; // -------------------------------------- END OF PELVIC JOINTS

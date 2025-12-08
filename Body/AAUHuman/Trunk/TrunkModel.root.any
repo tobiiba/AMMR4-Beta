@@ -71,6 +71,7 @@ AnyFolder Segments = {
 
 
 AnyFolder Joints = {
+  #include "PelvicJoints.any"
   AnyFolder Cervical = {#include "JointsCervical.any"};
   AnyFolder Thorax = {};
   AnyFolder RibCage = {};
