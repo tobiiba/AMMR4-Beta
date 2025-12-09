@@ -88,7 +88,6 @@ AnySeg SegmentC = {
   Mass = 0.05;                Jii = .Inertia;
   viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-
   AnyRefNode NodeCOCCYX = {
     // has the same position as COCCYX
     sRel = {-1*(..BONYPELVIS.r0[0] - .r0[0]) + ..BONYPELVIS.COCCYX.sRel[0],
