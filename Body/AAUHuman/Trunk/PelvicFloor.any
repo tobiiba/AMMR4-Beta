@@ -3,6 +3,14 @@
 AnyFloat Inertia = 1e-7*{0.1, 0.5, 0.5};
 AnyFloat RGB = {1.0, 0.0, 0.78};
 
+AnySeg Origin = {
+  r0 = {0,0,0};
+  Mass = 10;
+  Jii = .Inertia;
+  viewRefFrame.Visible = On;
+  viewRefFrame.ScaleXYZ = {1,1,1}*1000;
+};
+
 // -------- Immoveable Segment --------
 // immoveable bony pelvis
 AnySeg BONYPELVIS = {
@@ -12,6 +20,7 @@ AnySeg BONYPELVIS = {
   Jii = 0.001*{0.1, 0.1, 0.1};
   // viewInertia.Visible = On;   viewInertia.RGB = .RGB;
   viewRefFrame.Visible = On;  viewRefFrame.RGB = .RGB;
+  viewRefFrame.ScaleXYZ = {1,1,1}*10;
   AnyDrawNodes drw = {
     ScaleXYZ = 1e-3*{1, 1, 1};
   };
