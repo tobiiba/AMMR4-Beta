@@ -81,11 +81,11 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-      AnyRefNode NodePoint5 = {
-        // has the same position as POINT5
-        sRel = {...PelvisSeg.PICS_ORIGIN.POINT5.sRel[0] - .r0[0],
-                ...PelvisSeg.PICS_ORIGIN.POINT5.sRel[1] - .r0[1],
-                ...PelvisSeg.PICS_ORIGIN.POINT5.sRel[2] - .r0[2] };
+      AnyRefNode NodePUBIS_L = {
+        // has the same position as Pubis_L
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[2] - .r0[2] };
       };
     };
 
@@ -95,16 +95,16 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
-      AnyRefNode NodePUBIS_L = {
-        // has the same position as PUBIS_L
-        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[0] - .r0[0],
-                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[1] - .r0[1],
-                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[2] - .r0[2] };
+      AnyRefNode NodeCOCCYX = {
+        // has the same position as COCCYX
+        sRel = {...PelvisSeg.PICS_ORIGIN.COCCYX.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.COCCYX.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.COCCYX.sRel[2] - .r0[2] };
       };
     };
 
     // rectal side-wall, right
-    AnySeg SegmentD = {
+    AnySeg SegPointD = {
       r0 = {0.0415, 0.0050, 0.0016};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -118,7 +118,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // rectal side-wall, left
-    AnySeg SegmentE = {
+    AnySeg SegPointE = {
       r0 = {0.0407, 0.0051, -0.0100};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -132,7 +132,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // posterior part of rectum
-    AnySeg SegmentF = {
+    AnySeg SegPointF = {
       r0 = {0.0431, 0.0020, -0.0059};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -146,7 +146,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // central point of anococcygeal ligament
-    AnySeg SegmentG = {
+    AnySeg SegPointG = {
       r0 = {0.0373, -0.0112, -0.0060};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -160,7 +160,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // 1st point on tendinous arc of LAM, right
-    AnySeg SegmentS = {
+    AnySeg SegPointS = {
       r0 = {.0023, -0.0228, 0.0188};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -174,7 +174,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // 2nd point on tendinous arc of LAM, right
-    AnySeg SegmentT = {
+    AnySeg SegPointT = {
       r0 = {0.0051, -0.0255, 0.0218};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -188,7 +188,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // 3rd point on tendinous arc of LAM, right
-    AnySeg SegmentU = {
+    AnySeg SegPointU = {
       r0 = {0.0079,-0.0282, 0.0248};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -202,7 +202,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // 4th point on tendinous arc of LAM, right
-    AnySeg SegmentV = {
+    AnySeg SegPointV = {
       r0 = {0.0361, -0.0368, 0.0388};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -216,7 +216,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // 1st point on tendinous arc of LAM, left
-    AnySeg SegmentW = {
+    AnySeg SegPointW = {
       r0 = {0.0025, -0.0213, -0.0252};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -230,7 +230,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // 2nd point on tendinous arc of LAM, left
-    AnySeg SegmentX = {
+    AnySeg SegPointX = {
       r0 = {0.0053, -0.0242, -0.0286};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -244,7 +244,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // 3rd point on tendinous arc of LAM, left
-    AnySeg SegmentY = {
+    AnySeg SegPointY = {
       r0 = {0.0081, -0.0271, -0.0320};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -258,7 +258,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     };
 
     // 4th point on tendinous arc of LAM, left
-    AnySeg SegmentZ = {
+    AnySeg SegPointZ = {
       r0 = {0.0351, -0.0365, -0.0465};
       Mass = 0.05;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
@@ -275,8 +275,199 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
 
   }; // END OF FOLDER PelvicFloor
-};// ------------------- END OF MOVEABLE SEGMENTS OF PELVIS -------------------
+}; // ------------------- END OF MOVEABLE SEGMENTS OF PELVIS -------------------
 
+
+
+// -------------------------------------------------------------------
+// ------------------------------ JOINTS -----------------------------
+// -------------------------------------------------------------------
+Main.HumanModel.BodyModel.Trunk.Joints = {
+
+  AnyFolder PelvicFloorJoints = {
+
+// -------------------------------------------------------------------
+// --------- JOINTS FOR SEGMENTS IN THE CENTER OF THE PELVIS ---------
+// -------------------------------------------------------------------
+
+  // these joints connect a node from BONYPELVIS to a moveable segment with a letter (A-G)
+  // movement is allowed through joint (AnyPrismaticJoint) and FDK
+
+    AnyPrismaticJoint jSegA = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointA.NodePUBIS_R;
+      Axis = y;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    //   // define springs in the joint for all ForceDep DoF
+    //   AnyForce JointStiffness = {
+    //     AnyKinLinear &lin = Main.SimplePelvis.Joints.jSegPointA.Linear;
+    //     // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
+    //     // D = G * A / L -- in this case for contraction 306 N/m
+    //     F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+    //   };
+    };
+
+  AnyPrismaticJoint jSegB = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointB.NodePUBIS_L;
+    Axis = y;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyPrismaticJoint jSegC = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointC.NodeCOCCYX;
+    Axis = y;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyPrismaticJoint jSegD = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointD.NodePUBIS_R;
+    Axis = y;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyPrismaticJoint jSegE = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointE.NodePUBIS_L;
+    Axis = y;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyPrismaticJoint jSegF = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointF.NodeCOCCYX;
+    Axis = y;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyPrismaticJoint jSegG = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointG.NodeCOCCYX;
+    Axis = y;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+// -------------------------------------------------------------------
+// ------------ JOINTS FOR SEGMENTS ON THE TENDINOUS ARCH ------------
+// -------------------------------------------------------------------
+
+  // these joints connect a node from PICS_ORIGIN to a moveable segment with a letter (S-Z)
+  // movement is only allowed through FDK (AnyStdJoint)
+  AnyStdJoint jSegS = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointS.NodePUBIS_R;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyStdJoint jSegT = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointT.NodePUBIS_R;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyStdJoint jSegU = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointU.NodePUBIS_R;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyStdJoint jSegV = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointV.NodePUBIS_R;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyStdJoint jSegW = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointW.NodePUBIS_L;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyStdJoint jSegX = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointX.NodePUBIS_L;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyStdJoint jSegY = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointY.NodePUBIS_L;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+  AnyStdJoint jSegZ = {
+    AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+    AnyRefFrame &Seg = ...Segments.PelvicFloor.SegPointZ.NodePUBIS_L;
+    // set up FDK with ForceDep constraints for all locked DoF
+    // Constraints = {
+    //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+    //   Reaction.Type = {Off, Off, On, On, On};
+    // };
+  };
+
+ // ------------------- END OF JOINTS ON TENDINOUS ARCH -------------------
+
+  }; // END OF FOLDER PelvicFloorJoints
+}; // ------------------- END OF JOINTS OF PELVIC FLOOR -------------------
+ 
 
 
 
