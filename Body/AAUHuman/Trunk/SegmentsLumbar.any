@@ -40,11 +40,6 @@ S = Sacral segment
 
 #include "PelvisSeg.any"
 
-// additional segments for pelvic floor
-AnyFolder PelvicFloor = {
-  #include "PelvicFloor.any"
-};
-
 AnySeg SacrumSeg = {
 
   AnyFolder &Data=..Data.unscaled.ModelParameters.Sacrum;

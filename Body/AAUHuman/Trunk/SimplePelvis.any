@@ -1,0 +1,290 @@
+
+
+// -------------------------------------------------------------------
+// ---------------------- LOCAL REFERENCE FRAME ----------------------
+// -------------------------------------------------------------------
+
+Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg = {
+  AnyRefNode PICS_ORIGIN = {
+    sRel = {0.074, -0.161, 0};
+    ARel = RotMat(189.3*pi/180, z);
+    viewRefFrame.Visible = On;
+    viewRefFrame.RGB = {1.0, 0.0, 0.78};
+    viewRefFrame.ScaleXYZ = {1, 1, 1};
+  };
+
+  // Sacrococcygeal joint to calculate angle of SCIPP line relative to horizontal plane of
+  // global reference system - difference to 34 degrees must be added to ARel of PICS_ORIGIN
+  AnyRefNode SCIPP            = { sRel = {-0.041, -0.108, 0};         };
+}; // ---------------------- END OF LOCAL REFERENCE FRAME ----------------------
+
+
+
+// -------------------------------------------------------------------
+// ---------------------- NODES ON LOCAL REF FRAME -------------------
+// -------------------------------------------------------------------
+Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN = {
+  AnyRefNode PUBIS_R          = { sRel = {-0.0005, -0.0202, 0.0158};  ARel = .ARel';  };
+  AnyRefNode PUBIS_L          = { sRel = {-0.0003, -0.0184, -0.0218}; ARel = .ARel';  };
+  
+  AnyRefNode COCCYX = {
+    sRel = {0.0831-0.018, -0.0560+0.031, 0.0};
+    // coccyx adjusted to tip of coccyx by straight length of coccyx (Woon, 2012) and assumed angle of 60° from horizontal plane
+    ARel = .ARel'; // invert rotation matrix (according to Dominika)
+  };
+
+  AnyRefNode ISCHIALSPINE_R   = { sRel = {0.0607, -0.0448, 0.0484};   ARel = .ARel';  };
+  AnyRefNode ISCHIALSPINE_L   = { sRel = {0.0601, -0.0443, -0.0586};  ARel = .ARel';  };
+  AnyRefNode POINT1           = { sRel = {0.0003, -0.0248, 0.0208};   ARel = .ARel';  };
+  AnyRefNode POINT2           = { sRel = {0.0011, -0.0295, 0.0258};   ARel = .ARel';  };
+  AnyRefNode POINT3           = { sRel = {0.0019, -0.0342, 0.0308};   ARel = .ARel';  };
+  AnyRefNode POINT4           = { sRel = {0.0301, -0.0428, 0.0448};   ARel = .ARel';  };
+  AnyRefNode POINT5           = { sRel = {0.0005, -0.0233, -0.0272};  ARel = .ARel';  };
+  AnyRefNode POINT6           = { sRel = {0.0013, -0.0282, -0.0326};  ARel = .ARel';  };
+  AnyRefNode POINT7           = { sRel = {0.0021, -0.0331, -0.0380};  ARel = .ARel';  };
+  AnyRefNode POINT8           = { sRel = {0.0291, -0.0425, -0.0525};  ARel = .ARel';  };
+
+}; // ---------------------- END OF NODES ON LOCAL REF FRAME -------------------
+
+
+
+// -------------------------------------------------------------------
+// ------------------- MOVEABLE SEGMENTS OF PELVIS -------------------
+// -------------------------------------------------------------------
+Main.HumanModel.BodyModel.Trunk.Segments = {
+
+  AnyFolder PelvicFloor = {
+    AnyFloat Inertia = 1e-7*{0.1, 0.5, 0.5};
+    AnyFloat RGB = {1.0, 0.0, 0.78};
+
+    // vaginal side-wall, right
+    AnySeg SegPointA = {
+      r0 = {0.0071, -0.0135, 0.0116};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_R = {
+        // has the same position as PUBIS_R
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[2] - .r0[2] };
+        // AnyDrawNode drw = {
+        //   ScaleXYZ = 0.08*{0.025, 0.025, 0.025};
+        //   RGB = {0.0, 0.88, 1.0};
+        // };
+      }; 
+    };
+
+    // vaginal side-wall, left
+    AnySeg SegPointB = {
+      r0 = {0.0065, -0.0133, -0.0202};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePoint5 = {
+        // has the same position as POINT5
+        sRel = {...PelvisSeg.PICS_ORIGIN.POINT5.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.POINT5.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.POINT5.sRel[2] - .r0[2] };
+      };
+    };
+
+    // perineum
+    AnySeg SegPointC = {
+      r0 = {0.0195, -0.0023, -0.0045};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_L = {
+        // has the same position as PUBIS_L
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[2] - .r0[2] };
+      };
+    };
+
+    // rectal side-wall, right
+    AnySeg SegmentD = {
+      r0 = {0.0415, 0.0050, 0.0016};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_R = {
+        // has the same position as PUBIS_R
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // rectal side-wall, left
+    AnySeg SegmentE = {
+      r0 = {0.0407, 0.0051, -0.0100};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_L = {
+        // has the same position as PUBIS_L
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // posterior part of rectum
+    AnySeg SegmentF = {
+      r0 = {0.0431, 0.0020, -0.0059};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodeCOCCYX = {
+        // has the same position as COCCYX
+        sRel = {...PelvisSeg.PICS_ORIGIN.COCCYX.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.COCCYX.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.COCCYX.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // central point of anococcygeal ligament
+    AnySeg SegmentG = {
+      r0 = {0.0373, -0.0112, -0.0060};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodeCOCCYX = {
+        // has the same position as COCCYX
+        sRel = {...PelvisSeg.PICS_ORIGIN.COCCYX.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.COCCYX.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.COCCYX.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // 1st point on tendinous arc of LAM, right
+    AnySeg SegmentS = {
+      r0 = {.0023, -0.0228, 0.0188};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_R = {
+        // has the same position as PUBIS_R
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // 2nd point on tendinous arc of LAM, right
+    AnySeg SegmentT = {
+      r0 = {0.0051, -0.0255, 0.0218};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_R = {
+        // has the same position as PUBIS_R
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // 3rd point on tendinous arc of LAM, right
+    AnySeg SegmentU = {
+      r0 = {0.0079,-0.0282, 0.0248};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_R = {
+        // has the same position as PUBIS_R
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // 4th point on tendinous arc of LAM, right
+    AnySeg SegmentV = {
+      r0 = {0.0361, -0.0368, 0.0388};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_R = {
+        // has the same position as PUBIS_R
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // 1st point on tendinous arc of LAM, left
+    AnySeg SegmentW = {
+      r0 = {0.0025, -0.0213, -0.0252};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_L = {
+        // has the same position as PUBIS_L
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // 2nd point on tendinous arc of LAM, left
+    AnySeg SegmentX = {
+      r0 = {0.0053, -0.0242, -0.0286};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_L = {
+        // has the same position as PUBIS_L
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // 3rd point on tendinous arc of LAM, left
+    AnySeg SegmentY = {
+      r0 = {0.0081, -0.0271, -0.0320};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_L = {
+        // has the same position as PUBIS_L
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[2] - .r0[2] };
+      }; 
+    };
+
+    // 4th point on tendinous arc of LAM, left
+    AnySeg SegmentZ = {
+      r0 = {0.0351, -0.0365, -0.0465};
+      Mass = 0.05;                Jii = .Inertia;
+      viewInertia.Visible = On;   viewInertia.RGB = .RGB;
+
+      AnyRefNode NodePUBIS_L = {
+        // has the same position as PUBIS_L
+        sRel = {...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[0] - .r0[0],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[1] - .r0[1],
+                ...PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel[2] - .r0[2] };
+      }; 
+    };
+
+
+
+
+  }; // END OF FOLDER PelvicFloor
+};// ------------------- END OF MOVEABLE SEGMENTS OF PELVIS -------------------
+
+
+
+
+
+
+
+
+
+
+
+

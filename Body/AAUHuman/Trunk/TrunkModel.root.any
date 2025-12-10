@@ -71,7 +71,6 @@ AnyFolder Segments = {
 
 
 AnyFolder Joints = {
-  #include "PelvicJoints.any"
   AnyFolder Cervical = {#include "JointsCervical.any"};
   AnyFolder Thorax = {};
   AnyFolder RibCage = {};
@@ -92,8 +91,6 @@ AnyFolder Joints = {
 
 /* Muscle definition section */
 AnyFolder Muscles = {
-  #include "PelvicMuscles.any"
-  #include "PelvicLigaments.any"
   #include "MusclesMid.any"
   AnyFolder Right = {
     #include "MusclesRight.any"

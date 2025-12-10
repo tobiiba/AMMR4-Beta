@@ -11,8 +11,8 @@ Main = {
   ///////////////////////////////////////////////////
   
   // New flexible thorax is enabled with:
-//  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_RIGID_
-  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_FLEXIBLE_
+  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_RIGID_
+//  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_FLEXIBLE_ //TBD switch to flexible
   
   // only head, thorax and pelvis required
   #define BM_LEG_MODEL OFF
@@ -20,7 +20,7 @@ Main = {
   #define BM_ARM_RIGHT OFF
   
   // Note: Model doesn't yet work without muscles
-  #define BM_TRUNK_MUSCLES ON
+  #define BM_TRUNK_MUSCLES OFF // TBD turn back ON
   
   // The new thoracic model comes with a full set of
   // ligaments all along the spine. They can be enabled
@@ -45,6 +45,9 @@ Main = {
  
   // Include the human model
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"
+
+  // From here, all additional structures and parameters for SimplePelvis will be initiated
+  #include "<ANYBODY_PATH_BODY>/Trunk/SimplePelvis.any"
 
   AnyFolder Model = 
   {
