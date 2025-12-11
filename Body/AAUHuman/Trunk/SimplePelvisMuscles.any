@@ -1,0 +1,339 @@
+/*
+In this file all additional muscles for the SimplePelvis model are defined
+*/
+
+Main.HumanModel.BodyModel.Trunk.Muscles = {
+
+// -------------------------------------------------------------------
+// -------------------------- MUSCLE MODELS --------------------------
+// -------------------------------------------------------------------
+// AnyMuscleModel3E models must be created for each muscle individually
+  AnyFolder SimplePelvisMuscles = {
+    AnyFolder MuscleModels = {
+      AnyMuscleModel3E Model_ICMposteriorright = {
+        F0 = 37.75;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.043;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_ICMposteriorleft = {
+        F0 = 37.75;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.043;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_ICManteriorright = {
+        F0 = 37.75;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.043;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_ICManteriorleft = {
+        F0 = 37.75;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.043;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_PPMright = {
+        F0 = 18.6;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.06;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_PPMleft = {
+        F0 = 18.6;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.06;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_PAMright = {
+        F0 = 18.6;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.06;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_PAMleft = {
+        F0 = 18.6;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.06;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_PVaMright = {
+        F0 = 18.6;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.06;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_PVaMleft = {
+        F0 = 18.6;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.06;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_PRMright = {
+        F0 = 37.125;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.06;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+      AnyMuscleModel3E Model_PRMleft = {
+        F0 = 37.125;
+        Gamma0 = 0.0;
+        Fcfast = 0.34;
+        Lf0 = 0.06;
+        //Vol0 = 0.0;
+        K1 = 3.36;
+        K2 = 8.0;
+        Jpe = 3.0;
+        //PEFactor = 5.0;
+        Lt0 = 0.01;
+        Epsilon0 = 0.05;
+        Jt = 3.0;
+      };
+
+    }; // -------------------------------------- END OF MUSCLE MODELS
+  
+
+    // -------------------------------------------------------------------
+    // -------------------------- MUSCLE PATHS ---------------------------
+    // -------------------------------------------------------------------
+    // using via point muscle and color coding to match sketched model
+    AnyFolder MusclePaths = {
+      
+      // -------------------------------
+      // Iliococcygeus muscle - ICM
+      // -------------------------------
+      AnyMuscleViaPoint ICMposteriorright = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {0.0, 0.60, 1.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_ICMposteriorright;
+        AnyRefFrame &ins = ....Segments.PelvisSeg.PICS_ORIGIN.ISCHIALSPINE_R;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointG;
+      };
+
+      AnyMuscleViaPoint ICMposteriorleft = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {0.0, 0.60, 1.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_ICMposteriorleft;
+        AnyRefFrame &ins = ....Segments.PelvisSeg.PICS_ORIGIN.ISCHIALSPINE_L;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointG;
+      };
+
+      AnyMuscleViaPoint ICManteriorright = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {0.0, 0.60, 1.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_ICManteriorright;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointZ;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointF;
+      };
+
+      AnyMuscleViaPoint ICManteriorleft = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {0.0, 0.60, 1.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_ICManteriorleft;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointV;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointF;
+      };
+
+
+      // --------------------------------------------------
+      // muscles of pubovisceralis (origin-insertion pairs)
+      // --------------------------------------------------
+      AnyMuscleViaPoint PPMright = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {1.0, 1.0, 0.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PPMright;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointU;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointD;
+      };
+      
+      AnyMuscleViaPoint PPMleft = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {1.0, 1.0, 0.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PPMleft;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointY;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointE;
+      };
+      
+      AnyMuscleViaPoint PAMright = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {1.0, 0.68, 0.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PAMright;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointT;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointC;
+      };
+      
+      AnyMuscleViaPoint PAMleft = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {1.0, 0.68, 0.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PAMleft;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointX;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointC;
+      };
+
+      AnyMuscleViaPoint PVaMright = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {1, 0, 0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PVaMright;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointS;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointA;
+      };
+
+      AnyMuscleViaPoint PVaMleft = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {1, 0, 0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PVaMleft;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointW;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointB;
+      };
+
+      // ---------------------------------------
+      // Puborectalis muscle - PRM
+      // ---------------------------------------
+      AnyMuscleViaPoint PRMright = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {0.0, 0.70, 0.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PRMright;
+        AnyRefFrame &ins = ....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+        AnyRefFrame &via = ....Segments.SimplePelvis.SegPointD;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointF;
+      };
+
+
+      AnyMuscleViaPoint PRMleft = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {0.0, 0.70, 0.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PRMleft;
+        AnyRefFrame &ins = ....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+        AnyRefFrame &via = ....Segments.SimplePelvis.SegPointE;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointF;
+      };
+
+    }; // -------------------------------------- END OF MUSCLE PATHS
+
+  }; // -------------------------------------- END OF FOLDER SimplePelvisMuscles
+
+};

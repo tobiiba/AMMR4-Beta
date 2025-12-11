@@ -46,7 +46,7 @@ Main = {
   // Include the human model
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"
 
-  // From here, all additional structures and parameters for SimplePelvis will be initiated
+  // Here, all additional structures and parameters for the SimplePelvis model will be initiated
   #include "<ANYBODY_PATH_BODY>/Trunk/SimplePelvis.any"
 
   AnyFolder Model = 

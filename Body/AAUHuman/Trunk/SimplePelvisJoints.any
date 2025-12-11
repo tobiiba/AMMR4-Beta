@@ -1,0 +1,194 @@
+/*
+In this file all segments of the SimplePelvis model are constrained to the Pelvis.
+Where applicable, FDK constraints are introduced to the joints.
+*/
+
+// -------------------------------------------------------------------
+// ------------------------------ JOINTS -----------------------------
+// -------------------------------------------------------------------
+Main.HumanModel.BodyModel.Trunk.Joints = {
+
+  AnyFolder SimplePelvisJoints = {
+
+    // -------------------------------------------------------------------
+    // --------- JOINTS FOR SEGMENTS IN THE CENTER OF THE PELVIS ---------
+    // -------------------------------------------------------------------
+
+    // these joints connect a node from BONYPELVIS to a moveable segment with a letter (A-G)
+    // movement is allowed through joint (AnyPrismaticJoint) and FDK
+
+    AnyStdJoint jSegA = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointA.NodePUBIS_R;
+      // Axis = y;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+      //   // define springs in the joint for all ForceDep DoF
+      //   AnyForce JointStiffness = {
+      //     AnyKinLinear &lin = Main.SimplePelvis.Joints.jSegPointA.Linear;
+      //     // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
+      //     // D = G * A / L -- in this case for contraction 306 N/m
+      //     F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+      //   };
+    };
+
+    AnyStdJoint jSegB = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointB.NodePUBIS_L;
+      // Axis = y;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegC = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointC.NodeCOCCYX;
+      // Axis = y;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegD = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointD.NodePUBIS_R;
+      // Axis = y;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegE = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointE.NodePUBIS_L;
+      // Axis = y;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegF = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointF.NodeCOCCYX;
+      // Axis = y;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegG = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointG.NodeCOCCYX;
+      // Axis = y;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    // -------------------------------------------------------------------
+    // ------------ JOINTS FOR SEGMENTS ON THE TENDINOUS ARCH ------------
+    // -------------------------------------------------------------------
+
+    // these joints connect a node from PICS_ORIGIN to a moveable segment with a letter (S-Z)
+    // movement is only allowed through FDK (AnyStdJoint)
+    AnyStdJoint jSegS = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointS.NodePUBIS_R;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegT = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointT.NodePUBIS_R;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegU = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointU.NodePUBIS_R;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegV = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointV.NodePUBIS_R;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegW = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointW.NodePUBIS_L;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegX = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointX.NodePUBIS_L;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegY = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointY.NodePUBIS_L;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+    AnyStdJoint jSegZ = {
+      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointZ.NodePUBIS_L;
+      // set up FDK with ForceDep constraints for all locked DoF
+      // Constraints = {
+      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
+      //   Reaction.Type = {Off, Off, On, On, On};
+      // };
+    };
+
+  // ------------------- END OF JOINTS ON TENDINOUS ARCH -------------------
+
+  }; // END OF FOLDER SimplePelvisJoints
+  
+}; // ------------------- END OF JOINTS OF PELVIC FLOOR -------------------
