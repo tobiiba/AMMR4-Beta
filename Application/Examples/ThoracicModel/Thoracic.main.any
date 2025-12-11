@@ -83,7 +83,7 @@ Main = {
     SimpleFourierDriver Trunk_Extension = 
     {
        AnyKinMeasure &ref1 = .BodyModel.Interface.Trunk.PelvisThoraxExtension;
-       RangeOfMotion = {-60, 10}*pi/180;
+       RangeOfMotion = {0,0}; // {-60, 10}*pi/180;
        Freq = 1/(Main.Study.tEnd-Main.Study.tStart);
        Phase = 0*pi/180;
        Reaction.Type ={Off};
@@ -92,7 +92,7 @@ Main = {
     SimpleFourierDriver Trunk_LateralBending = 
     {
        AnyKinMeasure &ref2 = .BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
-       RangeOfMotion = {-30, 30} *pi/180;
+       RangeOfMotion = {0,0}; // {-30, 30} *pi/180;
        Freq = 0.5/(Main.Study.tEnd-Main.Study.tStart);
        Phase = 180 *pi/180;
        Reaction.Type ={Off};
@@ -100,7 +100,7 @@ Main = {
     SimpleFourierDriver Trunk_AxialRotation = 
     {
        AnyKinMeasure &ref3 = .BodyModel.Interface.Trunk.PelvisThoraxRotation;
-       RangeOfMotion = {-30,30} *pi/180;
+       RangeOfMotion = {0,0}; // {-30,30} *pi/180;
        Freq = 0.25/(Main.Study.tEnd-Main.Study.tStart);
        Phase = 0 * pi/180;    
        Reaction.Type ={Off};
