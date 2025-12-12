@@ -25,3 +25,6 @@ Main.HumanModel.Anthropometrics = {
 // LIGAMENTS
 #include "SimplePelvisLigaments.any"
 
+// DRIVERS
+#include "SimplePelvisDrivers.any"
+

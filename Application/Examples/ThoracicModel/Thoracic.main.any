@@ -68,9 +68,9 @@ Main = {
     InverseDynamics.Criterion.UpperBoundOnOff = Off;
     
     tStart = 0;
-    tEnd = 4*2*pi;
+    tEnd = 1; // 4*2*pi;
     Gravity = {0, -9.81, 0.0};
-    nStep = 100;
+    nStep = 20; // 100;
     
     AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
 

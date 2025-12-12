@@ -1,0 +1,112 @@
+/*
+In this file all drivers of the SimplePelvis model are defined.
+The number of drivers and their properties are determined by 
+the given joints of the pelvic floor segments in SimplePelvisJoints.any.
+
+cranial movement  -->  -y
+*/
+
+Main.HumanModel.BodyModel.Trunk = {
+
+  AnyFolder SimplePelvisDrivers = {
+
+    // -------------------------------------------------------------------
+    // ---------------------- DRIVERS FOR A - G --------------------------
+    // -------------------------------------------------------------------
+    // AnyKinEqSimpleDriver ActuatorA = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegA;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorB = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegB;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorC = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegC;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorD = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegD;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorE = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegE;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorF = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegF;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorG = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegG;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+
+    // -------------------------------------------------------------------
+    // ---------------------- DRIVERS FOR S - Z --------------------------
+    // -------------------------------------------------------------------
+    // AnyKinEqSimpleDriver ActuatorS = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegS;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorT = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegT;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorU = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegU;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorV = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegV;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorW = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegW;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorX = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegX;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorY = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegY;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorZ = {
+    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegZ;
+    //   DriverVel = {-0.004}; // 4 mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+  }; // ------------ END OF FOLDER SimplepelvisDrivers -----------------
+
+}; // ------------------------ END OF DRIVERS --------------------------
