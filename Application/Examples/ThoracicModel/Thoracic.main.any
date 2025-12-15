@@ -11,8 +11,8 @@ Main = {
   ///////////////////////////////////////////////////
   
   // New flexible thorax is enabled with:
-  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_RIGID_
-//  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_FLEXIBLE_ //TBD switch to flexible
+  // #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_RIGID_
+  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_FLEXIBLE_ //TBD switch to flexible
   
   // only head, thorax and pelvis required
   #define BM_LEG_MODEL OFF

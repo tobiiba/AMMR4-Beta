@@ -62,12 +62,13 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
   AnyFolder SimplePelvis = {
     AnyFloat Inertia = 1e-7*{0.1, 0.5, 0.5};
+    AnyFloat Mass = 1e-6;
     AnyFloat RGB = {1.0, 0.0, 0.78};
 
     // vaginal side-wall, right
     AnySeg SegPointA = {
       r0 = {0.0071, -0.0135, 0.0116};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -85,7 +86,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // vaginal side-wall, left
     AnySeg SegPointB = {
       r0 = {0.0065, -0.0133, -0.0202};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {
@@ -99,7 +100,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // perineum
     AnySeg SegPointC = {
       r0 = {0.0195, -0.0023, -0.0045};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodeCOCCYX = {
@@ -113,7 +114,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // rectal side-wall, right
     AnySeg SegPointD = {
       r0 = {0.0415, 0.0050, 0.0016};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -127,7 +128,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // rectal side-wall, left
     AnySeg SegPointE = {
       r0 = {0.0407, 0.0051, -0.0100};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {
@@ -141,7 +142,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // posterior part of rectum
     AnySeg SegPointF = {
       r0 = {0.0431, 0.0020, -0.0059};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodeCOCCYX = {
@@ -155,7 +156,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // central point of anococcygeal ligament
     AnySeg SegPointG = {
       r0 = {0.0373, -0.0112, -0.0060};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodeCOCCYX = {
@@ -169,7 +170,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // 1st point on tendinous arc of LAM, right
     AnySeg SegPointS = {
       r0 = {.0023, -0.0228, 0.0188};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -183,7 +184,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // 2nd point on tendinous arc of LAM, right
     AnySeg SegPointT = {
       r0 = {0.0051, -0.0255, 0.0218};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -197,7 +198,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // 3rd point on tendinous arc of LAM, right
     AnySeg SegPointU = {
       r0 = {0.0079,-0.0282, 0.0248};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -211,7 +212,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // 4th point on tendinous arc of LAM, right
     AnySeg SegPointV = {
       r0 = {0.0361, -0.0368, 0.0388};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -225,7 +226,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // 1st point on tendinous arc of LAM, left
     AnySeg SegPointW = {
       r0 = {0.0025, -0.0213, -0.0252};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {
@@ -239,7 +240,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // 2nd point on tendinous arc of LAM, left
     AnySeg SegPointX = {
       r0 = {0.0053, -0.0242, -0.0286};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {
@@ -253,7 +254,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // 3rd point on tendinous arc of LAM, left
     AnySeg SegPointY = {
       r0 = {0.0081, -0.0271, -0.0320};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {
@@ -267,7 +268,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     // 4th point on tendinous arc of LAM, left
     AnySeg SegPointZ = {
       r0 = {0.0351, -0.0365, -0.0465};
-      Mass = 0.05;                Jii = .Inertia;
+      Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {

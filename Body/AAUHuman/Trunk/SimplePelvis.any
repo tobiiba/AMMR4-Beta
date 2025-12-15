@@ -25,6 +25,12 @@ Main.HumanModel.Anthropometrics = {
 // LIGAMENTS
 #include "SimplePelvisLigaments.any"
 
+
 // DRIVERS
 #include "SimplePelvisDrivers.any"
 
+
+// KINEMATIC MEASURES
+Main.DrawSettings.KinematicVolume = {
+  Opacity = 0.1;
+};
