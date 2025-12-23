@@ -31,25 +31,46 @@ Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg = {
 // ---------------------- NODES ON LOCAL REF FRAME -------------------
 // -------------------------------------------------------------------
 Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN = {
-  AnyRefNode PUBIS_R          = { sRel = {-0.0005, -0.0202, 0.0158};  };// ARel = .ARel';  };
-  AnyRefNode PUBIS_L          = { sRel = {-0.0003, -0.0184, -0.0218}; };// ARel = .ARel';  };
+  // AnyRefNode PUBIS_R          = { sRel = {-0.0005, -0.0202, 0.0158};  };// ARel = .ARel';  }; // MR_01
+  // AnyRefNode PUBIS_L          = { sRel = {-0.0003, -0.0184, -0.0218}; };// ARel = .ARel';  }; // MR_01
+  AnyRefNode PUBIS_R          = { sRel = {-0.0041, -0.0140, 0.0137};  };// ARel = .ARel';  }; // mean control group
+  AnyRefNode PUBIS_L          = { sRel = {-0.0041, -0.0140, -0.0137}; };// ARel = .ARel';  }; // mean control group, mirrored from right side
   
-  AnyRefNode COCCYX = {
-    sRel = {0.0831-0.018, -0.0560+0.031, 0.0};
+  // AnyRefNode COCCYX = {
+  //   sRel = {0.0831-0.018, -0.0560+0.031, 0.0};
+  //   // coccyx adjusted to tip of coccyx by straight length of coccyx (Woon, 2012) and assumed angle of 60° from horizontal plane
+  //   // ARel = .ARel'; // invert rotation matrix (according to Dominika)
+  // };
+
+  AnyRefNode COCCYX = { // mean control group
+    sRel = {0.0917-0.018, -0.0618+0.031, 0.0};
     // coccyx adjusted to tip of coccyx by straight length of coccyx (Woon, 2012) and assumed angle of 60° from horizontal plane
     // ARel = .ARel'; // invert rotation matrix (according to Dominika)
   };
 
-  AnyRefNode ISCHIALSPINE_R   = { sRel = {0.0607, -0.0448, 0.0484};   };// ARel = .ARel';  };
-  AnyRefNode ISCHIALSPINE_L   = { sRel = {0.0601, -0.0443, -0.0586};  };// ARel = .ARel';  };
-  AnyRefNode POINT1           = { sRel = {0.0003, -0.0248, 0.0208};   };// ARel = .ARel';  };
-  AnyRefNode POINT2           = { sRel = {0.0011, -0.0295, 0.0258};   };// ARel = .ARel';  };
-  AnyRefNode POINT3           = { sRel = {0.0019, -0.0342, 0.0308};   };// ARel = .ARel';  };
-  AnyRefNode POINT4           = { sRel = {0.0301, -0.0428, 0.0448};   };// ARel = .ARel';  };
-  AnyRefNode POINT5           = { sRel = {0.0005, -0.0233, -0.0272};  };// ARel = .ARel';  };
-  AnyRefNode POINT6           = { sRel = {0.0013, -0.0282, -0.0326};  };// ARel = .ARel';  };
-  AnyRefNode POINT7           = { sRel = {0.0021, -0.0331, -0.0380};  };// ARel = .ARel';  };
-  AnyRefNode POINT8           = { sRel = {0.0291, -0.0425, -0.0525};  };// ARel = .ARel';  };
+  // MR_01
+  // AnyRefNode ISCHIALSPINE_R   = { sRel = {0.0607, -0.0448, 0.0484};   };// ARel = .ARel';  };
+  // AnyRefNode ISCHIALSPINE_L   = { sRel = {0.0601, -0.0443, -0.0586};  };// ARel = .ARel';  };
+  // AnyRefNode POINT1           = { sRel = {0.0003, -0.0248, 0.0208};   };// ARel = .ARel';  };
+  // AnyRefNode POINT2           = { sRel = {0.0011, -0.0295, 0.0258};   };// ARel = .ARel';  };
+  // AnyRefNode POINT3           = { sRel = {0.0019, -0.0342, 0.0308};   };// ARel = .ARel';  };
+  // AnyRefNode POINT4           = { sRel = {0.0301, -0.0428, 0.0448};   };// ARel = .ARel';  };
+  // AnyRefNode POINT5           = { sRel = {0.0005, -0.0233, -0.0272};  };// ARel = .ARel';  };
+  // AnyRefNode POINT6           = { sRel = {0.0013, -0.0282, -0.0326};  };// ARel = .ARel';  };
+  // AnyRefNode POINT7           = { sRel = {0.0021, -0.0331, -0.0380};  };// ARel = .ARel';  };
+  // AnyRefNode POINT8           = { sRel = {0.0291, -0.0425, -0.0525};  };// ARel = .ARel';  };
+
+  // mean control group
+  AnyRefNode ISCHIALSPINE_R   = { sRel = {0.0553, -0.0478, 0.0535};   };// ARel = .ARel';  };
+  AnyRefNode ISCHIALSPINE_L   = { sRel = {0.0553, -0.0478, -0.0535};  };// ARel = .ARel';  };
+  AnyRefNode POINT1           = { sRel = {-0.0026, -0.0210, 0.0190};   };// ARel = .ARel';  };
+  AnyRefNode POINT2           = { sRel = {-0.0011, -0.0281, 0.0243};   };// ARel = .ARel';  };
+  AnyRefNode POINT3           = { sRel = {-0.0004, -0.0351, 0.0296};   };// ARel = .ARel';  };
+  AnyRefNode POINT4           = { sRel = {0.0335, -0.0472, 0.0509};   };// ARel = .ARel';  };
+  AnyRefNode POINT5           = { sRel = {-0.0026, 0.0170, -0.0190};  };// ARel = .ARel';  };
+  AnyRefNode POINT6           = { sRel = {-0.0011, -0.0281, -0.0243};  };// ARel = .ARel';  };
+  AnyRefNode POINT7           = { sRel = {-0.0004, -0.0354, -0.0296};  };// ARel = .ARel';  };
+  AnyRefNode POINT8           = { sRel = {0.0335, -0.0472, -0.0509};  };// ARel = .ARel';  };
 
 }; // ---------------------- END OF NODES ON LOCAL REF FRAME -------------------
 
@@ -67,7 +88,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // vaginal side-wall, right
     AnySeg SegPointA = {
-      r0 = {0.0071, -0.0135, 0.0116};
+      // r0 = {0.0071, -0.0135, 0.0116}; // MR_01
+      r0 = {0.0054, -0.0124, 0.0140}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -85,7 +107,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // vaginal side-wall, left
     AnySeg SegPointB = {
-      r0 = {0.0065, -0.0133, -0.0202};
+      // r0 = {0.0065, -0.0133, -0.0202}; // MR_01
+      r0 = {0.0054, -0.0124, -0.0140}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -99,7 +122,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // perineum
     AnySeg SegPointC = {
-      r0 = {0.0195, -0.0023, -0.0045};
+      // r0 = {0.0195, -0.0023, -0.0045}; // MR_01
+      r0 = {0.0220, -0.0036, 0.0}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -113,7 +137,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // rectal side-wall, right
     AnySeg SegPointD = {
-      r0 = {0.0415, 0.0050, 0.0016};
+      // r0 = {0.0415, 0.0050, 0.0016}; // MR_01
+      r0 = {0.0392, -0.0015, 0.0050}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -127,7 +152,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // rectal side-wall, left
     AnySeg SegPointE = {
-      r0 = {0.0407, 0.0051, -0.0100};
+      // r0 = {0.0407, 0.0051, -0.0100}; // MR_01
+      r0 = {0.0392, -0.0015, -0.0050}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -141,7 +167,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // posterior part of rectum
     AnySeg SegPointF = {
-      r0 = {0.0431, 0.0020, -0.0059};
+      // r0 = {0.0431, 0.0020, -0.0059}; // MR_01
+      r0 = {0.0403, -0.0065, 0.0}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -155,7 +182,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // central point of anococcygeal ligament
     AnySeg SegPointG = {
-      r0 = {0.0373, -0.0112, -0.0060};
+      // r0 = {0.0373, -0.0112, -0.0060}; // MR_01
+      r0 = {0.0379, -0.0210, 0.0}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -169,7 +197,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // 1st point on tendinous arc of LAM, right
     AnySeg SegPointS = {
-      r0 = {.0023, -0.0228, 0.0188};
+      // r0 = {.0023, -0.0228, 0.0188}; // MR_01
+      r0 = {0.0006, -0.0190, 0.0170}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -183,7 +212,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // 2nd point on tendinous arc of LAM, right
     AnySeg SegPointT = {
-      r0 = {0.0051, -0.0255, 0.0218};
+      // r0 = {0.0051, -0.0255, 0.0218}; // MR_01
+      r0 = {0.0029, -0.0241, 0.0203}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -197,7 +227,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // 3rd point on tendinous arc of LAM, right
     AnySeg SegPointU = {
-      r0 = {0.0079,-0.0282, 0.0248};
+      // r0 = {0.0079,-0.0282, 0.0248}; // MR_01
+      r0 = {0.0064, -0.0291, 0.0236}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -211,7 +242,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // 4th point on tendinous arc of LAM, right
     AnySeg SegPointV = {
-      r0 = {0.0361, -0.0368, 0.0388};
+      // r0 = {0.0361, -0.0368, 0.0388}; // MR_01
+      r0 = {0.0395, -0.0412, 0.0449}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -225,7 +257,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // 1st point on tendinous arc of LAM, left
     AnySeg SegPointW = {
-      r0 = {0.0025, -0.0213, -0.0252};
+      // r0 = {0.0025, -0.0213, -0.0252}; // MR_01
+      r0 = {0.0006, -0.0190, -0.0170}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -239,7 +272,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // 2nd point on tendinous arc of LAM, left
     AnySeg SegPointX = {
-      r0 = {0.0053, -0.0242, -0.0286};
+      // r0 = {0.0053, -0.0242, -0.0286}; // MR_01
+      r0 = {0.0029, -0.0241, -0.0203}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -253,7 +287,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // 3rd point on tendinous arc of LAM, left
     AnySeg SegPointY = {
-      r0 = {0.0081, -0.0271, -0.0320};
+      // r0 = {0.0081, -0.0271, -0.0320}; // MR_01
+      r0 = {0.0064, -0.0291, -0.0236}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
@@ -267,7 +302,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
     // 4th point on tendinous arc of LAM, left
     AnySeg SegPointZ = {
-      r0 = {0.0351, -0.0365, -0.0465};
+      // r0 = {0.0351, -0.0365, -0.0465}; // MR_01
+      r0 = {0.0395, -0.0412, -0.0449}; // mean control group
       Mass = .Mass;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
