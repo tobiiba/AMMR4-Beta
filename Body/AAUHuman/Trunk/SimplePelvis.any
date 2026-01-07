@@ -9,6 +9,9 @@ Main.HumanModel.Anthropometrics = {
   BodyHeight = 1.66;
 };
 
+// SCALING
+#include "SimplePelvisScaling.any"
+
 
 // SEGMENTS AND NODES
 #include "SimplePelvisSegments.any"

@@ -1,0 +1,54 @@
+/*
+In this file the scaling of the pelvis is defined in order to scale the original pelvis (male) to a fitting female pelvis
+Created with much support of D. Ignasiak
+*/
+
+Main.HumanModel.Scaling.GeometricalScaling.Pelvis = {
+  AnyFolder SimplePelvisPatientParameters = {
+    
+    AnyVar PelvisDepthFactor = 1.08;   // antero-posterior, female pelvis is 8 % deeper, Kurki 2011
+    AnyVar PelvisWidthFactor = 1.09;   // left-right, female pelvis is 9 % wider, Kurki 2011
+    
+    AnyVar PelvisDepth = Main.HumanModel.Anthropometrics.SegmentDimensions.PelvisWidth;  // antero-posterior  standard value: 0.1509133     
+    AnyVar PelvisWidth = Main.HumanModel.Anthropometrics.SegmentDimensions.PelvisWidth;  // left-right        standard value: 0.1791738
+  };
+};
+
+// Define scaling function for the pelvis
+Main.HumanModel.ScalingLaw.GeometricalScaling = {
+  AnyFolder SimplePelvis = {
+    AnyFolder CustomPelvisScaling = {
+      // by default, uniform scaling looks like this (from ScalingConfig.any):
+      // AnyVar GeomScale = (...Anthropometrics.SegmentDimensions.PelvisWidth / ..StandardParameters.Pelvis.Width);
+      
+      // make a reference for easier life
+      AnyFolder &StandardPelvisParameters = Main.HumanModel.ScalingLaw.StandardParameters.Pelvis;
+      
+      //    Find coefficient for each direction
+      // X and Z based on inputs, and Y keeping previous approach of scaling to body height 
+      AnyVar GeomScaleX = (Main.HumanModel.Scaling.GeometricalScaling.Pelvis.SimplePelvisPatientParameters.PelvisDepth / StandardPelvisParameters.Depth) * Main.HumanModel.Scaling.GeometricalScaling.Pelvis.SimplePelvisPatientParameters.PelvisDepthFactor;
+      AnyVar GeomScaleY = Main.HumanModel.Anthropometrics.SegmentDimensions.PelvisWidth / StandardPelvisParameters.Width;
+      AnyVar GeomScaleZ = (Main.HumanModel.Scaling.GeometricalScaling.Pelvis.SimplePelvisPatientParameters.PelvisWidth / StandardPelvisParameters.Width) * Main.HumanModel.Scaling.GeometricalScaling.Pelvis.SimplePelvisPatientParameters.PelvisWidthFactor;
+     
+      
+      // // Use to play with
+      //  AnyVar GeomScaleX = 2;
+      //  AnyVar GeomScaleY = 1;
+      //  AnyVar GeomScaleZ = 1;
+      
+      AnyFunTransform3DLin ScaleFunction = {
+        ScaleMat = diag({.GeomScaleX, .GeomScaleY, .GeomScaleZ});
+        AnyMatrix ScaleMatInverse = diag({1/.GeomScaleX, 1/.GeomScaleY, 1/.GeomScaleZ});
+        Offset = {0,0,0};
+      };
+    };
+  };
+};
+
+
+// Activate custom scaling - to link to our own function defined below
+Main.HumanModel.Scaling.GeometricalScaling.Pelvis.ScaleFunction = {
+  Custom = &Main.HumanModel.ScalingLaw.GeometricalScaling.SimplePelvis.CustomPelvisScaling.ScaleFunction;
+};
+
+

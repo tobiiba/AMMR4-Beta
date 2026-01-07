@@ -25,8 +25,10 @@ Main = {
   // The new thoracic model comes with a full set of
   // ligaments all along the spine. They can be enabled
   // with the following switch.
-  #define BM_TRUNK_LIGAMENTS OFF 
+  #define BM_TRUNK_LIGAMENTS OFF
   
+  // Set scaling of pelvic floor
+  #define BM_SCALING _SCALING_UNIFORM_
 
   // This example comes with custom fourier drivers for the
   // spine motion. So here we disable the default drivers 
