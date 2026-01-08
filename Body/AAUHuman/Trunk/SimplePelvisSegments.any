@@ -67,7 +67,7 @@ Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN = {
   AnyRefNode POINT2           = { sRel = {-0.0011, -0.0281, 0.0243};   };// ARel = .ARel';  };
   AnyRefNode POINT3           = { sRel = {-0.0004, -0.0351, 0.0296};   };// ARel = .ARel';  };
   AnyRefNode POINT4           = { sRel = {0.0335, -0.0472, 0.0509};   };// ARel = .ARel';  };
-  AnyRefNode POINT5           = { sRel = {-0.0026, 0.0170, -0.0190};  };// ARel = .ARel';  };
+  AnyRefNode POINT5           = { sRel = {-0.0026, -0.0210, -0.0190};  };// ARel = .ARel';  };
   AnyRefNode POINT6           = { sRel = {-0.0011, -0.0281, -0.0243};  };// ARel = .ARel';  };
   AnyRefNode POINT7           = { sRel = {-0.0004, -0.0354, -0.0296};  };// ARel = .ARel';  };
   AnyRefNode POINT8           = { sRel = {0.0335, -0.0472, -0.0509};  };// ARel = .ARel';  };
