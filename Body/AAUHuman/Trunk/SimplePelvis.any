@@ -33,6 +33,17 @@ Main.HumanModel.Anthropometrics = {
 #include "SimplePelvisDrivers.any"
 
 
+// ABDOMINAL PRESSURE
+Main.HumanModel.BodyModel.Trunk = {
+  AnyFolder AbdominalPressure = {
+    // pressure is forces distributed over volume nodes
+    AnyForce3D IAP = {
+      AnyRefFrame &PoA= Main.HumanModel.BodyModel.Trunk.Abdominal.Layer_L5.CavitySegPosterior.VolumePoints.Center;
+      F = {0, -5, 0}*t;
+    };
+  };
+};
+
 // KINEMATIC MEASURES
 Main.DrawSettings.KinematicVolume = {
   Opacity = 0.1;

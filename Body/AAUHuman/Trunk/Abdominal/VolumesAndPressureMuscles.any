@@ -10,9 +10,10 @@ AnyFolder Volumes ={
     #include "<ANYBODY_PATH_MODELUTILS>/DrawSettings/KinematicVolume.any"
 
     CylMesh  = ({
-      repmat(.num_points, &..Layer_Pelvic5.BaseSegPosterior.Layer5.VolumePoints.Center),
+      // repmat(.num_points, &..Layer_Pelvic5.BaseSegPosterior.Layer5.VolumePoints.Center),
+      repmat(.num_points, &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC),
       ..Layer_Pelvic5.FullEdge_Base,
-//      ..Layer_Pelvic4.FullEdge_Base,
+      ..Layer_Pelvic4.FullEdge_Base,
       ..Layer_Pelvic3.FullEdge_Base,
       ..Layer_Pelvic2.FullEdge_Base,
       ..Layer_Pelvic1.FullEdge_Base,

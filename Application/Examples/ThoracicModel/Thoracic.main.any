@@ -20,7 +20,7 @@ Main = {
   #define BM_ARM_RIGHT OFF
   
   // Note: Model doesn't yet work without muscles
-  #define BM_TRUNK_MUSCLES OFF // TBD turn back ON
+  #define BM_TRUNK_MUSCLES ON // TBD turn back ON
   
   // The new thoracic model comes with a full set of
   // ligaments all along the spine. They can be enabled
@@ -72,7 +72,7 @@ Main = {
     tStart = 0;
     tEnd = 1; // 4*2*pi;
     Gravity = {0, -9.81, 0.0};
-    nStep = 20; // 100;
+    nStep = 5; // 100;
     
     AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
 
@@ -85,7 +85,7 @@ Main = {
     SimpleFourierDriver Trunk_Extension = 
     {
        AnyKinMeasure &ref1 = .BodyModel.Interface.Trunk.PelvisThoraxExtension;
-       RangeOfMotion = {0,0}; // {-60, 10}*pi/180;
+       RangeOfMotion = {-20, 5}*pi/180; //{-60, 10}*pi/180;
        Freq = 1/(Main.Study.tEnd-Main.Study.tStart);
        Phase = 0*pi/180;
        Reaction.Type ={Off};
