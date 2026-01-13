@@ -4809,46 +4809,46 @@ MuscleGroup ObliquusInternus = {
   #endif
 };
 
-// Psoas is separated since it is used by the legs in certain BM configurations
-#include "PsoasMajorLeft.any"
-
-#if BM_TRUNK_MUSCLES & BM_TRUNK_CAVITY_MODEL == _CAVITY_MODEL_VOLUME_
-MuscleGroup Pubococcygeus = {
-  AnyMuscleViaPoint Pubococcygeus_1= {
-    AnyMuscleModel &MusMdl = ....MuscleModels.Left.Pubococcygeus.Pubococcygeus_1;
-    AnyRefNode &Org = ....Segments.PelvisSeg.Pubococcygeus_1NodeL;
-    AnyRefNode &Ins = ....Segments.SacrumSeg.Pubococcygeus_1NodeL;
-    viewMuscle = {#include "../DrawSettings/MusDrawSettings.any"};
-    viewForce.Visible ??= Off;
-  };
-  AnyMuscleViaPoint Pubococcygeus_2= {
-    AnyMuscleModel &MusMdl = ....MuscleModels.Left.Pubococcygeus.Pubococcygeus_2;
-    AnyRefNode &Org = ....Segments.PelvisSeg.Pubococcygeus_2NodeL;
-    AnyRefNode &Ins = ....Segments.SacrumSeg.Pubococcygeus_2NodeL;
-    viewMuscle = {#include "../DrawSettings/MusDrawSettings.any"};
-    viewForce.Visible ??= Off;
-  };
-};
-
-MuscleGroup Puborectalis = {
-  AnyMuscleViaPoint Puborectalis_1= {
-    AnyMuscleModel &MusMdl = ....MuscleModels.Left.Puborectalis.Puborectalis_1;
-    AnyRefNode &Org = ....Segments.PelvisSeg.Puborectalis_1NodeL;
-    AnyRefNode &Ins = ....Segments.SacrumSeg.Puborectalis_1NodeL;
-    viewMuscle = {#include "../DrawSettings/MusDrawSettings.any"};
-    viewForce.Visible ??= Off;
-  };
-  AnyMuscleViaPoint Puborectalis_2= {
-    AnyMuscleModel &MusMdl = ....MuscleModels.Left.Puborectalis.Puborectalis_2;
-    AnyRefNode &Org = ....Segments.PelvisSeg.Puborectalis_2NodeL;
-    AnyRefNode &Ins = ....Segments.SacrumSeg.Puborectalis_2NodeL;
-    viewMuscle = {#include "../DrawSettings/MusDrawSettings.any"};
-    viewForce.Visible ??= Off;
-  };
-};
-
-
-#endif
+//// Psoas is separated since it is used by the legs in certain BM configurations
+//#include "PsoasMajorLeft.any"
+//
+//#if BM_TRUNK_MUSCLES & BM_TRUNK_CAVITY_MODEL == _CAVITY_MODEL_VOLUME_
+//MuscleGroup Pubococcygeus = {
+//  AnyMuscleViaPoint Pubococcygeus_1= {
+//    AnyMuscleModel &MusMdl = ....MuscleModels.Left.Pubococcygeus.Pubococcygeus_1;
+//    AnyRefNode &Org = ....Segments.PelvisSeg.Pubococcygeus_1NodeL;
+//    AnyRefNode &Ins = ....Segments.SacrumSeg.Pubococcygeus_1NodeL;
+//    viewMuscle = {#include "../DrawSettings/MusDrawSettings.any"};
+//    viewForce.Visible ??= Off;
+//  };
+//  AnyMuscleViaPoint Pubococcygeus_2= {
+//    AnyMuscleModel &MusMdl = ....MuscleModels.Left.Pubococcygeus.Pubococcygeus_2;
+//    AnyRefNode &Org = ....Segments.PelvisSeg.Pubococcygeus_2NodeL;
+//    AnyRefNode &Ins = ....Segments.SacrumSeg.Pubococcygeus_2NodeL;
+//    viewMuscle = {#include "../DrawSettings/MusDrawSettings.any"};
+//    viewForce.Visible ??= Off;
+//  };
+//};
+//
+//MuscleGroup Puborectalis = {
+//  AnyMuscleViaPoint Puborectalis_1= {
+//    AnyMuscleModel &MusMdl = ....MuscleModels.Left.Puborectalis.Puborectalis_1;
+//    AnyRefNode &Org = ....Segments.PelvisSeg.Puborectalis_1NodeL;
+//    AnyRefNode &Ins = ....Segments.SacrumSeg.Puborectalis_1NodeL;
+//    viewMuscle = {#include "../DrawSettings/MusDrawSettings.any"};
+//    viewForce.Visible ??= Off;
+//  };
+//  AnyMuscleViaPoint Puborectalis_2= {
+//    AnyMuscleModel &MusMdl = ....MuscleModels.Left.Puborectalis.Puborectalis_2;
+//    AnyRefNode &Org = ....Segments.PelvisSeg.Puborectalis_2NodeL;
+//    AnyRefNode &Ins = ....Segments.SacrumSeg.Puborectalis_2NodeL;
+//    viewMuscle = {#include "../DrawSettings/MusDrawSettings.any"};
+//    viewForce.Visible ??= Off;
+//  };
+//};
+//
+//
+//#endif
 
 
 
