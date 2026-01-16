@@ -315,8 +315,70 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
       }; 
     };
 
-  // ------------------- END OF MOVEABLE SEGMENTS OF PELVIS -------------------
+  
 
   }; // END OF FOLDER SimplePelvis
-
 }; 
+
+
+
+// -------------------------------------------------------------------
+// ----------------------- LAYERS FOR CylMesh ------------------------
+// -------------------------------------------------------------------
+
+Main.HumanModel.BodyModel.Trunk.Abdominal = {
+  AnyFolder Layer_SimplePelvis4 = {
+    AnyObjectPtrArray FullEdge_Base = {
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG, // 11 times
+
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA, // 17 times
+
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB, // 17 times
+
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG // 11 times
+    };
+  };
+  
+  AnyFolder Layer_SimplePelvis5 = {
+    AnyObjectPtrArray FullEdge_Base = {
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF, // 5 times
+
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD, // 13 times
+
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC,
+      // 20 times
+
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE, // 13 times
+
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF,      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF,
+      &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF // 5 times
+    };
+  };
+}; // ------------------------ END OF LAYERS ------------------------
+
+

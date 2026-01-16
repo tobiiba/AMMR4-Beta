@@ -20,7 +20,7 @@ Main = {
   #define BM_ARM_RIGHT OFF
   
   // Note: Model doesn't yet work without muscles
-  #define BM_TRUNK_MUSCLES ON // TBD turn back ON
+  #define BM_TRUNK_MUSCLES OFF // TBD turn back ON
   
   // The new thoracic model comes with a full set of
   // ligaments all along the spine. They can be enabled
