@@ -1,0 +1,334 @@
+SegPointC = {
+  AnySwitchVar VisualizeAddedNodes = On;
+  AnyFloat ColorNodes = {1,0,0};
+};
+
+SegPointD = {
+  AnySwitchVar VisualizeAddedNodes = On;
+  AnyFloat ColorNodes = {0,1,0};
+};
+
+SegPointF = {
+  AnySwitchVar VisualizeAddedNodes = On;
+  AnyFloat ColorNodes = {1,0,1};
+};
+
+SegPointE = {
+  AnySwitchVar VisualizeAddedNodes = On;
+  AnyFloat ColorNodes = {0,0,1};
+};
+
+
+SegPointC = {
+
+  AnyRefNode Point01onC = {
+    sRel = {0.000000, 0.000000, 0.000000};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point02onC = {
+    sRel = {0.000100, 0.000045, 0.000564};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point03onC = {
+    sRel = {0.000389, 0.000173, 0.001124};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point04onC = {
+    sRel = {0.000848, 0.000369, 0.001674};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point05onC = {
+    sRel = {0.001459, 0.000623, 0.002210};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point06onC = {
+    sRel = {0.002204, 0.000920, 0.002727};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point07onC = {
+    sRel = {0.003066, 0.001250, 0.003220};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point08onC = {
+    sRel = {0.004025, 0.001598, 0.003685};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point09onC = {
+    sRel = {0.005065, 0.001952, 0.004117};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point10onC = {
+    sRel = {0.006166, 0.002300, 0.004511};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point11onC = {
+    sRel = {0.007312, 0.002630, 0.004863};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point12onC = {
+    sRel = {0.008483, 0.002927, 0.005167};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point13onC = {
+    sRel = {0.009661, 0.003180, 0.005419};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point14onC = {
+    sRel = {0.010830, 0.003377, 0.005615};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point44onC = {
+    sRel = {0.010830, 0.003377, -0.005615};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point45onC = {
+    sRel = {0.009661, 0.003180, -0.005419};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point46onC = {
+    sRel = {0.008483, 0.002927, -0.005167};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point47onC = {
+    sRel = {0.007312, 0.002630, -0.004863};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point48onC = {
+    sRel = {0.006166, 0.002300, -0.004511};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point49onC = {
+    sRel = {0.005065, 0.001952, -0.004117};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point50onC = {
+    sRel = {0.004025, 0.001598, -0.003685};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point51onC = {
+    sRel = {0.003066, 0.001250, -0.003220};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point52onC = {
+    sRel = {0.002204, 0.000920, -0.002727};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point53onC = {
+    sRel = {0.001459, 0.000623, -0.002210};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point54onC = {
+    sRel = {0.000848, 0.000369, -0.001674};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point55onC = {
+    sRel = {0.000389, 0.000173, -0.001124};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point56onC = {
+    sRel = {0.000100, 0.000045, -0.000564};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode PointCenter = {
+    sRel = {0.0107, 0.0035, 0.000};
+    AnyDrawNode drw = {
+      ScaleXYZ = {1, 1, 1}*0.0005;
+      Opacity = 1;
+      RGB = {0.5, 0.5, 0.5};
+      Visible = ..VisualizeAddedNodes;
+    };
+  };
+};
+//End of nodes on SegPointC 
+
+
+SegPointD = {
+
+  AnyRefNode Point15onD = {
+    sRel = {-0.005230, 0.001404, 0.000749};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point16onD = {
+    sRel = {-0.004137, 0.001449, 0.000817};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point17onD = {
+    sRel = {-0.003108, 0.001399, 0.000815};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point18onD = {
+    sRel = {-0.002162, 0.001242, 0.000736};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point19onD = {
+    sRel = {-0.001316, 0.000965, 0.000577};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point20onD = {
+    sRel = {-0.000590, 0.000555, 0.000334};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point21onD = {
+    sRel = {0.000000, 0.000000, 0.000000};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point22onD = {
+    sRel = {0.000439, -0.000695, -0.000422};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point23onD = {
+    sRel = {0.000747, -0.001486, -0.000925};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point24onD = {
+    sRel = {0.000947, -0.002316, -0.001497};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point25onD = {
+    sRel = {0.001061, -0.003126, -0.002128};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+};
+//End of nodes on SegPointD 
+
+
+SegPointE = {
+
+  AnyRefNode Point33onE = {
+    sRel = {0.001061, -0.003126, 0.002128};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point34onE = {
+    sRel = {0.000947, -0.002316, 0.001497};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point35onE = {
+    sRel = {0.000747, -0.001486, 0.000925};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point36onE = {
+    sRel = {0.000439, -0.000695, 0.000422};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point37onE = {
+    sRel = {0.000000, 0.000000, 0.000000};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point38onE = {
+    sRel = {-0.000590, 0.000555, -0.000334};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point39onE = {
+    sRel = {-0.001316, 0.000965, -0.000577};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point40onE = {
+    sRel = {-0.002162, 0.001242, -0.000736};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point41onE = {
+    sRel = {-0.003108, 0.001399, -0.000815};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point42onE = {
+    sRel = {-0.004137, 0.001449, -0.000817};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point43onE = {
+    sRel = {-0.005230, 0.001404, -0.000749};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+};
+//End of nodes on SegPointE 
+
+
+SegPointF = {
+
+  AnyRefNode Point26onF = {
+    sRel = {0.000011, 0.001141, 0.002195};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point27onF = {
+    sRel = {0.000020, 0.000546, 0.001482};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point28onF = {
+    sRel = {0.000009, 0.000146, 0.000747};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point29onF = {
+    sRel = {0.000000, 0.000000, 0.000000};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point30onF = {
+    sRel = {0.000009, 0.000146, -0.000747};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point31onF = {
+    sRel = {0.000020, 0.000546, -0.001482};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+  AnyRefNode Point32onF = {
+    sRel = {0.000011, 0.001141, -0.002195};
+    #include "SimplePelvisDrawAddedNode.any"
+  };
+
+};
+//End of nodes on SegPointF 
+
+

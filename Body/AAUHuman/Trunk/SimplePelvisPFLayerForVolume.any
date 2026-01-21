@@ -1,0 +1,242 @@
+Main.HumanModel.BodyModel.Trunk.Abdominal = {
+  
+  AnyFolder Layer_SimplePelvis = {
+    
+    AnyFolder HiatusLevel = {
+      AnySeg &SegC = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC;
+      AnySeg &SegD = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD;
+      AnySeg &SegE = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE;
+      AnySeg &SegF = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF;
+      
+      /* This would work if starting node + node order was correctly generated in outside script, 
+      but we can change it - see below
+
+      AnyObjectPtrArray FullEdge_Base = {
+      // Nodes at SegPointC
+      &SegC.Point01onC,
+      &SegC.Point02onC,
+      &SegC.Point03onC,
+      &SegC.Point04onC,
+      &SegC.Point05onC,
+      &SegC.Point06onC,
+      &SegC.Point07onC,
+      &SegC.Point08onC,
+      &SegC.Point09onC,
+      &SegC.Point10onC,
+      &SegC.Point11onC,
+      &SegC.Point12onC,
+      &SegC.Point13onC,
+      &SegC.Point14onC,
+      
+      
+      // Nodes at SegPointD
+      &SegD.Point15onD,
+      &SegD.Point16onD,
+      &SegD.Point17onD,
+      &SegD.Point18onD,
+      &SegD.Point19onD,
+      &SegD.Point20onD,
+      &SegD.Point21onD,
+      &SegD.Point22onD,
+      &SegD.Point23onD,
+      &SegD.Point24onD,
+      &SegD.Point25onD,
+      
+      // Nodes at SegPointF
+      &SegF.Point26onF,
+      &SegF.Point27onF,
+      &SegF.Point28onF,
+      &SegF.Point29onF,
+      &SegF.Point30onF,
+      &SegF.Point31onF,
+      &SegF.Point32onF,
+      
+      // Nodes at SegPointE
+      &SegE.Point33onE,
+      &SegE.Point34onE,
+      &SegE.Point35onE,
+      &SegE.Point36onE,
+      &SegE.Point37onE,
+      &SegE.Point38onE,
+      &SegE.Point39onE,
+      &SegE.Point40onE,
+      &SegE.Point41onE,
+      &SegE.Point42onE,
+      &SegE.Point43onE,
+      
+      // Nodes at SegPointC PART 2
+      &SegC.Point44onC,
+      &SegC.Point45onC,
+      &SegC.Point46onC,
+      &SegC.Point47onC,
+      &SegC.Point48onC,
+      &SegC.Point49onC,
+      &SegC.Point50onC,
+      &SegC.Point51onC,
+      &SegC.Point52onC,
+      &SegC.Point53onC,
+      &SegC.Point54onC,
+      &SegC.Point55onC,
+      &SegC.Point56onC          
+      
+      };  
+      */  
+
+      AnyObjectPtrArray FullEdge_Base0 = {
+        
+      // to correspond to upper layers, we need to start at SegF, which is Point 29
+        &SegF.Point29onF,
+        &SegF.Point30onF,
+        &SegF.Point31onF,
+        &SegF.Point32onF,
+
+        // Nodes at SegPointE
+        &SegE.Point33onE,
+        &SegE.Point34onE,
+        &SegE.Point35onE,
+        &SegE.Point36onE,
+        &SegE.Point37onE,
+        &SegE.Point38onE,
+        &SegE.Point39onE,
+        &SegE.Point40onE,
+        &SegE.Point41onE,
+        &SegE.Point42onE,
+        &SegE.Point43onE,
+        
+        // Nodes at SegPointC PART 2
+        &SegC.Point44onC,
+        &SegC.Point45onC,
+        &SegC.Point46onC,
+        &SegC.Point47onC,
+        &SegC.Point48onC,
+        &SegC.Point49onC,
+        &SegC.Point50onC,
+        &SegC.Point51onC,
+        &SegC.Point52onC,
+        &SegC.Point53onC,
+        &SegC.Point54onC,
+        &SegC.Point55onC,
+        &SegC.Point56onC,          
+
+        // Nodes at SegPointC
+        &SegC.Point01onC,
+        &SegC.Point02onC,
+        &SegC.Point03onC,
+        &SegC.Point04onC,
+        &SegC.Point05onC,
+        &SegC.Point06onC,
+        &SegC.Point07onC,
+        &SegC.Point08onC,
+        &SegC.Point09onC,
+        &SegC.Point10onC,
+        &SegC.Point11onC,
+        &SegC.Point12onC,
+        &SegC.Point13onC,
+        &SegC.Point14onC,
+              
+        // Nodes at SegPointD
+        &SegD.Point15onD,
+        &SegD.Point16onD,
+        &SegD.Point17onD,
+        &SegD.Point18onD,
+        &SegD.Point19onD,
+        &SegD.Point20onD,
+        &SegD.Point21onD,
+        &SegD.Point22onD,
+        &SegD.Point23onD,
+        &SegD.Point24onD,
+        &SegD.Point25onD,
+        
+        // Nodes at SegPointF
+        &SegF.Point26onF,
+        &SegF.Point27onF,
+        &SegF.Point28onF
+        
+      };   // end of HiatusLevel 
+      
+
+    // For order of nodes to correspond to other mesh layers
+    AnyObjectPtrArray FullEdge_Base = flip(FullEdge_Base0);
+
+    };
+
+    AnyFolder PelvicBowlLevel = {
+      AnySeg &SegA = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA;
+      AnySeg &SegB = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB;
+      AnySeg &SegG = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG;
+
+      AnyObjectPtrArray FullEdge_Base = {
+        
+        // to correspond to upper layers, we need to start at SegG
+        &SegG.Point01onG,
+        &SegG.Point02onG,
+        &SegG.Point03onG,
+        &SegG.Point04onG,
+        &SegG.Point05onG,
+        &SegG.Point06onG,
+        &SegG.Point07onG,
+        &SegG.Point08onG,
+        &SegG.Point09onG,
+        &SegG.Point10onG,
+        &SegG.Point11onG,
+
+        // move to SegA
+        &SegA.Point12onA,
+        &SegA.Point13onA,
+        &SegA.Point14onA,
+        &SegA.Point15onA,
+        &SegA.Point16onA,
+        &SegA.Point17onA,
+        &SegA.Point18onA,
+        &SegA.Point19onA,
+        &SegA.Point20onA,
+        &SegA.Point21onA,
+        &SegA.Point22onA,
+        &SegA.Point23onA,
+        &SegA.Point24onA,
+        &SegA.Point25onA,
+        &SegA.Point26onA,
+        &SegA.Point27onA,
+        &SegA.Point28onA,
+        &SegA.Point29onA,
+
+        // move to SegB
+        &SegB.Point30onB,
+        &SegB.Point31onB,
+        &SegB.Point32onB,
+        &SegB.Point33onB,
+        &SegB.Point34onB,
+        &SegB.Point35onB,
+        &SegB.Point36onB,
+        &SegB.Point37onB,
+        &SegB.Point38onB,
+        &SegB.Point39onB,
+        &SegB.Point40onB,
+        &SegB.Point41onB,
+        &SegB.Point42onB,
+        &SegB.Point43onB,
+        &SegB.Point44onB,
+        &SegB.Point45onB,
+        &SegB.Point46onB,
+
+        // close loop with SegG
+        &SegG.Point47onG,
+        &SegG.Point48onG,
+        &SegG.Point49onG,
+        &SegG.Point50onG,
+        &SegG.Point51onG,
+        &SegG.Point52onG,
+        &SegG.Point53onG,
+        &SegG.Point54onG,
+        &SegG.Point55onG,
+        &SegG.Point56onG
+
+      }; 
+
+    }; // end of PelvicBowlLevel
+  
+  }; // end of Folder Layer_SimplePelvis
+
+};
+
+
