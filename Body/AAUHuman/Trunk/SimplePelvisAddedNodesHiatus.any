@@ -1,3 +1,11 @@
+/*
+In this file all interpolated nodes for their integration into the volume on hiatus level (segments C, D, E, F)
+and their visualization properties are defined.
+It also includes the central node used to close off the volume (part of SegPointC).
+
+This file is automatically created with a dedicated python script.
+*/
+
 SegPointC = {
   AnySwitchVar VisualizeAddedNodes = On;
   AnyFloat ColorNodes = {1,0,0};
@@ -18,6 +26,10 @@ SegPointE = {
   AnyFloat ColorNodes = {0,0,1};
 };
 
+
+// -------------------------------------------------------------------
+// ---------------------- ADD NODES TO SEGMENTS ----------------------
+// -------------------------------------------------------------------
 
 SegPointC = {
 
@@ -156,6 +168,7 @@ SegPointC = {
     #include "SimplePelvisDrawAddedNode.any"
   };
 
+  // central node to close off the volume is located at the center of the hiatus
   AnyRefNode PointCenter = {
     sRel = {0.0107, 0.0035, 0.000};
     AnyDrawNode drw = {
@@ -165,8 +178,7 @@ SegPointC = {
       Visible = ..VisualizeAddedNodes;
     };
   };
-};
-//End of nodes on SegPointC 
+}; //End of nodes on SegPointC 
 
 
 SegPointD = {
@@ -226,8 +238,7 @@ SegPointD = {
     #include "SimplePelvisDrawAddedNode.any"
   };
 
-};
-//End of nodes on SegPointD 
+}; //End of nodes on SegPointD 
 
 
 SegPointE = {
@@ -287,8 +298,7 @@ SegPointE = {
     #include "SimplePelvisDrawAddedNode.any"
   };
 
-};
-//End of nodes on SegPointE 
+}; //End of nodes on SegPointE 
 
 
 SegPointF = {
@@ -328,7 +338,6 @@ SegPointF = {
     #include "SimplePelvisDrawAddedNode.any"
   };
 
-};
-//End of nodes on SegPointF 
+}; //End of nodes on SegPointF 
 
 

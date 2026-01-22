@@ -1,3 +1,10 @@
+/*
+In this file all interpolated nodes for their integration into the volume on pelvic bowl level (segments A, B, G)
+and their visualization properties are defined.
+
+This file is automatically created with a dedicated python script.
+*/
+
 SegPointG = {
   AnySwitchVar VisualizeAddedNodes = On;
   AnyFloat ColorNodes = {1,0,0};
@@ -13,6 +20,10 @@ SegPointB = {
   AnyFloat ColorNodes = {0,0,1};
 };
 
+
+// -------------------------------------------------------------------
+// ---------------------- ADD NODES TO SEGMENTS ----------------------
+// -------------------------------------------------------------------
 
 SegPointG = {
 

@@ -1,3 +1,8 @@
+/*
+  This is a small additional script containing drawing settings for the reference nodes of the segments integrated 
+  into the abdominal volume (SimplePelvisAddedNodesHiatus.any + SimplePelvisAddedNodesPelvicBowl.any)
+*/
+
 AnyDrawNode drw = {
   ScaleXYZ = {1,1,1}*0.0005;
   Opacity = 1;

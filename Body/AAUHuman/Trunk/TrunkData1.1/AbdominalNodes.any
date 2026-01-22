@@ -92,7 +92,7 @@ AnyFolder Layer_Pelvic5 ={
       
       //create a spline function
       Parametric.Fun.Data= {
-
+        // manually adjusted for SimplePelvis
         {0.022, -0.16000000, 0.0},      // approximately SegPointF
         {0.028, -0.16000000, 0.0033},
         {0.034, -0.16000000, 0.0067},
@@ -148,9 +148,7 @@ AnyFolder Layer_Pelvic4 ={
       
       //create a spline function
       Parametric.Fun.Data= {
-        
-        // {-0.03341371938586235, -0.12600446138741439, -4.5997277167697526e-13} + {0.01,0,0},
-
+        // manually adjusted for SimplePelvis
         {-0.03, -0.12600446138741439, 0.0},      // approximately coccyx
         {-0.02, -0.12600446138741439, 0.01},
         {-0.01, -0.12600446138741439, 0.02},
@@ -178,7 +176,7 @@ AnyFolder Layer_Pelvic4 ={
   
 };
 
-AnyFolder Layer_Pelvic3 ={
+AnyFolder Layer_Pelvic3 ={ 
   AnyFloat Origin ={0.0,-0.0860,0};
   
   AnyFolder InertiaPoints={
@@ -205,7 +203,7 @@ AnyFolder Layer_Pelvic3 ={
       
       //create a spline function
       Parametric.Fun.Data= {
-        // width (left-right) adjusted for SimplePelvis
+        // manually adjusted for SimplePelvis
         {-0.043413720000000003, -0.086004609999999995, 0.0},
         {-0.049397123441309448, -0.086004609999999995, -0.0038725890000000001*0.7},
         {-0.032047193462627833, -0.086004609999999995, 0.030484319999999999*0.7},

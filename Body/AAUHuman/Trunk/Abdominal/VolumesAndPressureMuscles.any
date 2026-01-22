@@ -6,6 +6,8 @@ AnyFolder Volumes ={
     ..Data.unscaled.ModelParameters.Abdominal.DiscretizationAnterior
   ) * 2;
   
+
+  // Volume LowerCavity is modified to integrate SimplePelvis Model
   AnyKinVolumeCylMesh LowerCavity ={
     #include "<ANYBODY_PATH_MODELUTILS>/DrawSettings/KinematicVolume.any"
 

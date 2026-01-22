@@ -1,3 +1,7 @@
+/*
+In this file the layers for the abdominal volume of the SimplePelvis Model are created.
+*/
+
 Main.HumanModel.BodyModel.Trunk.Abdominal = {
   
   AnyFolder Layer_SimplePelvis = {
@@ -8,78 +12,9 @@ Main.HumanModel.BodyModel.Trunk.Abdominal = {
       AnySeg &SegE = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE;
       AnySeg &SegF = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF;
       
-      /* This would work if starting node + node order was correctly generated in outside script, 
-      but we can change it - see below
-
-      AnyObjectPtrArray FullEdge_Base = {
-      // Nodes at SegPointC
-      &SegC.Point01onC,
-      &SegC.Point02onC,
-      &SegC.Point03onC,
-      &SegC.Point04onC,
-      &SegC.Point05onC,
-      &SegC.Point06onC,
-      &SegC.Point07onC,
-      &SegC.Point08onC,
-      &SegC.Point09onC,
-      &SegC.Point10onC,
-      &SegC.Point11onC,
-      &SegC.Point12onC,
-      &SegC.Point13onC,
-      &SegC.Point14onC,
-      
-      
-      // Nodes at SegPointD
-      &SegD.Point15onD,
-      &SegD.Point16onD,
-      &SegD.Point17onD,
-      &SegD.Point18onD,
-      &SegD.Point19onD,
-      &SegD.Point20onD,
-      &SegD.Point21onD,
-      &SegD.Point22onD,
-      &SegD.Point23onD,
-      &SegD.Point24onD,
-      &SegD.Point25onD,
-      
-      // Nodes at SegPointF
-      &SegF.Point26onF,
-      &SegF.Point27onF,
-      &SegF.Point28onF,
-      &SegF.Point29onF,
-      &SegF.Point30onF,
-      &SegF.Point31onF,
-      &SegF.Point32onF,
-      
-      // Nodes at SegPointE
-      &SegE.Point33onE,
-      &SegE.Point34onE,
-      &SegE.Point35onE,
-      &SegE.Point36onE,
-      &SegE.Point37onE,
-      &SegE.Point38onE,
-      &SegE.Point39onE,
-      &SegE.Point40onE,
-      &SegE.Point41onE,
-      &SegE.Point42onE,
-      &SegE.Point43onE,
-      
-      // Nodes at SegPointC PART 2
-      &SegC.Point44onC,
-      &SegC.Point45onC,
-      &SegC.Point46onC,
-      &SegC.Point47onC,
-      &SegC.Point48onC,
-      &SegC.Point49onC,
-      &SegC.Point50onC,
-      &SegC.Point51onC,
-      &SegC.Point52onC,
-      &SegC.Point53onC,
-      &SegC.Point54onC,
-      &SegC.Point55onC,
-      &SegC.Point56onC          
-      
-      };  
+      /* 
+        The nodes for this layer were arranged in the wrong order. To solve this, the order is rearranged
+        in FullEdge_Base 0 and the array is then flipped in FullEdge_Base.
       */  
 
       AnyObjectPtrArray FullEdge_Base0 = {
@@ -152,19 +87,22 @@ Main.HumanModel.BodyModel.Trunk.Abdominal = {
         &SegF.Point27onF,
         &SegF.Point28onF
         
-      };   // end of HiatusLevel 
+      };
       
-
     // For order of nodes to correspond to other mesh layers
     AnyObjectPtrArray FullEdge_Base = flip(FullEdge_Base0);
 
-    };
+    }; // end of HiatusLevel 
+
 
     AnyFolder PelvicBowlLevel = {
       AnySeg &SegA = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA;
       AnySeg &SegB = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB;
       AnySeg &SegG = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG;
 
+      /* 
+        The nodes for this layer were arranged in the correct order.
+      */  
       AnyObjectPtrArray FullEdge_Base = {
         
         // to correspond to upper layers, we need to start at SegG
@@ -238,5 +176,3 @@ Main.HumanModel.BodyModel.Trunk.Abdominal = {
   }; // end of Folder Layer_SimplePelvis
 
 };
-
-
