@@ -1,3 +1,7 @@
+// -------------------------------------------------------------------
+// -------------------- BASE VERSION SIMPLEPELVIS --------------------
+// -------------------------------------------------------------------
+
 #include "../libdef.any"
 #include "<ANYBODY_PATH_MODELUTILS>/Drivers/Fourier.any"
 
@@ -12,7 +16,7 @@ Main = {
   
   // New flexible thorax is enabled with:
   // #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_RIGID_
-  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_FLEXIBLE_ //TBD switch to flexible
+  #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_FLEXIBLE_
   
   // only head, thorax and pelvis required
   #define BM_LEG_MODEL OFF
@@ -20,7 +24,7 @@ Main = {
   #define BM_ARM_RIGHT OFF
   
   // Note: Model doesn't yet work without muscles
-  #define BM_TRUNK_MUSCLES OFF // TBD turn back ON
+  #define BM_TRUNK_MUSCLES ON
   
   // The new thoracic model comes with a full set of
   // ligaments all along the spine. They can be enabled
@@ -42,6 +46,7 @@ Main = {
   #define BM_MANNEQUIN_DRIVER_SKULL_THORAX_LATERALBENDING OFF
   #define BM_MANNEQUIN_DRIVER_SKULL_THORAX_ROTATION OFF
   #define BM_TRUNK_CERVICAL_THORACIC_LINK ON
+  
   
 
   // -------------------------------------------------------------------
@@ -91,7 +96,7 @@ Main = {
 
     AnyFolder& BodyModel = Main.HumanModel.BodyModel;
 
-    // add drivers from Study and DefaultMannequinDrivers to BodyModel.Trunk for Calibration
+    // TBD - add drivers from Study and DefaultMannequinDrivers to BodyModel.Trunk for calibration
     Main.HumanModel.BodyModel.Trunk = {
       AnyFolder AddDrivers = {
         AnyKinEqSimpleDriver &MannequinDriver1 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosX;
@@ -105,64 +110,31 @@ Main = {
         AnyKinEqFourierDriver &StudyDriver3 = Main.Study.Trunk_AxialRotation;
       };
     };
-  };  
- 
-  // Include the human model
-  #include "<ANYBODY_PATH_BODY>/HumanModel.any"
-
-  // Here, all additional structures and parameters for the SimplePelvis model will be initiated
-  #include "<ANYBODY_PATH_BODY>/Trunk/SimplePelvis.any"
-
-  AnyFolder Model =   {
-     AnyFolder& BodyModel = Main.HumanModel.BodyModel;
-     AnyFolder& DefaultDrivers = Main.HumanModel.DefaultMannequinDrivers;
-     
-     AnyReacForce PelvisGroundReactions = {
-       AnyKinMeasure& lin = .BodyModel.Interface.Trunk.PelvisPosX.lin;
-       AnyKinMeasure& rot = .BodyModel.Interface.Trunk.PelvisRotX.rot;
-     };
-  };
-  
+    // End of TBD
 
 
-  AnyBodyStudy Study = {
-    AnyFolder& Model = Main.Model;
-    InverseDynamics.Criterion.UpperBoundOnOff = Off;
-    
-    tStart = 0;
-    tEnd = 1; // 4*2*pi;
-    Gravity = {0, -9.81, 0.0};
-    nStep = 5; // 100;
-    
-    AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
-
-    AnyFolder& BodyModel = Main.HumanModel.BodyModel;
-
-    
     // Add a driver which drives the whole spine.
     // The spine rhythms handles the individual DOFs, but rhytms can be disabled
     // for full control of all DOFs.
-    SimpleFourierDriver Trunk_Extension = 
-    {
+    SimpleFourierDriver Trunk_Extension = {
        AnyKinMeasure &ref1 = .BodyModel.Interface.Trunk.PelvisThoraxExtension;
-       RangeOfMotion = {0, 0}*pi/180; //{-60, 10}*pi/180;
+       RangeOfMotion = {0, 0}*pi/180;
        Freq = 1/(Main.Study.tEnd-Main.Study.tStart);
        Phase = 0*pi/180;
        Reaction.Type ={Off};
     };
     
-    SimpleFourierDriver Trunk_LateralBending = 
-    {
+    SimpleFourierDriver Trunk_LateralBending = {
        AnyKinMeasure &ref2 = .BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
-       RangeOfMotion = {0,0}; // {-30, 30} *pi/180;
+       RangeOfMotion = {0,0};
        Freq = 0.5/(Main.Study.tEnd-Main.Study.tStart);
        Phase = 180 *pi/180;
        Reaction.Type ={Off};
     };
-    SimpleFourierDriver Trunk_AxialRotation = 
-    {
+
+    SimpleFourierDriver Trunk_AxialRotation = {
        AnyKinMeasure &ref3 = .BodyModel.Interface.Trunk.PelvisThoraxRotation;
-       RangeOfMotion = {0,0}; // {-30,30} *pi/180;
+       RangeOfMotion = {0,0};
        Freq = 0.25/(Main.Study.tEnd-Main.Study.tStart);
        Phase = 0 * pi/180;    
        Reaction.Type ={Off};
@@ -176,14 +148,61 @@ Main = {
   };
 
 
-  AnyOperationSequence RunApplication = {
-    AnyOperation& ref = Main.Study.InverseDynamics;
+  // -------------------------------------------------------------------
+  // -------------------- ADDITIONAL OPERATIONS ------------------------
+  // -------------------------------------------------------------------
+
+  // A new calibration study
+  AnyBodyCalibrationStudy CalibrationStudy = {
+    AnyFolder &Model = Main.HumanModel.BodyModel;
+    // AnyFolder &Drivers = Main.CalibrationDrivers;
+    nStep = 1;
+    
+   MuscleArr = {
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorright,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorleft,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorright,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorleft,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMright,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMleft,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMright,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMleft,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMright,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMleft,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMright,
+     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMleft
+   };
+   
+   LigamentArr = {
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.AnococcygealLigament,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.AnalHiatus,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.UrogenitalHiatus,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TendinousArchR,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TendinousArchL,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA1,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA2,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA3,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA4,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA5,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA6,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA7,
+     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA8
+   };
+  }; // End of calibration study
+
+  AnyOperationSequence SimplePelvisCalibration = {
+    AnyOperation& op1 = Main.CalibrationStudy.FiberAndTendonLengthAdjustment;
+    AnyOperation& op2 = Main.CalibrationStudy.LigamentLengthAdjustment;
+    AnyOperation& ref = Main.Study.InitialConditions;
   };
+
+  // AnyOperationSequence RunApplication = {
+  //   AnyOperation& ref = Main.Study.InverseDynamics;
+  // };
     
   AnyOperationSequence ModelSetUp = {
     AnyOperation& ref = Main.Study.InitialConditions;
   };
   
-
 };
   
