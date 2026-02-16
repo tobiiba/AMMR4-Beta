@@ -246,42 +246,42 @@ Main.HumanModel.BodyModel.Trunk.Muscles = {
       // --------------------------------------------------
       // muscles of pubovisceralis (origin-insertion pairs)
       // --------------------------------------------------
-      AnyMuscleViaPoint PPMright = {
-        AnyDrawMuscle drw =  {
-          Opacity = 0.25;
-          RGB = {1.0, 1.0, 0.0};
-        };
-        AnyMuscleModel &model = ..MuscleModels.Model_PPMright;
-        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointU;
-        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointD;
-      };
-      
-      AnyMuscleViaPoint PPMleft = {
-        AnyDrawMuscle drw =  {
-          Opacity = 0.25;
-          RGB = {1.0, 1.0, 0.0};
-        };
-        AnyMuscleModel &model = ..MuscleModels.Model_PPMleft;
-        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointY;
-        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointE;
-      };
-      
       AnyMuscleViaPoint PAMright = {
         AnyDrawMuscle drw =  {
           Opacity = 0.25;
-          RGB = {1.0, 0.68, 0.0};
+          RGB = {1.0, 1.0, 0.0};
         };
         AnyMuscleModel &model = ..MuscleModels.Model_PAMright;
-        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointT;
-        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointC;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointU;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointD;
       };
       
       AnyMuscleViaPoint PAMleft = {
         AnyDrawMuscle drw =  {
           Opacity = 0.25;
-          RGB = {1.0, 0.68, 0.0};
+          RGB = {1.0, 1.0, 0.0};
         };
         AnyMuscleModel &model = ..MuscleModels.Model_PAMleft;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointY;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointE;
+      };
+      
+      AnyMuscleViaPoint PPMright = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {1.0, 0.68, 0.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PPMright;
+        AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointT;
+        AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointC;
+      };
+      
+      AnyMuscleViaPoint PPMleft = {
+        AnyDrawMuscle drw =  {
+          Opacity = 0.25;
+          RGB = {1.0, 0.68, 0.0};
+        };
+        AnyMuscleModel &model = ..MuscleModels.Model_PPMleft;
         AnyRefFrame &ins = ....Segments.SimplePelvis.SegPointX;
         AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointC;
       };

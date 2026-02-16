@@ -43,16 +43,26 @@ Main = {
   #define BM_MANNEQUIN_DRIVER_SKULL_THORAX_ROTATION OFF
   #define BM_TRUNK_CERVICAL_THORACIC_LINK ON
   
-  //////////////////////////////////////////
- 
+
+  // -------------------------------------------------------------------
+  // --------------------------- SIMPLEPELVIS --------------------------
+  // -------------------------------------------------------------------
+
+  /*
+    Here, all structures and parameters for the SimplePelvis model will be initiated
+    comment-out both lines below to deactivate SimplePelvis model
+  */
+
+  #define BM_SIMPLEPELVIS ON 
+  #include "<ANYBODY_PATH_BODY>/Trunk/SimplePelvis.any"
+
+  // -------------------------------------- END OF SIMPLEPELVIS SETUP
+  
+   
   // Include the human model
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"
 
-  // Here, all additional structures and parameters for the SimplePelvis model will be initiated
-  #include "<ANYBODY_PATH_BODY>/Trunk/SimplePelvis.any"
-
-  AnyFolder Model = 
-  {
+  AnyFolder Model = {
      AnyFolder& BodyModel = Main.HumanModel.BodyModel;
      AnyFolder& DefaultDrivers = Main.HumanModel.DefaultMannequinDrivers;
      
@@ -60,7 +70,57 @@ Main = {
        AnyKinMeasure& lin = .BodyModel.Interface.Trunk.PelvisPosX.lin;
        AnyKinMeasure& rot = .BodyModel.Interface.Trunk.PelvisRotX.rot;
      };
+  };
+  
 
+  // -------------------------------------------------------------------
+  // ------------------------------- STUDY -----------------------------
+  // -------------------------------------------------------------------
+  AnyBodyStudy Study = {
+    AnyFolder& Model = Main.Model;
+    InverseDynamics.Criterion.UpperBoundOnOff = Off;
+    // InverseDynamics.ForceDepKinOnOff = On; // command Study to apply FDK during InverseDynamics
+    InverseDynamics.Criterion.Type = MR_MinMaxStrict; // MuscleRecruitment algorithm -- default MR_Polynomial
+    
+    tStart = 0;
+    tEnd = 1;
+    Gravity = {0, -9.81, 0.0};
+    nStep = 5;
+    
+    AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
+
+    AnyFolder& BodyModel = Main.HumanModel.BodyModel;
+
+    // add drivers from Study and DefaultMannequinDrivers to BodyModel.Trunk for Calibration
+    Main.HumanModel.BodyModel.Trunk = {
+      AnyFolder AddDrivers = {
+        AnyKinEqSimpleDriver &MannequinDriver1 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosX;
+        AnyKinEqSimpleDriver &MannequinDriver2 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosY;
+        AnyKinEqSimpleDriver &MannequinDriver3 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosZ;
+        AnyKinEqSimpleDriver &MannequinDriver4 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotZ;
+        AnyKinEqSimpleDriver &MannequinDriver5 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotY;
+        AnyKinEqSimpleDriver &MannequinDriver6 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotX;
+        AnyKinEqFourierDriver &StudyDriver1 = Main.Study.Trunk_Extension;
+        AnyKinEqFourierDriver &StudyDriver2 = Main.Study.Trunk_LateralBending;
+        AnyKinEqFourierDriver &StudyDriver3 = Main.Study.Trunk_AxialRotation;
+      };
+    };
+  };  
+ 
+  // Include the human model
+  #include "<ANYBODY_PATH_BODY>/HumanModel.any"
+
+  // Here, all additional structures and parameters for the SimplePelvis model will be initiated
+  #include "<ANYBODY_PATH_BODY>/Trunk/SimplePelvis.any"
+
+  AnyFolder Model =   {
+     AnyFolder& BodyModel = Main.HumanModel.BodyModel;
+     AnyFolder& DefaultDrivers = Main.HumanModel.DefaultMannequinDrivers;
+     
+     AnyReacForce PelvisGroundReactions = {
+       AnyKinMeasure& lin = .BodyModel.Interface.Trunk.PelvisPosX.lin;
+       AnyKinMeasure& rot = .BodyModel.Interface.Trunk.PelvisRotX.rot;
+     };
   };
   
 
