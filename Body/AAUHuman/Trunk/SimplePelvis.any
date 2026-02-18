@@ -44,6 +44,11 @@ Main.HumanModel.BodyModel.Trunk = {
   };
 };
 
+
+// OUTPUT
+#include "SimplePelvisOutput.any"
+
+
 // KINEMATIC MEASURES
 Main.DrawSettings.KinematicVolume = {
   Opacity = 0.1;

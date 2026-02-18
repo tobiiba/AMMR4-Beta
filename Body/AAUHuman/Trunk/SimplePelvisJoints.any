@@ -17,10 +17,10 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
     // these joints connect a node from BONYPELVIS to a moveable segment with a letter (A-G)
     // movement is allowed through joint (AnyPrismaticJoint) and FDK
 
-    AnyStdJoint jSegA = {
+    AnyPrismaticJoint jSegA = {
       AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
       AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointA.NodePUBIS_R;
-      // Axis = y;
+       Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       // Constraints = {
       //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};

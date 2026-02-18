@@ -11,7 +11,7 @@ Main.HumanModel.BodyModel.Trunk.Muscles = {
   AnyFolder SimplePelvisMuscles = {
     AnyFolder MuscleModels = {
       AnyMuscleModel3E Model_ICMposteriorright = {
-        F0 = 37.75;
+        F0 = 35.75;
         Gamma0 = 0.0;
         Fcfast = 0.34;
         Lf0 = 0.043;
@@ -26,7 +26,7 @@ Main.HumanModel.BodyModel.Trunk.Muscles = {
       };
 
       AnyMuscleModel3E Model_ICMposteriorleft = {
-        F0 = 37.75;
+        F0 = 35.75;
         Gamma0 = 0.0;
         Fcfast = 0.34;
         Lf0 = 0.043;
@@ -41,7 +41,7 @@ Main.HumanModel.BodyModel.Trunk.Muscles = {
       };
 
       AnyMuscleModel3E Model_ICManteriorright = {
-        F0 = 37.75;
+        F0 = 35.75;
         Gamma0 = 0.0;
         Fcfast = 0.34;
         Lf0 = 0.043;
@@ -56,7 +56,7 @@ Main.HumanModel.BodyModel.Trunk.Muscles = {
       };
 
       AnyMuscleModel3E Model_ICManteriorleft = {
-        F0 = 37.75;
+        F0 = 35.75;
         Gamma0 = 0.0;
         Fcfast = 0.34;
         Lf0 = 0.043;

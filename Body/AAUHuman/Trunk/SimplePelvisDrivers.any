@@ -13,11 +13,11 @@ Main.HumanModel.BodyModel.Trunk = {
     // -------------------------------------------------------------------
     // ---------------------- DRIVERS FOR A - G --------------------------
     // -------------------------------------------------------------------
-    // AnyKinEqSimpleDriver ActuatorA = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegA;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+     AnyKinEqSimpleDriver ActuatorA = {
+       AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegA;
+       DriverVel = {-0.004}; // 4 mm/s
+       Reaction.Type = {Off};
+     };
 
     // AnyKinEqSimpleDriver ActuatorB = {
     //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegB;

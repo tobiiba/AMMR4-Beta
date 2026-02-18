@@ -1,0 +1,40 @@
+/*
+In this file the output variables are defined and the output files are written
+*/
+
+
+
+// -------------------------------------------------------------------
+// ------------------------- SELECTED OUTPUT -------------------------
+// -------------------------------------------------------------------
+Main.HumanModel.BodyModel.SelectedOutput = {
+  AnyFolder SimplePelvis = {
+    AnyFolder Muscles = {
+      
+
+    }; // end of subfolder Muscles
+
+    AnyFolder  Segments = {
+      AnyVar TestVar = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.r[1]; // shows y component of r of SegPointA at time tEnd
+      AnyVector TestVec = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.r; // shows x, y, z component of r of SegPointA at time tEnd
+//      AnyVector TestVec2 = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.r; // --> does not work because unresolved at loading time
+
+    }; // end of subfolder Segments
+
+    AnyFolder Loads = {
+
+    }; // end of subfolder Loads
+
+  }; // end of folder SimplePelvis
+};
+
+// -------------------------------------- END OF SELECTED OUTPUT
+  
+
+
+// -------------------------------------------------------------------
+// -------------------------- OUTPUT FILE  ---------------------------
+// -------------------------------------------------------------------
+
+
+// -------------------------------------- END OF OUTPUT FILE
