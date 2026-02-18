@@ -4,7 +4,7 @@ This is the main file to add the SimplePelvis model to the Thoracic model of AMM
 
 // set anthropometrics according to subject
 Main.HumanModel.Anthropometrics = {
-  // values from Gmür et al., 2025, meean values for control group
+  // values from Gmür et al., 2025, mean values for control group
   BodyMass = 60.5;
   BodyHeight = 1.66;
 };

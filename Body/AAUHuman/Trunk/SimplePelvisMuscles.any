@@ -190,7 +190,7 @@ Main.HumanModel.BodyModel.Trunk.Muscles = {
         Jt = 3.0;
       };
 
-    }; // -------------------------------------- END OF MUSCLE MODELS
+    }; // ---------------------------------------------- END OF MUSCLE MODELS
   
 
     // -------------------------------------------------------------------
@@ -332,8 +332,8 @@ Main.HumanModel.BodyModel.Trunk.Muscles = {
         AnyRefFrame &orig = ....Segments.SimplePelvis.SegPointF;
       };
 
-    }; // -------------------------------------- END OF MUSCLE PATHS
+    }; // ---------------------------------------------- END OF MUSCLE PATHS
 
-  }; // -------------------------------------- END OF FOLDER SimplePelvisMuscles
+  }; // ---------------------------------------------- END OF FOLDER SimplePelvisMuscles
 
 };

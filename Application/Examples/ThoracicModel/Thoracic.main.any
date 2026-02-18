@@ -90,55 +90,13 @@ Main = {
     tStart = 0;
     tEnd = 1;
     Gravity = {0, -9.81, 0.0};
-    nStep = 5;
+    nStep = 4; // adjust to improve resolution of time-history
     
     AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
 
     AnyFolder& BodyModel = Main.HumanModel.BodyModel;
-
-    // TBD - add drivers from Study and DefaultMannequinDrivers to BodyModel.Trunk for calibration
-    Main.HumanModel.BodyModel.Trunk = {
-      AnyFolder AddDrivers = {
-        AnyKinEqSimpleDriver &MannequinDriver1 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosX;
-        AnyKinEqSimpleDriver &MannequinDriver2 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosY;
-        AnyKinEqSimpleDriver &MannequinDriver3 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosZ;
-        AnyKinEqSimpleDriver &MannequinDriver4 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotZ;
-        AnyKinEqSimpleDriver &MannequinDriver5 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotY;
-        AnyKinEqSimpleDriver &MannequinDriver6 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotX;
-        AnyKinEqFourierDriver &StudyDriver1 = Main.Study.Trunk_Extension;
-        AnyKinEqFourierDriver &StudyDriver2 = Main.Study.Trunk_LateralBending;
-        AnyKinEqFourierDriver &StudyDriver3 = Main.Study.Trunk_AxialRotation;
-      };
-    };
-    // End of TBD
-
-
-    // Add a driver which drives the whole spine.
-    // The spine rhythms handles the individual DOFs, but rhytms can be disabled
-    // for full control of all DOFs.
-    SimpleFourierDriver Trunk_Extension = {
-       AnyKinMeasure &ref1 = .BodyModel.Interface.Trunk.PelvisThoraxExtension;
-       RangeOfMotion = {0, 0}*pi/180;
-       Freq = 1/(Main.Study.tEnd-Main.Study.tStart);
-       Phase = 0*pi/180;
-       Reaction.Type ={Off};
-    };
-    
-    SimpleFourierDriver Trunk_LateralBending = {
-       AnyKinMeasure &ref2 = .BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
-       RangeOfMotion = {0,0};
-       Freq = 0.5/(Main.Study.tEnd-Main.Study.tStart);
-       Phase = 180 *pi/180;
-       Reaction.Type ={Off};
-    };
-
-    SimpleFourierDriver Trunk_AxialRotation = {
-       AnyKinMeasure &ref3 = .BodyModel.Interface.Trunk.PelvisThoraxRotation;
-       RangeOfMotion = {0,0};
-       Freq = 0.25/(Main.Study.tEnd-Main.Study.tStart);
-       Phase = 0 * pi/180;    
-       Reaction.Type ={Off};
-    };
+    AnyFolder &SimplePelvisDrivers = Main.SimplePelvisDrivers; // reference testcase drivers (of SimplePelvis) within study
+    AnyFolder &ThoracicDrivers = Main.ThoracicDrivers; // reference drivers of thoracic.main within study
     
 
     // Include functions to generate a video:
@@ -154,9 +112,29 @@ Main = {
 
   // A new calibration study
   AnyBodyCalibrationStudy CalibrationStudy = {
-    AnyFolder &Model = Main.HumanModel.BodyModel;
-    // AnyFolder &Drivers = Main.CalibrationDrivers;
-    nStep = 1;
+    //  we're only looking at the components of SimplePelvis (speeds up calibration)
+    AnyFolder &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis;
+    AnySeg &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg; // we also need PelvisSeg because of the nodes on it
+    AnyFixedRefFrame &Gnd = Main.HumanModel.DefaultMannequinDrivers.GenericGRF;
+    AnyFolder &Jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints;
+    AnyFolder &Mus = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles;
+    AnyFolder &Lig = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments;
+    // we must fix PelvisSeg to ground in order to have a kinematically determined model
+    AnyStdJoint FixPelvis = {
+      AnyRefFrame &grf = .Gnd;
+      AnyRefFrame &plv = .Pelvis;
+    };
+    
+    // the following two lines would reference the whole thoracic model + SimplePelvis
+    // this would work as well but is much slower
+    // AnyFolder &Model = Main.HumanModel.BodyModel;
+    // AnyFolder &ThoracicDrivers = Main.ThoracicDrivers; // reference drivers of thoracic.main within study
+
+    AnyFolder &CalibrationDrivers = Main.SimplePelvisCalibrationDrivers; // reference calibration drivers (of SimplePelvis) within study
+
+    nStep = 21;
+    RminMuscleFiber = {0.9, 0.9, 0.9, 0.9, 0.7, 0.7, 0.8, 0.8, 0.5, 0.5, 0.9, 0.9}; // default 0.5
+    RmaxMuscleFiber = {1.1, 1.1, 1.1, 1.1, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.1, 1.1}; // default 1.2
     
    MuscleArr = {
      &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorright,
@@ -193,12 +171,18 @@ Main = {
   AnyOperationSequence SimplePelvisCalibration = {
     AnyOperation& op1 = Main.CalibrationStudy.FiberAndTendonLengthAdjustment;
     AnyOperation& op2 = Main.CalibrationStudy.LigamentLengthAdjustment;
-    AnyOperation& ref = Main.Study.InitialConditions;
+    AnyOperation& op3 = Main.Study.InitialConditions;
   };
 
-  // AnyOperationSequence RunApplication = {
-  //   AnyOperation& ref = Main.Study.InverseDynamics;
-  // };
+  AnyOperationSequence SimplePelvisCalibrationAndInverseDynamics = {
+    AnyOperation& op1 = Main.CalibrationStudy.FiberAndTendonLengthAdjustment;
+    AnyOperation& op2 = Main.CalibrationStudy.LigamentLengthAdjustment;
+    AnyOperation& op3 = Main.Study.InverseDynamics;
+  };
+
+  AnyOperationSequence RunApplication = {
+    AnyOperation& ref = Main.Study.InverseDynamics;
+  };
     
   AnyOperationSequence ModelSetUp = {
     AnyOperation& ref = Main.Study.InitialConditions;

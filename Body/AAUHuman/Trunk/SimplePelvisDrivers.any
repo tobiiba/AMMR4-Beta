@@ -2,111 +2,181 @@
 In this file all drivers of the SimplePelvis model are defined.
 The number of drivers and their properties are determined by 
 the given joints of the pelvic floor segments in SimplePelvisJoints.any.
+  cranial movement  -->  -y
 
-cranial movement  -->  -y
+separate drivers for the individual testcases and calibration are defined
 */
 
-Main.HumanModel.BodyModel.Trunk = {
 
+// -------------------------------------------------------------------
+// ----------------------- TESTCASE DRIVERS --------------------------
+// -------------------------------------------------------------------
+Main = {
   AnyFolder SimplePelvisDrivers = {
-
-    // -------------------------------------------------------------------
-    // ---------------------- DRIVERS FOR A - G --------------------------
-    // -------------------------------------------------------------------
-     AnyKinEqSimpleDriver ActuatorA = {
-       AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegA;
-       DriverVel = {-0.004}; // 4 mm/s
-       Reaction.Type = {Off};
+    AnyKinEqSimpleDriver ActuatorA = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegA;
+      DriverVel = {-0.0005}; // mm/s
+      Reaction.Type = {Off};
      };
 
-    // AnyKinEqSimpleDriver ActuatorB = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegB;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorB = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegB;
+      DriverVel = {-0.0005}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorC = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegC;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorC = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegC;
+      DriverVel = {-0.005}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorD = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegD;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorD = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegD;
+      DriverVel = {-0.005}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorE = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegE;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorE = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegE;
+      DriverVel = {-0.005}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorF = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegF;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorF = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegF;
+      DriverVel = {-0.005}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorG = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegG;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorG = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegG;
+      DriverVel = {-0.005}; // mm/s
+      Reaction.Type = {Off};
+    };
+  };
+}; 
+
+// reference all drivers of Thoracic.main which are not within the body model in this folder to be added to the study
+Main = {
+  AnyFolder ThoracicDrivers = {
+    AnyKinEqSimpleDriver &MannequinDriver1 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosX;
+    AnyKinEqSimpleDriver &MannequinDriver2 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosY;
+    AnyKinEqSimpleDriver &MannequinDriver3 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosZ;
+    AnyKinEqSimpleDriver &MannequinDriver4 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotZ;
+    AnyKinEqSimpleDriver &MannequinDriver5 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotY;
+    AnyKinEqSimpleDriver &MannequinDriver6 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotX;
+    
+    // Add a driver which drives the whole spine. The spine rhythms handles the individual DOFs, but rhytms can be disabled
+    // for full control of all DOFs. -- was moved from Study to here to keep it tidy
+    SimpleFourierDriver Trunk_Extension = {
+       AnyKinMeasure &ref1 = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension;
+       RangeOfMotion = {0, 0}*pi/180;
+       Freq = 1/(Main.Study.tEnd-Main.Study.tStart);
+       Phase = 0*pi/180;
+       Reaction.Type ={Off};
+    };
+    SimpleFourierDriver Trunk_LateralBending = {
+       AnyKinMeasure &ref2 = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
+       RangeOfMotion = {0, 0} *pi/180;
+       Freq = 0.5/(Main.Study.tEnd-Main.Study.tStart);
+       Phase = 180 *pi/180;
+       Reaction.Type ={Off};
+    };
+    SimpleFourierDriver Trunk_AxialRotation = {
+       AnyKinMeasure &ref3 = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxRotation;
+       RangeOfMotion = {0, 0} *pi/180;
+       Freq = 0.25/(Main.Study.tEnd-Main.Study.tStart);
+       Phase = 0 * pi/180;    
+       Reaction.Type ={Off};
+    };
+  };
+};// ---------------------------------------------- END OF TESTCASE DRIVERS
 
 
-    // -------------------------------------------------------------------
-    // ---------------------- DRIVERS FOR S - Z --------------------------
-    // -------------------------------------------------------------------
-    // AnyKinEqSimpleDriver ActuatorS = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegS;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
 
-    // AnyKinEqSimpleDriver ActuatorT = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegT;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+// -------------------------------------------------------------------
+// --------------------- CALIBRATION DRIVERS -------------------------
+// -------------------------------------------------------------------
 
-    // AnyKinEqSimpleDriver ActuatorU = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegU;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+// these drivers should not be changed because they have an impact on the parameters Lf0 and Lt0 of the calibrated muscles
+Main = {
+  AnyFolder SimplePelvisCalibrationDrivers = {
+    AnyKinEqSimpleDriver ActuatorA = {
+      
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegA;
+      DriverPos = {0.005};
+      DriverVel = {-0.01}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorV = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegV;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorB = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegB;
+      DriverPos = {0.005};
+      DriverVel = {-0.01}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorW = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegW;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorC = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegC;
+      DriverPos = {0.02};
+      DriverVel = {-0.03}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorX = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegX;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorD = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegD;
+      DriverPos = {0.02};
+      DriverVel = {-0.03}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorY = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegY;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorE = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegE;
+      DriverPos = {0.02};
+      DriverVel = {-0.03}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-    // AnyKinEqSimpleDriver ActuatorZ = {
-    //   AnyKinMeasure &jnt = ..Joints.SimplePelvisJoints.jSegZ;
-    //   DriverVel = {-0.004}; // 4 mm/s
-    //   Reaction.Type = {Off};
-    // };
+    AnyKinEqSimpleDriver ActuatorF = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegF;
+      DriverPos = {0.02};
+      DriverVel = {-0.03}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-  }; // ------------ END OF FOLDER SimplepelvisDrivers -----------------
+    AnyKinEqSimpleDriver ActuatorG = {
+      AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegG;
+      DriverPos = {0.02};
+      DriverVel = {-0.03}; // mm/s
+      Reaction.Type = {Off};
+    };
 
-}; // ------------------------ END OF DRIVERS --------------------------
+    // add all drivers from Thoracic.main so that calibration study is kinematically determined
+    // AnyKinMotion &Driver01 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.Flexion.rhythmC2C7;
+    // AnyKinMotion &Driver02 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.Flexion.rhythmC1C0SkullThoraxFlexion;
+    // AnyKinMotion &Driver03 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.LateralBending.rhythmC2C7;
+    // AnyKinMotion &Driver04 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.Rotation.rhythmC2C7;
+    // AnyKinMotion &Driver05 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.Rotation.rhythmC2C1SkullThoraxRotation;
+    // AnyKinMotion &Driver06 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.CervicalThroacicRotationLinkDriver;
+    // AnyKinMotion &Driver07 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.CervicalThroacicLatBendingLinkDriver;
+    // AnyKinMotion &Driver08 = Main.HumanModel.BodyModel.Trunk.Joints.Thorax.LateralBendingRhythmDriver;
+    // AnyKinMotion &Driver09 = Main.HumanModel.BodyModel.Trunk.Joints.Thorax.AxialRotationRhythmDriver;
+    // AnyKinMotion &Driver10 = Main.HumanModel.BodyModel.Trunk.Joints.Thorax.LumbarThroacicLatBendingLinkDriver;
+    // AnyKinMotion &Driver11 = Main.HumanModel.BodyModel.Trunk.Joints.Thorax.LumbarThroacicRotationLinkDriver;
+    // AnyKinEqSimpleDriver &Driver12 = Main.HumanModel.BodyModel.Trunk.Joints.RibCage.Manubriosternal.driver;
+    // AnyKinMotion &Driver13 = Main.HumanModel.BodyModel.Trunk.Joints.Lumbar.SpineRhythmDrvFlexion;
+    // AnyKinMotion &Driver14 = Main.HumanModel.BodyModel.Trunk.Joints.Lumbar.SpineRhythmDrvRotation;
+    // AnyKinMotion &Driver15 = Main.HumanModel.BodyModel.Trunk.Joints.Lumbar.SpineRhythmDrvLatBending;
+    // AnyKinEqSimpleDriver &Driver16 = Main.HumanModel.BodyModel.Trunk.Abdominal.Diaphragm.Joints.CavitySegSuperoposterior_DriverX;
+    // AnyKinEqSimpleDriver &Driver17 = Main.HumanModel.BodyModel.Trunk.Abdominal.Diaphragm.DiaphragmPositionFixed;
+    // AnyKinEqSimpleDriver &Driver18 = Main.HumanModel.BodyModel.Trunk.Abdominal.Layer_Constraints_RectusLine.LayerDrivers;
+    // AnyKinEqSimpleDriver &Driver19 = Main.HumanModel.BodyModel.Trunk.Abdominal.Layer_Pelvic_Constraints_RectusLine.LayerDrivers;
+    // AnyKinEqSimpleDriver &Driver20 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosX;
+    // AnyKinEqSimpleDriver &Driver21 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosY;
+    // AnyKinEqSimpleDriver &Driver22 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosZ;
+    // AnyKinEqSimpleDriver &Driver23 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotZ;
+    // AnyKinEqSimpleDriver &Driver24 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotY;
+    // AnyKinEqSimpleDriver &Driver25 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotX;
+  };
+}; // ---------------------------------------------- END OF CALIBRATION DRIVERS
