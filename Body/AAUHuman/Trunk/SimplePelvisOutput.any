@@ -9,21 +9,111 @@ In this file the output variables are defined and the output files are written
 // -------------------------------------------------------------------
 Main.HumanModel.BodyModel.SelectedOutput = {
   AnyFolder SimplePelvis = {
-    AnyFolder Muscles = {
-      
-
-    }; // end of subfolder Muscles
-
     AnyFolder  Segments = {
-      AnyVar TestVar = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.r[1]; // shows y component of r of SegPointA at time tEnd
-      AnyVector TestVec = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.r; // shows x, y, z component of r of SegPointA at time tEnd
-//      AnyVector TestVec2 = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.r; // --> does not work because unresolved at loading time
-
+      AnyVector PosA = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.r; // shows x, y, z component of segment's position
+      AnyVector PosB = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB.r;
+      AnyVector PosC = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC.r;
+      AnyVector PosD = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD.r;
+      AnyVector PosE = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE.r;
+      AnyVector PosF = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF.r;
+      AnyVector PosG = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG.r;
+      AnyVector PosS = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointS.r;
+      AnyVector PosT = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointT.r;
+      AnyVector PosU = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointU.r;
+      AnyVector PosV = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointV.r;
+      AnyVector PosW = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointW.r;
+      AnyVector PosX = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointX.r;
+      AnyVector PosY = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointY.r;
+      AnyVector PosZ = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointZ.r;
     }; // end of subfolder Segments
 
     AnyFolder Loads = {
 
     }; // end of subfolder Loads
+
+    AnyFolder Muscles = {
+      AnyVar ActICMposteriorright = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorright.Activity; // activity of muscle
+      AnyVar ActICMposteriorleft  = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorleft.Activity;
+      AnyVar ActICManteriorright  = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorright.Activity;
+      AnyVar ActICManteriorleft   = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorleft.Activity;
+      AnyVar ActPAMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMright.Activity;
+      AnyVar ActPAMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMleft.Activity;
+      AnyVar ActPPMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMright.Activity;
+      AnyVar ActPPMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMleft.Activity;
+      AnyVar ActPVaMright         = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMright.Activity;
+      AnyVar ActPVaMleft          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMleft.Activity;
+      AnyVar ActPRMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMright.Activity;
+      AnyVar ActPRMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMleft.Activity;
+
+      AnyVar FmICMposteriorright  = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorright.Fm; // force in muscle
+      AnyVar FmICMposteriorleft   = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorleft.Fm;
+      AnyVar FmICManteriorright   = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorright.Fm;
+      AnyVar FmICManteriorleft    = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorleft.Fm;
+      AnyVar FmPAMright           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMright.Fm;
+      AnyVar FmPAMleft            = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMleft.Fm;
+      AnyVar FmPPMright           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMright.Fm;
+      AnyVar FmPPMleft            = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMleft.Fm;
+      AnyVar FmPVaMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMright.Fm;
+      AnyVar FmPVaMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMleft.Fm;
+      AnyVar FmPRMright           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMright.Fm;
+      AnyVar FmPRMleft            = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMleft.Fm;
+
+      AnyVar FtICMposteriorright = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorright.Ft; // force in tendon
+      AnyVar FtICMposteriorleft  = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorleft.Ft;
+      AnyVar FtICManteriorright  = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorright.Ft;
+      AnyVar FtICManteriorleft   = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorleft.Ft;
+      AnyVar FtPAMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMright.Ft;
+      AnyVar FtPAMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMleft.Ft;
+      AnyVar FtPPMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMright.Ft;
+      AnyVar FtPPMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMleft.Ft;
+      AnyVar FtPVaMright         = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMright.Ft;
+      AnyVar FtPVaMleft          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMleft.Ft;
+      AnyVar FtPRMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMright.Ft;
+      AnyVar FtPRMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMleft.Ft;
+
+      AnyVar FpICMposteriorright = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorright.Fp; // force in passive element
+      AnyVar FpICMposteriorleft  = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorleft.Fp;
+      AnyVar FpICManteriorright  = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorright.Fp;
+      AnyVar FpICManteriorleft   = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorleft.Fp;
+      AnyVar FpPAMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMright.Fp;
+      AnyVar FpPAMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMleft.Fp;
+      AnyVar FpPPMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMright.Fp;
+      AnyVar FpPPMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMleft.Fp;
+      AnyVar FpPVaMright         = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMright.Fp;
+      AnyVar FpPVaMleft          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMleft.Fp;
+      AnyVar FpPRMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMright.Fp;
+      AnyVar FpPRMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMleft.Fp;
+
+      AnyVar StrengthICMposteriorright = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorright.Strength;
+      AnyVar StrengthICMposteriorleft  = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorleft.Strength;
+      AnyVar StrengthICManteriorright  = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorright.Strength;
+      AnyVar StrengthICManteriorleft   = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorleft.Strength;
+      AnyVar StrengthPAMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMright.Strength;
+      AnyVar StrengthPAMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMleft.Strength;
+      AnyVar StrengthPPMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMright.Strength;
+      AnyVar StrengthPPMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMleft.Strength;
+      AnyVar StrengthPVaMright         = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMright.Strength;
+      AnyVar StrengthPVaMleft          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMleft.Strength;
+      AnyVar StrengthPRMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMright.Strength;
+      AnyVar StrengthPRMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMleft.Strength;
+
+    }; // end of subfolder Muscles
+
+    AnyFolder Ligaments = {
+      AnyVector LigForceAnococcygeal = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.AnococcygealLigament.Fout;
+      AnyVector LigForceAnalHiatus = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.AnalHiatus.Fout;
+      AnyVector LigForceUrogenitalHiatus = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.UrogenitalHiatus.Fout;
+      AnyVector LigForceTendinousArchR = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TendinousArchR.Fout;
+      AnyVector LigForceTendinousArchL = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TendinousArchL.Fout;
+      AnyVector LigForceTA1 = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA1.Fout;
+      AnyVector LigForceTA2 = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA2.Fout;
+      AnyVector LigForceTA3 = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA3.Fout;
+      AnyVector LigForceTA4 = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA4.Fout;
+      AnyVector LigForceTA5 = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA5.Fout;
+      AnyVector LigForceTA6 = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA6.Fout;
+      AnyVector LigForceTA7 = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA7.Fout;
+      AnyVector LigForceTA8 = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA8.Fout;
+    }; // end of subfolder Ligaments
 
   }; // end of folder SimplePelvis
 };
@@ -35,6 +125,27 @@ Main.HumanModel.BodyModel.SelectedOutput = {
 // -------------------------------------------------------------------
 // -------------------------- OUTPUT FILE  ---------------------------
 // -------------------------------------------------------------------
+Main.Study = {
+  AnyStringVar fileID = "SimplePelvis";
+  AnyOutputFile SaveOutputAll = {
+    FileName = "OutputData\ " + .fileID + "_complete.csv";
+    Search = {
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Segments.Pos*",
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Act*",
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Fm*",
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Ft*",
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Fp*",
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Strength*",
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Ligaments.Lig*"
+    };
+  };
 
+  AnyOutputFile SaveOutputOne = {
+    FileName = "OutputData\ " + .fileID + "_MuscleActivity.csv";
+    Search = {
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Act*"
+    };
+  };
+};
 
 // -------------------------------------- END OF OUTPUT FILE
