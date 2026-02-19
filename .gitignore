@@ -22,4 +22,4 @@ ffmpeg2pass-*.log
 # pixi environments
 .pixi
 
-Body\AAUHuman\Trunk\OutputData\
+Body/AAUHuman/Trunk/OutputData/
