@@ -86,7 +86,8 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
 
   AnyFolder SimplePelvis = {
     AnyFloat Inertia = 1e-7*{0.1, 0.5, 0.5};
-    AnyFloat Mass = 1e-6;
+    AnyFloat Mass = 0.007;       // assume weight of pelvicfloor 50 g, 7 segments, 7 grams per segment
+    AnyFloat MassTA = 1e-6;      // segments on tendinous arch will not be moved, assign neglectable mass
     AnyFloat RGB = {1.0, 0.0, 0.78};
 
     // vaginal side-wall, right
@@ -202,7 +203,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     AnySeg SegPointS = {
       // r0 = {.0023, -0.0228, 0.0188}; // MR_01
       r0 = {0.0006, -0.0190, 0.0170}; // mean control group
-      Mass = .Mass;                Jii = .Inertia;
+      Mass = .MassTA;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -217,7 +218,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     AnySeg SegPointT = {
       // r0 = {0.0051, -0.0255, 0.0218}; // MR_01
       r0 = {0.0029, -0.0241, 0.0203}; // mean control group
-      Mass = .Mass;                Jii = .Inertia;
+      Mass = .MassTA;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -232,7 +233,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     AnySeg SegPointU = {
       // r0 = {0.0079,-0.0282, 0.0248}; // MR_01
       r0 = {0.0064, -0.0291, 0.0236}; // mean control group
-      Mass = .Mass;                Jii = .Inertia;
+      Mass = .MassTA;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -247,7 +248,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     AnySeg SegPointV = {
       // r0 = {0.0361, -0.0368, 0.0388}; // MR_01
       r0 = {0.0395, -0.0412, 0.0449}; // mean control group
-      Mass = .Mass;                Jii = .Inertia;
+      Mass = .MassTA;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_R = {
@@ -262,7 +263,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     AnySeg SegPointW = {
       // r0 = {0.0025, -0.0213, -0.0252}; // MR_01
       r0 = {0.0006, -0.0190, -0.0170}; // mean control group
-      Mass = .Mass;                Jii = .Inertia;
+      Mass = .MassTA;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {
@@ -277,7 +278,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     AnySeg SegPointX = {
       // r0 = {0.0053, -0.0242, -0.0286}; // MR_01
       r0 = {0.0029, -0.0241, -0.0203}; // mean control group
-      Mass = .Mass;                Jii = .Inertia;
+      Mass = .MassTA;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {
@@ -292,7 +293,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     AnySeg SegPointY = {
       // r0 = {0.0081, -0.0271, -0.0320}; // MR_01
       r0 = {0.0064, -0.0291, -0.0236}; // mean control group
-      Mass = .Mass;                Jii = .Inertia;
+      Mass = .MassTA;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {
@@ -307,7 +308,7 @@ Main.HumanModel.BodyModel.Trunk.Segments = {
     AnySeg SegPointZ = {
       // r0 = {0.0351, -0.0365, -0.0465}; // MR_01
       r0 = {0.0395, -0.0412, -0.0449}; // mean control group
-      Mass = .Mass;                Jii = .Inertia;
+      Mass = .MassTA;                Jii = .Inertia;
       viewInertia.Visible = On;   viewInertia.RGB = .RGB;
 
       AnyRefNode NodePUBIS_L = {
