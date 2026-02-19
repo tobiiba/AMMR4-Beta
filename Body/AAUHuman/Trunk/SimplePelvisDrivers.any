@@ -151,32 +151,5 @@ Main = {
       DriverVel = {-0.03}; // mm/s
       Reaction.Type = {Off};
     };
-
-    // add all drivers from Thoracic.main so that calibration study is kinematically determined
-    // AnyKinMotion &Driver01 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.Flexion.rhythmC2C7;
-    // AnyKinMotion &Driver02 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.Flexion.rhythmC1C0SkullThoraxFlexion;
-    // AnyKinMotion &Driver03 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.LateralBending.rhythmC2C7;
-    // AnyKinMotion &Driver04 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.Rotation.rhythmC2C7;
-    // AnyKinMotion &Driver05 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.Rotation.rhythmC2C1SkullThoraxRotation;
-    // AnyKinMotion &Driver06 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.CervicalThroacicRotationLinkDriver;
-    // AnyKinMotion &Driver07 = Main.HumanModel.BodyModel.Trunk.Joints.Cervical.CervicalThroacicLatBendingLinkDriver;
-    // AnyKinMotion &Driver08 = Main.HumanModel.BodyModel.Trunk.Joints.Thorax.LateralBendingRhythmDriver;
-    // AnyKinMotion &Driver09 = Main.HumanModel.BodyModel.Trunk.Joints.Thorax.AxialRotationRhythmDriver;
-    // AnyKinMotion &Driver10 = Main.HumanModel.BodyModel.Trunk.Joints.Thorax.LumbarThroacicLatBendingLinkDriver;
-    // AnyKinMotion &Driver11 = Main.HumanModel.BodyModel.Trunk.Joints.Thorax.LumbarThroacicRotationLinkDriver;
-    // AnyKinEqSimpleDriver &Driver12 = Main.HumanModel.BodyModel.Trunk.Joints.RibCage.Manubriosternal.driver;
-    // AnyKinMotion &Driver13 = Main.HumanModel.BodyModel.Trunk.Joints.Lumbar.SpineRhythmDrvFlexion;
-    // AnyKinMotion &Driver14 = Main.HumanModel.BodyModel.Trunk.Joints.Lumbar.SpineRhythmDrvRotation;
-    // AnyKinMotion &Driver15 = Main.HumanModel.BodyModel.Trunk.Joints.Lumbar.SpineRhythmDrvLatBending;
-    // AnyKinEqSimpleDriver &Driver16 = Main.HumanModel.BodyModel.Trunk.Abdominal.Diaphragm.Joints.CavitySegSuperoposterior_DriverX;
-    // AnyKinEqSimpleDriver &Driver17 = Main.HumanModel.BodyModel.Trunk.Abdominal.Diaphragm.DiaphragmPositionFixed;
-    // AnyKinEqSimpleDriver &Driver18 = Main.HumanModel.BodyModel.Trunk.Abdominal.Layer_Constraints_RectusLine.LayerDrivers;
-    // AnyKinEqSimpleDriver &Driver19 = Main.HumanModel.BodyModel.Trunk.Abdominal.Layer_Pelvic_Constraints_RectusLine.LayerDrivers;
-    // AnyKinEqSimpleDriver &Driver20 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosX;
-    // AnyKinEqSimpleDriver &Driver21 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosY;
-    // AnyKinEqSimpleDriver &Driver22 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverPosZ;
-    // AnyKinEqSimpleDriver &Driver23 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotZ;
-    // AnyKinEqSimpleDriver &Driver24 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotY;
-    // AnyKinEqSimpleDriver &Driver25 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotX;
   };
 }; // ---------------------------------------------- END OF CALIBRATION DRIVERS

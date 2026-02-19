@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------
-// -------------------- BASE VERSION SIMPLEPELVIS --------------------
+// ------------------ SIMPLEPELVIS TEST CLENCHING --------------------
 // -------------------------------------------------------------------
 
 #include "../libdef.any"
@@ -83,12 +83,12 @@ Main = {
     AnyFolder& Model = Main.Model;
     InverseDynamics.Criterion.UpperBoundOnOff = Off;
     // InverseDynamics.ForceDepKinOnOff = On; // command Study to apply FDK during InverseDynamics
-    InverseDynamics.Criterion.Type = MR_Polynomial; // MuscleRecruitment algorithm
+    InverseDynamics.Criterion.Type = MR_MinMaxStrict; // MuscleRecruitment algorithm
     
     tStart = 0;
     tEnd = 1;
     Gravity = {0, -9.81, 0.0};
-    nStep = 4; // adjust to improve resolution of time-history of testcases
+    nStep = 4;                   // to adjust resolution of time-history of testcases
     
     AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
 
