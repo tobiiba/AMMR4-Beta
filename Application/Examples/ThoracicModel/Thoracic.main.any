@@ -55,10 +55,8 @@ Main = {
 
   /*
     Here, all structures and parameters for the SimplePelvis model will be initiated
-    comment-out both lines below to deactivate SimplePelvis model
   */
 
-  #define BM_SIMPLEPELVIS ON 
   #include "<ANYBODY_PATH_BODY>/Trunk/SimplePelvis.any"
 
   // -------------------------------------- END OF SIMPLEPELVIS SETUP
@@ -85,12 +83,12 @@ Main = {
     AnyFolder& Model = Main.Model;
     InverseDynamics.Criterion.UpperBoundOnOff = Off;
     // InverseDynamics.ForceDepKinOnOff = On; // command Study to apply FDK during InverseDynamics
-    InverseDynamics.Criterion.Type = MR_MinMaxStrict; // MuscleRecruitment algorithm -- default MR_Polynomial
+    InverseDynamics.Criterion.Type = MR_Polynomial; // MuscleRecruitment algorithm
     
     tStart = 0;
     tEnd = 1;
     Gravity = {0, -9.81, 0.0};
-    nStep = 4; // adjust to improve resolution of time-history
+    nStep = 4; // adjust to improve resolution of time-history of testcases
     
     AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
 
@@ -109,7 +107,6 @@ Main = {
   // -------------------------------------------------------------------
   // -------------------- ADDITIONAL OPERATIONS ------------------------
   // -------------------------------------------------------------------
-
   // A new calibration study
   AnyBodyCalibrationStudy CalibrationStudy = {
     //  we're only looking at the components of SimplePelvis (speeds up calibration)

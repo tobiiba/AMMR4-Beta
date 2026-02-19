@@ -11,17 +11,31 @@ AnyFolder Volumes ={
   AnyKinVolumeCylMesh LowerCavity ={
     #include "<ANYBODY_PATH_MODELUTILS>/DrawSettings/KinematicVolume.any"
 
+    // --- SimplePelvis integrated into mesh
     CylMesh  = ({
       repmat(.num_points, &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC.PointCenter),
-      ..Layer_SimplePelvis.HiatusLevel.FullEdge_Base, // instead of ..Layer_Pelvic5.FullEdge_Base,    
-      ..Layer_SimplePelvis.PelvicBowlLevel.FullEdge_Base, // instead of ..Layer_Pelvic4.FullEdge_Base,
+      ..Layer_SimplePelvis.HiatusLevel.FullEdge_Base,  
+      ..Layer_SimplePelvis.PelvicBowlLevel.FullEdge_Base,
       ..Layer_Pelvic3.FullEdge_Base,
       ..Layer_Pelvic2.FullEdge_Base,
       ..Layer_Pelvic1.FullEdge_Base,
       ..Layer_L5.FullEdge_Base,
       ..Layer_L5.FullEdge_Cavity,
       repmat(.num_points, &..Layer_L5.CavitySegPosterior.VolumePoints.Center)
-    });     
+    });
+
+    // --- original mesh without SimplePelvis
+    // CylMesh  = ({
+    //   repmat(.num_points, &..Layer_Pelvic5.BaseSegPosterior.Layer5.VolumePoints.Center),
+    //   ..Layer_Pelvic5.FullEdge_Base,    
+    //   ..Layer_Pelvic4.FullEdge_Base,
+    //   ..Layer_Pelvic3.FullEdge_Base,
+    //   ..Layer_Pelvic2.FullEdge_Base,
+    //   ..Layer_Pelvic1.FullEdge_Base,
+    //   ..Layer_L5.FullEdge_Base,
+    //   ..Layer_L5.FullEdge_Cavity,
+    //   repmat(.num_points, &..Layer_L5.CavitySegPosterior.VolumePoints.Center)
+    // });
   };
   
   AnyKinVolumeCylMesh L4L5 =   {
