@@ -13,7 +13,7 @@ Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg = {
   AnyRefNode PICS_ORIGIN = {
     sRel = .Scale({0.073, -0.163, 0});
     ARel = RotMat(189.3*pi/180, z);
-    viewRefFrame.Visible = On;
+    // viewRefFrame.Visible = On;
     viewRefFrame.RGB = {1.0, 0.0, 0.78};
     viewRefFrame.ScaleXYZ = {1, 1, 1};
   };
@@ -22,7 +22,7 @@ Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg = {
   // global reference system - difference to 34 degrees must be added to ARel of PICS_ORIGIN
   AnyRefNode SCIPP           = {
     sRel = .Scale({-0.044, -0.109, 0});         
-    viewRefFrame.Visible = On;
+    // viewRefFrame.Visible = On;
     viewRefFrame.RGB = {1.0, 0.0, 0.78};
     viewRefFrame.ScaleXYZ = {1, 1, 1};
   };

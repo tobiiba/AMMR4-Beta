@@ -28,8 +28,8 @@ Main.HumanModel.BodyModel.SelectedOutput = {
     }; // end of subfolder Segments
 
     AnyFolder Volume = {
-      AnyMatrix IndForceVolume    = Main.HumanModel.BodyModel.Trunk.Abdominal.PressureActuators.LowerCavity.RefFrameOutput.F;
-      AnyVector VolForceVolume    = Main.HumanModel.BodyModel.Trunk.Abdominal.PressureActuators.LowerCavity.Fout;
+      AnyMatrix IndForceVolume    = Main.HumanModel.BodyModel.Trunk.Abdominal.PressureActuators.LowerCavity.RefFrameOutput.F; // forces on each node individually
+      AnyVector VolForceVolume    = Main.HumanModel.BodyModel.Trunk.Abdominal.PressureActuators.LowerCavity.Fout;             // force on the whole volume
     }; // end of subfolder Loads
 
     AnyFolder Muscles = {
@@ -97,7 +97,6 @@ Main.HumanModel.BodyModel.SelectedOutput = {
       AnyVar StrengthPVaMleft          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMleft.Strength;
       AnyVar StrengthPRMright          = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMright.Strength;
       AnyVar StrengthPRMleft           = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMleft.Strength;
-
     }; // end of subfolder Muscles
 
     AnyFolder Ligaments = {
@@ -116,6 +115,11 @@ Main.HumanModel.BodyModel.SelectedOutput = {
       AnyVector LigForceTA8 = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA8.Fout;
     }; // end of subfolder Ligaments
 
+    AnyFolder FDK = {
+      AnyVar FDKError     =  Main.Study.InverseDynamics.ForceDepKinError;
+      AnyVar FDKDuration  =  Main.Study.InverseDynamics.RunDuration;
+    };
+
   }; // end of folder SimplePelvis
 };
 
@@ -126,10 +130,17 @@ Main.HumanModel.BodyModel.SelectedOutput = {
 // -------------------------------------------------------------------
 // -------------------------- OUTPUT FILE  ---------------------------
 // -------------------------------------------------------------------
-// Main.Study = {
-//   AnyStringVar fileID = "SimplePelvis";
+Main.Study.InverseDynamics = {
+  AnyStringVar fileID = "SimplePelvis";
 //   AnyOutputFile SaveOutputAll = {
 //     FileName = "OutputData\ " + .fileID + "_complete.csv";
+  // NumberFormat.Style  = DecimalNumber;
+  //   NumberFormat.Digits = 10;
+  //   Header = {
+  //     ConstSectionOnOff = Off;          // Switch for the header section containing constant variables
+  //     ShortenNamesOnOff = ObjNameShort; // Switch for shortening variable names -> see AnyEnumObjNameTruncation
+  //     VarSectionOnOff   = Off;          // Switch for the variable description section
+  //   };
 //     Search = {
 //       "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Segments.Pos*",
 //       "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Act*",
@@ -140,6 +151,21 @@ Main.HumanModel.BodyModel.SelectedOutput = {
 //       "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Ligaments.Lig*"
 //     };
 //   };
+
+AnyOutputFile SaveOutputPosition = {
+  FileName = "OutputData\ " + .fileID + "_position.csv";
+  NumberFormat.Style  = DecimalNumber;
+  NumberFormat.Digits = 10;
+  Header = {
+    ConstSectionOnOff = Off;          // Switch for the header section containing constant variables
+    ShortenNamesOnOff = ObjNameShort; // Switch for shortening variable names -> see AnyEnumObjNameTruncation
+    VarSectionOnOff   = Off;          // Switch for the variable description section
+  };
+  Search = {
+    "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Segments.PosA",
+    "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Segments.PosC",
+  };
+};
 
 //   AnyOutputFile SaveOutputMusAct = {
 //     FileName = "OutputData\ " + .fileID + "_MuscleActivity.csv";
@@ -156,19 +182,19 @@ Main.HumanModel.BodyModel.SelectedOutput = {
 
 //   AnyOutputFile SaveOutputPressure = {
 //     FileName = "OutputData\ " + .fileID + "_LowerCavity_Forces.csv";
-//     NumberFormat.Style  = DecimalNumber;
-//     NumberFormat.Digits = 10;
-//     Header = {
-//       ConstSectionOnOff = Off;          // Switch for the header section containing constant variables
-//       ShortenNamesOnOff = ObjNameShort; // Switch for shortening variable names -> see AnyEnumObjNameTruncation
-//       VarSectionOnOff   = Off;          // Switch for the variable description section
-//     };
+    // NumberFormat.Style  = DecimalNumber;
+    // NumberFormat.Digits = 10;
+    // Header = {
+    //   ConstSectionOnOff = Off;          // Switch for the header section containing constant variables
+    //   ShortenNamesOnOff = ObjNameShort; // Switch for shortening variable names -> see AnyEnumObjNameTruncation
+    //   VarSectionOnOff   = Off;          // Switch for the variable description section
+    // };
 //     Search = {
 //       "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Volume.VolForceVolume",
 //       "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Volume.IndForceVolume"
 //     };
 //   };
 
-// };
+};
 
 // -------------------------------------- END OF OUTPUT FILE

@@ -82,13 +82,16 @@ Main = {
   AnyBodyStudy Study = {
     AnyFolder& Model = Main.Model;
     InverseDynamics.Criterion.UpperBoundOnOff = Off;
-    // InverseDynamics.ForceDepKinOnOff = On; // command Study to apply FDK during InverseDynamics
     InverseDynamics.Criterion.Type = MR_MinMaxStrict; // MuscleRecruitment algorithm
+    
+    InverseDynamics.ForceDepKinOnOff = On;           // command Study to apply FDK during InverseDynamics
+    InverseDynamics.ForceDepKin.ForceTol = 10;        // increase value if InvDyn seems stuck in endless loop
+    InverseDynamics.ForceDepKin.MaxNewtonStep = 0.1; // default 0.001, tradeoff between stability and speed
     
     tStart = 0;
     tEnd = 1;
     Gravity = {0, -9.81, 0.0};
-    nStep = 4;                   // to adjust resolution of time-history of testcases
+    nStep = 11;                   // to adjust resolution of time-history of testcases
     
     AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
 

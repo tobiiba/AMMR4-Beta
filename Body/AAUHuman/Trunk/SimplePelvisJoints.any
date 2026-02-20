@@ -31,7 +31,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
         AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegA.Linear;
         // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
         // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-306*lin.Pos[0], 0, 0}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -98,7 +98,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
         CType = {ForceDep, ForceDep, Hard, Hard, Hard};
         Reaction.Type = {Off, Off, On, On, On};
       };
-      // define springs in the joint for all ForceDep DoF
+      //  define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegE.Linear;
         // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
