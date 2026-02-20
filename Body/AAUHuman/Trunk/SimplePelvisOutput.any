@@ -131,7 +131,7 @@ Main.HumanModel.BodyModel.SelectedOutput = {
 // -------------------------- OUTPUT FILE  ---------------------------
 // -------------------------------------------------------------------
 Main.Study.InverseDynamics = {
-  // AnyStringVar fileID = "SimplePelvis_Clenching";
+  AnyStringVar fileID = "SimplePelvis_Clenching";
   // AnyOutputFile SaveOutputAll = {
   //   FileName = "OutputData\ " + .fileID + "_complete.csv";
   // NumberFormat.Style  = DecimalNumber;
