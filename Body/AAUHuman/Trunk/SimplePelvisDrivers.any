@@ -15,43 +15,43 @@ Main = {
   AnyFolder SimplePelvisDrivers = {
     AnyKinEqSimpleDriver ActuatorA = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegA;
-      DriverVel = {-0.0005}; // mm/s
+      DriverVel = {-0.001}; // mm/s
       Reaction.Type = {Off};
      };
 
     AnyKinEqSimpleDriver ActuatorB = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegB;
-      DriverVel = {-0.0005}; // mm/s
+      DriverVel = {-0.001}; // mm/s
       Reaction.Type = {Off};
     };
 
     AnyKinEqSimpleDriver ActuatorC = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegC;
-      DriverVel = {-0.005}; // mm/s
+      DriverVel = {-0.004}; // mm/s
       Reaction.Type = {Off};
     };
 
     AnyKinEqSimpleDriver ActuatorD = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegD;
-      DriverVel = {-0.005}; // mm/s
+      DriverVel = {-0.006}; // mm/s
       Reaction.Type = {Off};
     };
 
     AnyKinEqSimpleDriver ActuatorE = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegE;
-      DriverVel = {-0.005}; // mm/s
+      DriverVel = {-0.006}; // mm/s
       Reaction.Type = {Off};
     };
 
     AnyKinEqSimpleDriver ActuatorF = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegF;
-      DriverVel = {-0.005}; // mm/s
+      DriverVel = {-0.006}; // mm/s
       Reaction.Type = {Off};
     };
 
     AnyKinEqSimpleDriver ActuatorG = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegG;
-      DriverVel = {-0.005}; // mm/s
+      DriverVel = {-0.006}; // mm/s
       Reaction.Type = {Off};
     };
   };

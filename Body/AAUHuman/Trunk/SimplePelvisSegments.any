@@ -85,7 +85,7 @@ Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN = {
 Main.HumanModel.BodyModel.Trunk.Segments = {
 
   AnyFolder SimplePelvis = {
-    AnyFloat Inertia = 1e-7*{0.1, 0.5, 0.5};
+    AnyFloat Inertia = 1e-7*{0.1, 0.5, 0.5}; // inertia is irrelevant as long as only translation is allowed
     AnyFloat Mass = 0.007;       // assume weight of pelvicfloor 50 g, 7 segments, 7 grams per segment
     AnyFloat MassTA = 1e-6;      // segments on tendinous arch will not be moved, assign neglectable mass
     AnyFloat RGB = {1.0, 0.0, 0.78};
