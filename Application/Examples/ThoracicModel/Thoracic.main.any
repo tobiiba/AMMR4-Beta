@@ -85,7 +85,7 @@ Main = {
     InverseDynamics.Criterion.Type = MR_MinMaxStrict; // MuscleRecruitment algorithm
     // InverseDynamics.Criterion.LowerBoundOnOff = On; // set minimum level of activation for all muscles
     // InverseDynamics.Criterion.LowerBound = 0.05;
-        
+    
     InverseDynamics.ForceDepKinOnOff = On;           // command Study to apply FDK during InverseDynamics
     InverseDynamics.ForceDepKin.ForceTol = 2;        // increase value if InvDyn seems stuck in endless loop
     InverseDynamics.ForceDepKin.MaxNewtonStep = 0.1; // default 0.001, tradeoff between stability and speed
@@ -94,14 +94,14 @@ Main = {
     tEnd = 1;
     Gravity = {0, -9.81, 0.0};
     nStep = 11;                   // to adjust resolution of time-history of testcases
-    
+
+    AnyFolder &BodyModel            = Main.HumanModel.BodyModel;
+    AnyFolder &Joints               = Main.SimplePelvisJoints; // reference testcase joints (of SimplePelvis) within study
+    AnyFolder &SimplePelvisDrivers  = Main.SimplePelvisDrivers; // reference testcase drivers (of SimplePelvis) within study
+    AnyFolder &ThoracicDrivers      = Main.ThoracicDrivers; // reference drivers of thoracic.main within study
+
     AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
-
-    AnyFolder& BodyModel = Main.HumanModel.BodyModel;
-    AnyFolder &SimplePelvisDrivers = Main.SimplePelvisDrivers; // reference testcase drivers (of SimplePelvis) within study
-    AnyFolder &ThoracicDrivers = Main.ThoracicDrivers; // reference drivers of thoracic.main within study
     
-
     // Include functions to generate a video:
     // -> Run `Study.VideoTool.Preview` to preview the camera view.
     // -> Run `Study.VideoTool.Create_Video` to generate video from the analysis.
@@ -110,30 +110,23 @@ Main = {
 
 
   // -------------------------------------------------------------------
-  // -------------------- ADDITIONAL OPERATIONS ------------------------
+  // ---------------------- CALIBRATION STUDY --------------------------
   // -------------------------------------------------------------------
-  // A new calibration study
-  AnyBodyCalibrationStudy CalibrationStudy = {
-    //  we're only looking at the components of SimplePelvis (speeds up calibration)
-    AnyFolder &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis;
-    AnySeg &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg; // we also need PelvisSeg because of the nodes on it
+  // A new calibration study - with a model specifically set up for calibration
+  AnyBodyCalibrationStudy CalibrationStudy = { //  we're only looking at the components of SimplePelvis
+    AnyFolder &Seg        = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis;
+    AnyFolder &Jnt        = Main.SimplePelvisCalibrationJoints;
+    AnyFolder &Mus        = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles;
+    AnyFolder &Lig        = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments;
+    AnyFolder &CalDrv     = Main.SimplePelvisCalibrationDrivers;
+
+    AnySeg &Pelvis        = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg; // we also need PelvisSeg because of the nodes on it
     AnyFixedRefFrame &Gnd = Main.HumanModel.DefaultMannequinDrivers.GenericGRF;
-    AnyFolder &Jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints;
-    AnyFolder &Mus = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles;
-    AnyFolder &Lig = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments;
-    // we must fix PelvisSeg to ground in order to have a kinematically determined model
-    AnyStdJoint FixPelvis = {
-      AnyRefFrame &grf = .Gnd;
-      AnyRefFrame &plv = .Pelvis;
+    AnyStdJoint FixPelvis = {    // we must fix PelvisSeg to ground in order to have a kinematically determined model
+      AnyRefFrame &grf  = .Gnd;
+      AnyRefFrame &plv  = .Pelvis;
     };
     
-    // the following two lines would reference the whole thoracic model + SimplePelvis
-    // this would work as well but is much slower
-    // AnyFolder &Model = Main.HumanModel.BodyModel;
-    // AnyFolder &ThoracicDrivers = Main.ThoracicDrivers; // reference drivers of thoracic.main within study
-
-    AnyFolder &CalibrationDrivers = Main.SimplePelvisCalibrationDrivers; // reference calibration drivers (of SimplePelvis) within study
-
     nStep = 21;
     RminMuscleFiber = {0.9, 0.9, 0.9, 0.9, 0.7, 0.7, 0.8, 0.8, 0.5, 0.5, 0.9, 0.9}; // default 0.5
     RmaxMuscleFiber = {1.1, 1.1, 1.1, 1.1, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.1, 1.1}; // default 1.2
@@ -168,8 +161,13 @@ Main = {
      &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA7,
      &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA8
    };
-  }; // End of calibration study
+  }; // -------------------------------------- END OF CALIBRATION STUDY
   
+
+  // -------------------------------------------------------------------
+  // -------------------- ADDITIONAL OPERATIONS ------------------------
+  // -------------------------------------------------------------------
+
   AnyOperationSequence RunApplication = {
     AnyOperation& ref = Main.Study.InverseDynamics;
   };

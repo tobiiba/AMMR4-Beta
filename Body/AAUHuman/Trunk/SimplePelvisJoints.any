@@ -1,12 +1,15 @@
 /*
-In this file all segments of the SimplePelvis model are constrained to the Pelvis.
-Where applicable, FDK constraints are introduced to the joints.
+  In this file all segments of the SimplePelvis model are constrained to the Pelvis.
+  Where applicable, FDK constraints are introduced to the joints.
+
+  Separate joints for the individual testcase and calibration are defined 
+  (similar to drivers) because calibration requires prescribed motion.
 */
 
 // -------------------------------------------------------------------
-// ------------------------------ JOINTS -----------------------------
+// --------------------- TESTCASE JOINTS -----------------------------
 // -------------------------------------------------------------------
-Main.HumanModel.BodyModel.Trunk.Joints = {
+Main = {
 
   AnyFolder SimplePelvisJoints = {
 
@@ -18,8 +21,8 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
     // movement is allowed through joint (AnyPrismaticJoint) and FDK
 
     AnyPrismaticJoint jSegA = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointA.NodePUBIS_R;
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.NodePUBIS_R;
        Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
@@ -28,7 +31,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
-        AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegA.Linear;
+        AnyKinLinear &lin = Main.SimplePelvisJoints.jSegA.Linear;
         // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
         // D = G * A / L -- in this case for contraction 306 N/m
         F = {-306*lin.Pos[0], 0, 0}; // nummerical value resembles spring constant (F = D * dL)
@@ -36,8 +39,8 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
     };
 
     AnyPrismaticJoint jSegB = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointB.NodePUBIS_L;
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB.NodePUBIS_L;
       Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
@@ -46,7 +49,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
-        AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegB.Linear;
+        AnyKinLinear &lin = Main.SimplePelvisJoints.jSegB.Linear;
         // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
         // D = G * A / L -- in this case for contraction 306 N/m
         F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
@@ -54,8 +57,8 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
     };
 
     AnyPrismaticJoint jSegC = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointC.NodeCOCCYX;
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC.NodeCOCCYX;
       Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
@@ -64,7 +67,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
-        AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegC.Linear;
+        AnyKinLinear &lin = Main.SimplePelvisJoints.jSegC.Linear;
         // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
         // D = G * A / L -- in this case for contraction 306 N/m
         F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
@@ -72,8 +75,8 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
     };
 
     AnyPrismaticJoint jSegD = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointD.NodePUBIS_R;
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD.NodePUBIS_R;
       Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
@@ -82,7 +85,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
-        AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegD.Linear;
+        AnyKinLinear &lin = Main.SimplePelvisJoints.jSegD.Linear;
         // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
         // D = G * A / L -- in this case for contraction 306 N/m
         F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
@@ -90,8 +93,8 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
     };
 
     AnyPrismaticJoint jSegE = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointE.NodePUBIS_L;
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE.NodePUBIS_L;
       Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
@@ -100,7 +103,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       };
       //  define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
-        AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegE.Linear;
+        AnyKinLinear &lin = Main.SimplePelvisJoints.jSegE.Linear;
         // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
         // D = G * A / L -- in this case for contraction 306 N/m
         F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
@@ -108,8 +111,8 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
     };
 
     AnyPrismaticJoint jSegF = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointF.NodeCOCCYX;
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF.NodeCOCCYX;
       Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
@@ -118,7 +121,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
-        AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegF.Linear;
+        AnyKinLinear &lin = Main.SimplePelvisJoints.jSegF.Linear;
         // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
         // D = G * A / L -- in this case for contraction 306 N/m
         F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
@@ -126,8 +129,8 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
     };
 
     AnyPrismaticJoint jSegG = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointG.NodeCOCCYX;
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG.NodeCOCCYX;
       Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
@@ -136,7 +139,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
-        AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegG.Linear;
+        AnyKinLinear &lin = Main.SimplePelvisJoints.jSegG.Linear;
         // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
         // D = G * A / L -- in this case for contraction 306 N/m
         F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
@@ -150,87 +153,157 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
     // these joints connect a node from PICS_ORIGIN to a moveable segment with a letter (S-Z)
     // movement is only allowed through FDK (AnyStdJoint) if at all
     AnyStdJoint jSegS = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointS.NodePUBIS_R;
-      // set up FDK with ForceDep constraints for all locked DoF
-      // Constraints = {
-      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-      //   Reaction.Type = {Off, Off, On, On, On};
-      // };
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointS.NodePUBIS_R;
     };
 
     AnyStdJoint jSegT = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointT.NodePUBIS_R;
-      // set up FDK with ForceDep constraints for all locked DoF
-      // Constraints = {
-      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-      //   Reaction.Type = {Off, Off, On, On, On};
-      // };
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointT.NodePUBIS_R;
     };
 
     AnyStdJoint jSegU = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointU.NodePUBIS_R;
-      // set up FDK with ForceDep constraints for all locked DoF
-      // Constraints = {
-      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-      //   Reaction.Type = {Off, Off, On, On, On};
-      // };
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointU.NodePUBIS_R;
     };
 
     AnyStdJoint jSegV = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointV.NodePUBIS_R;
-      // set up FDK with ForceDep constraints for all locked DoF
-      // Constraints = {
-      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-      //   Reaction.Type = {Off, Off, On, On, On};
-      // };
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointV.NodePUBIS_R;
     };
 
     AnyStdJoint jSegW = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointW.NodePUBIS_L;
-      // set up FDK with ForceDep constraints for all locked DoF
-      // Constraints = {
-      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-      //   Reaction.Type = {Off, Off, On, On, On};
-      // };
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointW.NodePUBIS_L;
     };
 
     AnyStdJoint jSegX = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointX.NodePUBIS_L;
-      // set up FDK with ForceDep constraints for all locked DoF
-      // Constraints = {
-      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-      //   Reaction.Type = {Off, Off, On, On, On};
-      // };
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointX.NodePUBIS_L;
     };
 
     AnyStdJoint jSegY = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointY.NodePUBIS_L;
-      // set up FDK with ForceDep constraints for all locked DoF
-      // Constraints = {
-      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-      //   Reaction.Type = {Off, Off, On, On, On};
-      // };
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointY.NodePUBIS_L;
     };
 
     AnyStdJoint jSegZ = {
-      AnyRefFrame &Pelvis = ...Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
-      AnyRefFrame &Seg = ...Segments.SimplePelvis.SegPointZ.NodePUBIS_L;
-      // set up FDK with ForceDep constraints for all locked DoF
-      // Constraints = {
-      //   CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-      //   Reaction.Type = {Off, Off, On, On, On};
-      // };
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointZ.NodePUBIS_L;
     };
 
     // ---------------------------------------------- END OF JOINTS ON TENDINOUS ARCH
 
   }; // ---------------------------------------------- END OF FOLDER SimplePelvisJoints
   
-}; // ---------------------------------------------- END OF JOINTS OF PELVIC FLOOR
+}; // ---------------------------------------------- END OF TESTCASE JOINTS OF PELVIC FLOOR
+
+
+
+
+// -------------------------------------------------------------------
+// -------------------- CALIBRATION JOINTS ---------------------------
+// -------------------------------------------------------------------
+Main = {
+
+  AnyFolder SimplePelvisCalibrationJoints = {
+
+    // -------------------------------------------------------------------
+    // --------- JOINTS FOR SEGMENTS IN THE CENTER OF THE PELVIS ---------
+    // -------------------------------------------------------------------
+
+    // these joints connect a node from BONYPELVIS to a moveable segment with a letter (A-G) - no FDK required
+
+    AnyPrismaticJoint jSegA = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.NodePUBIS_R;
+       Axis = y;
+    };
+
+    AnyPrismaticJoint jSegB = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB.NodePUBIS_L;
+      Axis = y;
+    };
+
+    AnyPrismaticJoint jSegC = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC.NodeCOCCYX;
+      Axis = y;
+    };
+
+    AnyPrismaticJoint jSegD = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD.NodePUBIS_R;
+      Axis = y;
+    };
+
+    AnyPrismaticJoint jSegE = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE.NodePUBIS_L;
+      Axis = y;
+    };
+
+    AnyPrismaticJoint jSegF = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF.NodeCOCCYX;
+      Axis = y;
+    };
+
+    AnyPrismaticJoint jSegG = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG.NodeCOCCYX;
+      Axis = y;
+    };
+
+    // -------------------------------------------------------------------
+    // ------------ JOINTS FOR SEGMENTS ON THE TENDINOUS ARCH ------------
+    // -------------------------------------------------------------------
+
+    // these joints connect a node from PICS_ORIGIN to a moveable segment with a letter (S-Z)
+    // movement is only allowed through FDK (AnyStdJoint) if at all
+    AnyStdJoint jSegS = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointS.NodePUBIS_R;
+    };
+
+    AnyStdJoint jSegT = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointT.NodePUBIS_R;
+    };
+
+    AnyStdJoint jSegU = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointU.NodePUBIS_R;
+    };
+
+    AnyStdJoint jSegV = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointV.NodePUBIS_R;
+    };
+
+    AnyStdJoint jSegW = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointW.NodePUBIS_L;
+    };
+
+    AnyStdJoint jSegX = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointX.NodePUBIS_L;
+    };
+
+    AnyStdJoint jSegY = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointY.NodePUBIS_L;
+    };
+
+    AnyStdJoint jSegZ = {
+      AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+      AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointZ.NodePUBIS_L;
+    };
+
+    // ---------------------------------------------- END OF JOINTS ON TENDINOUS ARCH
+
+  }; // ---------------------------------------------- END OF FOLDER SimplePelvisCalibrationJoints
+  
+}; // ---------------------------------------------- END OF CALIBRATION JOINTS OF PELVIC FLOOR
