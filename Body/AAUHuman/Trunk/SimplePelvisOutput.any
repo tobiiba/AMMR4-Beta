@@ -130,7 +130,7 @@ Main.HumanModel.BodyModel.SelectedOutput = {
 // -------------------------------------------------------------------
 // -------------------------- OUTPUT FILE  ---------------------------
 // -------------------------------------------------------------------
-Main.Study.InverseDynamics = {
+Main.Study = {
   AnyStringVar fileID = "SimplePelvis_Valsalva";
   // AnyOutputFile SaveOutputAll = {
   //   FileName = "OutputData\ " + .fileID + "_complete.csv";

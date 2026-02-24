@@ -13,47 +13,49 @@
 // -------------------------------------------------------------------
 Main = {
   AnyFolder SimplePelvisDrivers = {
-    AnyKinEqSimpleDriver ActuatorA = {
-      AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegA;
-      DriverVel = {-0.001}; // mm/s
-      Reaction.Type = {Off};
-     };
+    // no drivers required for Valsalva testcase
 
-    AnyKinEqSimpleDriver ActuatorB = {
-      AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegB;
-      DriverVel = {-0.001}; // mm/s
-      Reaction.Type = {Off};
-    };
+    // AnyKinEqSimpleDriver ActuatorA = {
+    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegA;
+    //   DriverVel = {-0.001}; // mm/s
+    //   Reaction.Type = {Off};
+    //  };
 
-    AnyKinEqSimpleDriver ActuatorC = {
-      AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegC;
-      DriverVel = {-0.004}; // mm/s
-      Reaction.Type = {Off};
-    };
+    // AnyKinEqSimpleDriver ActuatorB = {
+    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegB;
+    //   DriverVel = {-0.001}; // mm/s
+    //   Reaction.Type = {Off};
+    // };
 
-    AnyKinEqSimpleDriver ActuatorD = {
-      AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegD;
-      DriverVel = {-0.006}; // mm/s
-      Reaction.Type = {Off};
-    };
+    // AnyKinEqSimpleDriver ActuatorC = {
+    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegC;
+    //   DriverVel = {-0.004}; // mm/s
+    //   Reaction.Type = {Off};
+    // };
 
-    AnyKinEqSimpleDriver ActuatorE = {
-      AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegE;
-      DriverVel = {-0.006}; // mm/s
-      Reaction.Type = {Off};
-    };
+    // AnyKinEqSimpleDriver ActuatorD = {
+    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegD;
+    //   DriverVel = {-0.006}; // mm/s
+    //   Reaction.Type = {Off};
+    // };
 
-    AnyKinEqSimpleDriver ActuatorF = {
-      AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegF;
-      DriverVel = {-0.006}; // mm/s
-      Reaction.Type = {Off};
-    };
+    // AnyKinEqSimpleDriver ActuatorE = {
+    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegE;
+    //   DriverVel = {-0.006}; // mm/s
+    //   Reaction.Type = {Off};
+    // };
 
-    AnyKinEqSimpleDriver ActuatorG = {
-      AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegG;
-      DriverVel = {-0.006}; // mm/s
-      Reaction.Type = {Off};
-    };
+    // AnyKinEqSimpleDriver ActuatorF = {
+    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegF;
+    //   DriverVel = {-0.006}; // mm/s
+    //   Reaction.Type = {Off};
+    // };
+
+    // AnyKinEqSimpleDriver ActuatorG = {
+    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegG;
+    //   DriverVel = {-0.006}; // mm/s
+    //   Reaction.Type = {Off};
+    // };
   };
 }; 
 

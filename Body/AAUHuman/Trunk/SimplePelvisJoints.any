@@ -18,131 +18,110 @@ Main = {
     // -------------------------------------------------------------------
 
     // these joints connect a node from BONYPELVIS to a moveable segment with a letter (A-G)
-    // movement is allowed through joint (AnyPrismaticJoint) and FDK
+    // movement is allowed through FDK only
 
-    AnyPrismaticJoint jSegA = {
+    AnyStdJoint jSegA = {
       AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
       AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointA.NodePUBIS_R;
-       Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
-        CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-        Reaction.Type = {Off, Off, On, On, On};
+        CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+        Reaction.Type = {Off, Off, Off, On, On, On};
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegA.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, 0}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
-    AnyPrismaticJoint jSegB = {
+    AnyStdJoint jSegB = {
       AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
       AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointB.NodePUBIS_L;
-      Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
-        CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-        Reaction.Type = {Off, Off, On, On, On};
+        CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+        Reaction.Type = {Off, Off, Off, On, On, On};
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegB.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
-    AnyPrismaticJoint jSegC = {
+    AnyStdJoint jSegC = {
       AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
       AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC.NodeCOCCYX;
-      Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
-        CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-        Reaction.Type = {Off, Off, On, On, On};
+        CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+        Reaction.Type = {Off, Off, Off, On, On, On};
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegC.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
-    AnyPrismaticJoint jSegD = {
+    AnyStdJoint jSegD = {
       AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
       AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD.NodePUBIS_R;
-      Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
-        CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-        Reaction.Type = {Off, Off, On, On, On};
+        CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+        Reaction.Type = {Off, Off, Off, On, On, On};
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegD.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
-    AnyPrismaticJoint jSegE = {
+    AnyStdJoint jSegE = {
       AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
       AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE.NodePUBIS_L;
-      Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
-        CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-        Reaction.Type = {Off, Off, On, On, On};
+        CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+        Reaction.Type = {Off, Off, Off, On, On, On};
       };
       //  define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegE.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
-    AnyPrismaticJoint jSegF = {
+    AnyStdJoint jSegF = {
       AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
       AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF.NodeCOCCYX;
-      Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
-        CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-        Reaction.Type = {Off, Off, On, On, On};
+        CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+        Reaction.Type = {Off, Off, Off, On, On, On};
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegF.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
-    AnyPrismaticJoint jSegG = {
+    AnyStdJoint jSegG = {
       AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
       AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointG.NodeCOCCYX;
-      Axis = y;
       // set up FDK with ForceDep constraints for all locked DoF
       Constraints = {
-        CType = {ForceDep, ForceDep, Hard, Hard, Hard};
-        Reaction.Type = {Off, Off, On, On, On};
+        CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+        Reaction.Type = {Off, Off, Off, On, On, On};
       };
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegG.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
