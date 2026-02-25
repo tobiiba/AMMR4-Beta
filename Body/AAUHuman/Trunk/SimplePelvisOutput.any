@@ -179,7 +179,7 @@ AnyOutputFile SaveOutputPosition = {
       "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Ft*",
       "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Fp*",
       "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.Strength*",
-      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.LigForce*"
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Ligaments.LigForce*"
     };
   };
 
