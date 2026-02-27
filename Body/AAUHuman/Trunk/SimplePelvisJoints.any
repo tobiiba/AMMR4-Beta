@@ -29,9 +29,10 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegA.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, 0}; // nummerical value resembles spring constant (F = D * dL)
+        // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+        // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+        // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+        F = {-1680*lin.Pos[0], 0, -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -47,9 +48,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegB.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], 0, -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -65,9 +64,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegC.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], 0, -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -83,9 +80,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegD.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], 0, -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -101,9 +96,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       //  define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegE.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], 0, -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -119,9 +112,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegF.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], 0, -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -137,9 +128,7 @@ Main.HumanModel.BodyModel.Trunk.Joints = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegG.Linear;
-        // estimate stiffness through G of LAM (Gachon); A of LAM  5.35 cm^2 (Alperin); l of LAM 10 cm (Gmür)
-        // D = G * A / L -- in this case for contraction 306 N/m
-        F = {-306*lin.Pos[0], 0, -306*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], 0, -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
