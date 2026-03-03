@@ -33,29 +33,29 @@ Main = {
 
     AnyKinEqSimpleDriver ActuatorD = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegD;
-      DriverVel = {-0.006}; // mm/s
+      DriverVel = {-0.004}; // mm/s
       Reaction.Type = {Off};
     };
 
     AnyKinEqSimpleDriver ActuatorE = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegE;
-      DriverVel = {-0.006}; // mm/s
+      DriverVel = {-0.004}; // mm/s
       Reaction.Type = {Off};
     };
 
     AnyKinEqSimpleDriver ActuatorF = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegF;
-      DriverVel = {-0.006}; // mm/s
+      DriverVel = {-0.004}; // mm/s
       Reaction.Type = {Off};
     };
 
     AnyKinEqSimpleDriver ActuatorG = {
       AnyKinMeasure &jnt = Main.HumanModel.BodyModel.Trunk.Joints.SimplePelvisJoints.jSegG;
-      DriverVel = {-0.006}; // mm/s
+      DriverVel = {-0.004}; // mm/s
       Reaction.Type = {Off};
     };
   };
-}; 
+};
 
 // reference all drivers of Thoracic.main which are not within the body model in this folder to be added to the study
 Main = {

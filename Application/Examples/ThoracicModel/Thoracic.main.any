@@ -87,7 +87,7 @@ Main = {
     // InverseDynamics.Criterion.LowerBound = 0.05;
         
     InverseDynamics.ForceDepKinOnOff = On;           // command Study to apply FDK during InverseDynamics
-    InverseDynamics.ForceDepKin.ForceTol = 0.1;        // increase value if InvDyn seems stuck in endless loop
+    InverseDynamics.ForceDepKin.ForceTol = 0.25;        // increase value if InvDyn seems stuck in endless loop
     InverseDynamics.ForceDepKin.MaxNewtonStep = 0.01; // default 0.001, tradeoff between stability and speed
     
     tStart = 0;
