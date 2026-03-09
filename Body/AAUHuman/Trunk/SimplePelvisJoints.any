@@ -31,7 +31,10 @@ Main = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegA.Linear;
-        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+        // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+        // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -46,7 +49,10 @@ Main = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegB.Linear;
-        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+        // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+        // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -61,7 +67,10 @@ Main = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegC.Linear;
-        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+        // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+        // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -76,7 +85,10 @@ Main = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegD.Linear;
-        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+        // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+        // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -91,7 +103,10 @@ Main = {
       //  define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegE.Linear;
-        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+        // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+        // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -106,7 +121,10 @@ Main = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegF.Linear;
-        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+        // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+        // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -121,7 +139,10 @@ Main = {
       // define springs in the joint for all ForceDep DoF
       AnyForce JointStiffness = {
         AnyKinLinear &lin = Main.SimplePelvisJoints.jSegG.Linear;
-        F = {-243*lin.Pos[0], -243*lin.Pos[1], -243*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+        // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+        // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 

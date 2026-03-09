@@ -40,11 +40,10 @@ Main.HumanModel.BodyModel.Trunk = {
     AnyForce3D IAP = {
       AnyRefFrame &PoA = Main.HumanModel.BodyModel.Trunk.Abdominal.Layer_L5.CavitySegPosterior.VolumePoints.Center;
       // change in pressure from rest to valsalva: approx. 18.3 kPa --> 18300 N/m^2 [Schünke, 2022]
-      // testcase2: cut pressure in half -> IAP = 70 N
       // pressure acts on pelvic outlet with diameter of 9 - 11 cm, assume to be circular with d = 10 cm
-      // skewed at angle of 15° from horizontal [Prometheus]
-      // F_IAP = p * A / F_IAPx = F_IAP * sin(15°) / F_IAPy = F_IAP * cos(15°)
-      F = {-18.1, -67.6, 0}*t;
+      // F_IAP = p * A - assume it points perfectly downwards
+      // testcase2: cut pressure in half -> IAP = 70 N
+      F = {0, -70, 0}*t;
     };
   };
 };
