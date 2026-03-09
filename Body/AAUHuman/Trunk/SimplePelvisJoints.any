@@ -34,7 +34,7 @@ Main = {
         // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
         // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
         // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -52,7 +52,7 @@ Main = {
         // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
         // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
         // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -70,7 +70,7 @@ Main = {
         // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
         // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
         // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -88,7 +88,7 @@ Main = {
         // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
         // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
         // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -106,7 +106,7 @@ Main = {
         // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
         // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
         // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -124,7 +124,7 @@ Main = {
         // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
         // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
         // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
@@ -142,7 +142,7 @@ Main = {
         // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
         // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
         // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        F = {-250*lin.Pos[0], -250*lin.Pos[1], -250*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
       };
     };
 
