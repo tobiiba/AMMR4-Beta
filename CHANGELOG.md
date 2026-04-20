@@ -44,6 +44,7 @@ You can revert to the TLEM foot model by setting:
 
 * Fixed the inclusion of the buckle segmental masses in the calculation of the TotalBodyMass variable.
 * Fixed the cervical spine axial rotation rhythm coefficients. The distribution between C2C1 and the rest of cervical spine was incorrect.
+* The BM statement BM_TRUNK_THORACIC_RHYTHM _RHYTHM_SOFT did not previously have any effect, this has been fixed
 
 **Added:**
 
@@ -176,6 +177,11 @@ You can revert to the TLEM foot model by setting:
   more reliable in scaled models and ensures accurate alignment between the medial and lateral fibres 
   of gastrocnemius and soleus muscles. The change causes a minor shift in the joint axis, but it should 
   not significantly impact results.
+
+
+(changes-to-mandible-model)=
+
+*  The NormalMandible_AAU model has been updated to use more cleaned-up surfaces for contact in FDK models. This helps FDK models to converge. Most importantly the backside of the contact surfaces has been removed.
 
 ### Removed:
 
