@@ -3,19 +3,6 @@
 */
 
 
-// for test-purposes - remove after switch for SimplePelvis has been completely integrated
-Main = {
-  #if BM_SIMPLEPELVIS == ON
-    AnyFolder SIMPLEPELVISisON = {
-    };
-
-  #else
-    AnyFolder SIMPLEPELVISisOFF = {
-    };
-  #endif
-};
-
-
 // SCALING
 #include "SimplePelvisScaling.any"
 

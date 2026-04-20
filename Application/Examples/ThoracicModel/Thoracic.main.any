@@ -61,9 +61,11 @@ Main = {
   */
 
   #define BM_SIMPLEPELVIS ON
+
   #include "<ANYBODY_PATH_BODY>/Trunk/SimplePelvis.any"
 
   // -------------------------------------- END OF SIMPLEPELVIS SETUP
+
 
 
   // Include the human model
@@ -83,6 +85,7 @@ Main = {
   // -------------------------------------------------------------------
   // ------------------------------- STUDY -----------------------------
   // -------------------------------------------------------------------
+
   AnyBodyStudy Study = {
     AnyFolder& Model = Main.Model;
     InverseDynamics.Criterion.UpperBoundOnOff = Off;
@@ -100,96 +103,14 @@ Main = {
     nStep = 26;                   // to adjust resolution of time-history of testcases
 
     AnyFolder &BodyModel            = Main.HumanModel.BodyModel;
-    AnyFolder &Joints               = Main.SimplePelvisJoints; // reference testcase joints (of SimplePelvis) within study
-    AnyFolder &SimplePelvisDrivers  = Main.SimplePelvisDrivers; // reference testcase drivers (of SimplePelvis) within study
     AnyFolder &ThoracicDrivers      = Main.ThoracicDrivers; // reference drivers of thoracic.main within study
-
     AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
 
     // Include functions to generate a video:
     // -> Run `Study.VideoTool.Preview` to preview the camera view.
     // -> Run `Study.VideoTool.Create_Video` to generate video from the analysis.
     #include "CreateVideo.any"
-  }; // -------------------------------------- END OF STUDY
-
-
-  // -------------------------------------------------------------------
-  // ---------------------- CALIBRATION STUDY --------------------------
-  // -------------------------------------------------------------------
-  // A new calibration study - with a model specifically set up for calibration
-  AnyBodyCalibrationStudy CalibrationStudy = { //  we're only looking at the components of SimplePelvis
-    AnyFolder &Seg        = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis;
-    AnyFolder &Jnt        = Main.SimplePelvisCalibrationJoints;
-    AnyFolder &Mus        = Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles;
-    AnyFolder &Lig        = Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments;
-    AnyFolder &CalDrv     = Main.SimplePelvisCalibrationDrivers;
-
-    AnySeg &Pelvis        = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg; // we also need PelvisSeg because of the nodes on it
-    AnyFixedRefFrame &Gnd = Main.HumanModel.DefaultMannequinDrivers.GenericGRF;
-    AnyStdJoint FixPelvis = {    // we must fix PelvisSeg to ground in order to have a kinematically determined model
-      AnyRefFrame &grf  = .Gnd;
-      AnyRefFrame &plv  = .Pelvis;
     };
+  // -------------------------------------- END OF STUDY
 
-    nStep = 21;
-    RminMuscleFiber = {0.9, 0.9, 0.9, 0.9, 0.7, 0.7, 0.8, 0.8, 0.5, 0.5, 0.9, 0.9}; // default 0.5
-    RmaxMuscleFiber = {1.1, 1.1, 1.1, 1.1, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.1, 1.1}; // default 1.2
-
-   MuscleArr = {
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorright,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorleft,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorright,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICManteriorleft,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMright,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PPMleft,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMright,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PAMleft,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMright,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PVaMleft,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMright,
-     &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMleft
-   };
-
-   LigamentArr = {
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.AnococcygealLigament,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.AnalHiatus,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.UrogenitalHiatus,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TendinousArchR,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TendinousArchL,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA1,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA2,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA3,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA4,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA5,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA6,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA7,
-     &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA8
-   };
-  }; // -------------------------------------- END OF CALIBRATION STUDY
-
-
-  // -------------------------------------------------------------------
-  // -------------------- ADDITIONAL OPERATIONS ------------------------
-  // -------------------------------------------------------------------
-
-  AnyOperationSequence RunApplication = {
-    AnyOperation& ref = Main.Study.InverseDynamics;
-  };
-
-  AnyOperationSequence ModelSetUp = {
-    AnyOperation& ref = Main.Study.InitialConditions;
-  };
-
-  AnyOperationSequence SimplePelvisCalibration = {
-    AnyOperation& op1 = Main.CalibrationStudy.FiberAndTendonLengthAdjustment;
-    AnyOperation& op2 = Main.CalibrationStudy.LigamentLengthAdjustment;
-    AnyOperation& op3 = Main.Study.InitialConditions;
-  };
-
-  AnyOperationSequence SimplePelvisCalibrationAndInverseDynamics = {
-    AnyOperation& op1 = Main.CalibrationStudy.FiberAndTendonLengthAdjustment;
-    AnyOperation& op2 = Main.CalibrationStudy.LigamentLengthAdjustment;
-    AnyOperation& op3 = Main.Study.InverseDynamics;
-  };
-
-}; // -------------------------------------- END OF ADDITIONAL OPERATIONS
+};

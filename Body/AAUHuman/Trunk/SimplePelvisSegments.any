@@ -5,7 +5,7 @@ ATTENTION:  If positions (r0) or the orientation (Axes0) of any segments include
             all nodal positions of the volume must be recalculated using the python script "Nodes_for_PF_Layers.ipynb"!
 */
 
-// #if BM_SIMPLEPELVIS == ON
+#if BM_SIMPLEPELVIS == ON
 
   // -------------------------------------------------------------------
   // ---------------------- LOCAL REFERENCE FRAME ----------------------
@@ -336,4 +336,4 @@ ATTENTION:  If positions (r0) or the orientation (Axes0) of any segments include
 
   };
 
-// #endif
+#endif
