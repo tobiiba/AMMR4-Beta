@@ -1,300 +1,307 @@
 /*
-In this file all additional ligaments for the SimplePelvis model are defined
+  In this file all additional ligaments for the SimplePelvis model are defined
+  First:  the strength models are defined
+  Then:   the paths are defined
 */
 
-Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments = {
 
-// -------------------------------------------------------------------
-// ------------------------ LIGAMENT MODELS --------------------------
-// -------------------------------------------------------------------
-  AnyFolder SimplePelvisLigaments = {
-    AnyFolder LigamentModels = {
+#if BM_SIMPLEPELVIS == ON
 
-      AnyLigamentModelPol Model_AnococcygealLig = {
-        // ligament path: COCCYX > SegPointG > SegPointF
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.COCCYX.sRel - .....Segments.SimplePelvis.SegPointG.r0) + 
-          vnorm(.....Segments.SimplePelvis.SegPointG.r0 - .....Segments.SimplePelvis.SegPointF.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0; // defines the slope of the curve at slack length
-        //a1 = 1.0; // has the above effect but at the point (eps1,F1)
-        //LinRegionOnOff = On;
-      };
+  Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments = {
 
-      AnyLigamentModelPol Model_AnalHiatus = {
-        // ligament path: SegPointD > SegPointC > SegPointE
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.SimplePelvis.SegPointD.r0 - .....Segments.SimplePelvis.SegPointC.r0) + 
-          vnorm(.....Segments.SimplePelvis.SegPointC.r0 - .....Segments.SimplePelvis.SegPointE.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
+  // -------------------------------------------------------------------
+  // ------------------------ LIGAMENT MODELS --------------------------
+  // -------------------------------------------------------------------
+    AnyFolder SimplePelvisLigaments = {
+      AnyFolder LigamentModels = {
 
-      AnyLigamentModelPol Model_UrogenitalHiatus = {
-        // ligament path: PUBIS_R > SegPointA > SegPointC > SegPointB > PUBIS_L
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel - .....Segments.SimplePelvis.SegPointA.r0) + 
-          vnorm(.....Segments.SimplePelvis.SegPointA.r0 - .....Segments.SimplePelvis.SegPointC.r0) +
-          vnorm(.....Segments.SimplePelvis.SegPointC.r0 - .....Segments.SimplePelvis.SegPointB.r0) +
-          vnorm(.....Segments.SimplePelvis.SegPointB.r0 - .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
+        AnyLigamentModelPol Model_AnococcygealLig = {
+          // ligament path: COCCYX > SegPointG > SegPointF
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.COCCYX.sRel - .....Segments.SimplePelvis.SegPointG.r0) +
+            vnorm(.....Segments.SimplePelvis.SegPointG.r0 - .....Segments.SimplePelvis.SegPointF.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0; // defines the slope of the curve at slack length
+          //a1 = 1.0; // has the above effect but at the point (eps1,F1)
+          //LinRegionOnOff = On;
+        };
 
-      AnyLigamentModelPol Model_TendinousArch = {
-        // ligament path: PUBIS_R > SegPointS > SegPointT > SegPointU > SegPointV > ISCHIALSPINE_R
-        // valid for both sides as long as symmetric model is used
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel - .....Segments.SimplePelvis.SegPointS.r0) + 
-          vnorm(.....Segments.SimplePelvis.SegPointS.r0 - .....Segments.SimplePelvis.SegPointT.r0) +
-          vnorm(.....Segments.SimplePelvis.SegPointT.r0 - .....Segments.SimplePelvis.SegPointU.r0) +
-          vnorm(.....Segments.SimplePelvis.SegPointU.r0 - .....Segments.SimplePelvis.SegPointV.r0) +
-          vnorm(.....Segments.SimplePelvis.SegPointV.r0 - .....Segments.PelvisSeg.PICS_ORIGIN.ISCHIALSPINE_R.sRel)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
+        AnyLigamentModelPol Model_AnalHiatus = {
+          // ligament path: SegPointD > SegPointC > SegPointE
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.SimplePelvis.SegPointD.r0 - .....Segments.SimplePelvis.SegPointC.r0) +
+            vnorm(.....Segments.SimplePelvis.SegPointC.r0 - .....Segments.SimplePelvis.SegPointE.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
+        AnyLigamentModelPol Model_UrogenitalHiatus = {
+          // ligament path: PUBIS_R > SegPointA > SegPointC > SegPointB > PUBIS_L
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel - .....Segments.SimplePelvis.SegPointA.r0) +
+            vnorm(.....Segments.SimplePelvis.SegPointA.r0 - .....Segments.SimplePelvis.SegPointC.r0) +
+            vnorm(.....Segments.SimplePelvis.SegPointC.r0 - .....Segments.SimplePelvis.SegPointB.r0) +
+            vnorm(.....Segments.SimplePelvis.SegPointB.r0 - .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L.sRel)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
-      // ------------- MODELS FOR LIGAMENTS BETWEEN BONY PELVIS AND TENDINOUS ARCH OF LAM -----------------
-      // --------------------------------------------------------------------------------------------------
-      AnyLigamentModelPol Model_BPtoTA1 = {
-        // ligament path: POINT1 > S
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT1.sRel - .....Segments.SimplePelvis.SegPointS.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
-
-      AnyLigamentModelPol Model_BPtoTA2 = {
-        // ligament path: POINT2 > T
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT2.sRel - .....Segments.SimplePelvis.SegPointT.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
-
-      AnyLigamentModelPol Model_BPtoTA3 = {
-        // ligament path: POINT3 > U
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT3.sRel - .....Segments.SimplePelvis.SegPointU.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
-
-      AnyLigamentModelPol Model_BPtoTA4 = {
-        // ligament path: POINT4 > V
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT4.sRel - .....Segments.SimplePelvis.SegPointV.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
-
-      AnyLigamentModelPol Model_BPtoTA5 = {
-        // ligament path: POINT5 > W
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT5.sRel - .....Segments.SimplePelvis.SegPointW.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
-
-      AnyLigamentModelPol Model_BPtoTA6 = {
-        // ligament path: POINT6 > X
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT6.sRel - .....Segments.SimplePelvis.SegPointX.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
-
-      AnyLigamentModelPol Model_BPtoTA7 = {
-        // ligament path: POINT7 > Y
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT7.sRel - .....Segments.SimplePelvis.SegPointY.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
-
-      AnyLigamentModelPol Model_BPtoTA8 = {
-        // ligament path: POINT8 > Z
-        AnyFloat LigPathLength = (
-          vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT8.sRel - .....Segments.SimplePelvis.SegPointZ.r0)
-        );
-        L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
-        eps1 = 0.1;
-        F1 = 3.4;
-        //a0 = 1.0;
-        //a1 = 1.0;
-        //LinRegionOnOff = On;
-      };
-
-    }; // -------------------------------------- END OF LIGAMENT MODELS
+        AnyLigamentModelPol Model_TendinousArch = {
+          // ligament path: PUBIS_R > SegPointS > SegPointT > SegPointU > SegPointV > ISCHIALSPINE_R
+          // valid for both sides as long as symmetric model is used
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R.sRel - .....Segments.SimplePelvis.SegPointS.r0) +
+            vnorm(.....Segments.SimplePelvis.SegPointS.r0 - .....Segments.SimplePelvis.SegPointT.r0) +
+            vnorm(.....Segments.SimplePelvis.SegPointT.r0 - .....Segments.SimplePelvis.SegPointU.r0) +
+            vnorm(.....Segments.SimplePelvis.SegPointU.r0 - .....Segments.SimplePelvis.SegPointV.r0) +
+            vnorm(.....Segments.SimplePelvis.SegPointV.r0 - .....Segments.PelvisSeg.PICS_ORIGIN.ISCHIALSPINE_R.sRel)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
 
-    // -------------------------------------------------------------------
-    // ------------------------ LIGAMENT PATHS ---------------------------
-    // -------------------------------------------------------------------
-    // using via point muscle and color coding to match sketched model
-    AnyFolder LigamentPaths = {
-      AnyFloat Thickness = 1e-3;
-      AnyFloat RGB = {0.85, 0.85, 0.85};
-      
-      AnyLigamentViaPoint AnococcygealLigament = {
-        AnyLigamentModel &model = ..LigamentModels.Model_AnococcygealLig;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
-        AnyRefFrame &via = .....Segments.SimplePelvis.SegPointG;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointF;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
+        // ------------- MODELS FOR LIGAMENTS BETWEEN BONY PELVIS AND TENDINOUS ARCH OF LAM -----------------
+        // --------------------------------------------------------------------------------------------------
+        AnyLigamentModelPol Model_BPtoTA1 = {
+          // ligament path: POINT1 > S
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT1.sRel - .....Segments.SimplePelvis.SegPointS.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
-      AnyLigamentViaPoint AnalHiatus = {
-        AnyLigamentModel &model = ..LigamentModels.Model_AnalHiatus;
-        AnyRefFrame &ins = .....Segments.SimplePelvis.SegPointD;
-        AnyRefFrame &via = .....Segments.SimplePelvis.SegPointC;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointE;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
+        AnyLigamentModelPol Model_BPtoTA2 = {
+          // ligament path: POINT2 > T
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT2.sRel - .....Segments.SimplePelvis.SegPointT.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
-      AnyLigamentViaPoint UrogenitalHiatus = {
-        AnyLigamentModel &model = ..LigamentModels.Model_UrogenitalHiatus;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
-        AnyRefFrame &via1 = .....Segments.SimplePelvis.SegPointA;
-        AnyRefFrame &via2 = .....Segments.SimplePelvis.SegPointC;
-        AnyRefFrame &via3 = .....Segments.SimplePelvis.SegPointB;
-        AnyRefFrame &orig = .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
+        AnyLigamentModelPol Model_BPtoTA3 = {
+          // ligament path: POINT3 > U
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT3.sRel - .....Segments.SimplePelvis.SegPointU.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
-      AnyLigamentViaPoint TendinousArchR = {
-        AnyLigamentModel &model = ..LigamentModels.Model_TendinousArch;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
-        AnyRefFrame &via1 = .....Segments.SimplePelvis.SegPointS;
-        AnyRefFrame &via2 = .....Segments.SimplePelvis.SegPointT;
-        AnyRefFrame &via3 = .....Segments.SimplePelvis.SegPointU;
-        AnyRefFrame &via4 = .....Segments.SimplePelvis.SegPointV;
-        AnyRefFrame &orig = .....Segments.PelvisSeg.PICS_ORIGIN.ISCHIALSPINE_R;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
+        AnyLigamentModelPol Model_BPtoTA4 = {
+          // ligament path: POINT4 > V
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT4.sRel - .....Segments.SimplePelvis.SegPointV.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
-      AnyLigamentViaPoint TendinousArchL = {
-        AnyLigamentModel &model = ..LigamentModels.Model_TendinousArch;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
-        AnyRefFrame &via1 = .....Segments.SimplePelvis.SegPointW;
-        AnyRefFrame &via2 = .....Segments.SimplePelvis.SegPointX;
-        AnyRefFrame &via3 = .....Segments.SimplePelvis.SegPointY;
-        AnyRefFrame &via4 = .....Segments.SimplePelvis.SegPointZ;
-        AnyRefFrame &orig = .....Segments.PelvisSeg.PICS_ORIGIN.ISCHIALSPINE_L;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
+        AnyLigamentModelPol Model_BPtoTA5 = {
+          // ligament path: POINT5 > W
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT5.sRel - .....Segments.SimplePelvis.SegPointW.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
-      AnyLigamentViaPoint TA1 = {
-        AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA1;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT1;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointS;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;       };
-      };
+        AnyLigamentModelPol Model_BPtoTA6 = {
+          // ligament path: POINT6 > X
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT6.sRel - .....Segments.SimplePelvis.SegPointX.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
-      AnyLigamentViaPoint TA2 = {
-        AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA2;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT2;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointT;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
+        AnyLigamentModelPol Model_BPtoTA7 = {
+          // ligament path: POINT7 > Y
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT7.sRel - .....Segments.SimplePelvis.SegPointY.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
-      AnyLigamentViaPoint TA3 = {
-        AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA3;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT3;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointU;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
+        AnyLigamentModelPol Model_BPtoTA8 = {
+          // ligament path: POINT8 > Z
+          AnyFloat LigPathLength = (
+            vnorm(.....Segments.PelvisSeg.PICS_ORIGIN.POINT8.sRel - .....Segments.SimplePelvis.SegPointZ.r0)
+          );
+          L0 = LigPathLength * 0.99; // assume ligament is stretched by 1% in rest position
+          eps1 = 0.1;
+          F1 = 3.4;
+          //a0 = 1.0;
+          //a1 = 1.0;
+          //LinRegionOnOff = On;
+        };
 
-      AnyLigamentViaPoint TA4 = {
-        AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA4;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT4;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointV;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
+      }; // -------------------------------------- END OF LIGAMENT MODELS
 
-      AnyLigamentViaPoint TA5 = {
-        AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA5;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT5;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointW;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
 
-      AnyLigamentViaPoint TA6 = {
-        AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA6;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT6;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointX;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;       };
-      };
+      // -------------------------------------------------------------------
+      // ------------------------ LIGAMENT PATHS ---------------------------
+      // -------------------------------------------------------------------
+      // using via point muscle and color coding to match sketched model
+      AnyFolder LigamentPaths = {
+        AnyFloat Thickness = 1e-3;
+        AnyFloat RGB = {0.85, 0.85, 0.85};
 
-      AnyLigamentViaPoint TA7 = {
-        AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA7;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT7;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointY;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
-      };
+        AnyLigamentViaPoint AnococcygealLigament = {
+          AnyLigamentModel &model = ..LigamentModels.Model_AnococcygealLig;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
+          AnyRefFrame &via = .....Segments.SimplePelvis.SegPointG;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointF;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
 
-      AnyLigamentViaPoint TA8 = {
-        AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA8;
-        AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT8;
-        AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointZ;
-        AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;       };
-      };
-    }; // -------------------------------------- END OF LIGAMENT PATHS
+        AnyLigamentViaPoint AnalHiatus = {
+          AnyLigamentModel &model = ..LigamentModels.Model_AnalHiatus;
+          AnyRefFrame &ins = .....Segments.SimplePelvis.SegPointD;
+          AnyRefFrame &via = .....Segments.SimplePelvis.SegPointC;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointE;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
 
-  }; // -------------------------------------- END OF FOLDER SimplePelvisLigaments
-  
-};
+        AnyLigamentViaPoint UrogenitalHiatus = {
+          AnyLigamentModel &model = ..LigamentModels.Model_UrogenitalHiatus;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+          AnyRefFrame &via1 = .....Segments.SimplePelvis.SegPointA;
+          AnyRefFrame &via2 = .....Segments.SimplePelvis.SegPointC;
+          AnyRefFrame &via3 = .....Segments.SimplePelvis.SegPointB;
+          AnyRefFrame &orig = .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
+
+        AnyLigamentViaPoint TendinousArchR = {
+          AnyLigamentModel &model = ..LigamentModels.Model_TendinousArch;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
+          AnyRefFrame &via1 = .....Segments.SimplePelvis.SegPointS;
+          AnyRefFrame &via2 = .....Segments.SimplePelvis.SegPointT;
+          AnyRefFrame &via3 = .....Segments.SimplePelvis.SegPointU;
+          AnyRefFrame &via4 = .....Segments.SimplePelvis.SegPointV;
+          AnyRefFrame &orig = .....Segments.PelvisSeg.PICS_ORIGIN.ISCHIALSPINE_R;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
+
+        AnyLigamentViaPoint TendinousArchL = {
+          AnyLigamentModel &model = ..LigamentModels.Model_TendinousArch;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
+          AnyRefFrame &via1 = .....Segments.SimplePelvis.SegPointW;
+          AnyRefFrame &via2 = .....Segments.SimplePelvis.SegPointX;
+          AnyRefFrame &via3 = .....Segments.SimplePelvis.SegPointY;
+          AnyRefFrame &via4 = .....Segments.SimplePelvis.SegPointZ;
+          AnyRefFrame &orig = .....Segments.PelvisSeg.PICS_ORIGIN.ISCHIALSPINE_L;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
+
+        AnyLigamentViaPoint TA1 = {
+          AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA1;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT1;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointS;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;       };
+        };
+
+        AnyLigamentViaPoint TA2 = {
+          AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA2;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT2;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointT;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
+
+        AnyLigamentViaPoint TA3 = {
+          AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA3;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT3;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointU;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
+
+        AnyLigamentViaPoint TA4 = {
+          AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA4;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT4;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointV;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
+
+        AnyLigamentViaPoint TA5 = {
+          AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA5;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT5;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointW;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
+
+        AnyLigamentViaPoint TA6 = {
+          AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA6;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT6;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointX;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;       };
+        };
+
+        AnyLigamentViaPoint TA7 = {
+          AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA7;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT7;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointY;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;        };
+        };
+
+        AnyLigamentViaPoint TA8 = {
+          AnyLigamentModel &model = ..LigamentModels.Model_BPtoTA8;
+          AnyRefFrame &ins = .....Segments.PelvisSeg.PICS_ORIGIN.POINT8;
+          AnyRefFrame &orig = .....Segments.SimplePelvis.SegPointZ;
+          AnyDrawPLine drw = {  Thickness = ..Thickness;          RGB = ..RGB;       };
+        };
+      }; // -------------------------------------- END OF LIGAMENT PATHS
+
+    }; // -------------------------------------- END OF FOLDER SimplePelvisLigaments
+
+  };
+
+#endif

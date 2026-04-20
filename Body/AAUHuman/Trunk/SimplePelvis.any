@@ -2,12 +2,19 @@
   This is the main file to add the SimplePelvis model to the Thoracic model of AMMR4 Beta
 */
 
-// set anthropometrics according to subject
-Main.HumanModel.Anthropometrics = {
-  // values from Gmür et al., 2025, mean values for control group
-  BodyMass = 60.5;
-  BodyHeight = 1.66;
+
+// for test-purposes - remove after switch for SimplePelvis has been completely integrated
+Main = {
+  #if BM_SIMPLEPELVIS == ON
+    AnyFolder SIMPLEPELVISisON = {
+    };
+
+  #else
+    AnyFolder SIMPLEPELVISisOFF = {
+    };
+  #endif
 };
+
 
 // SCALING
 #include "SimplePelvisScaling.any"
@@ -37,23 +44,27 @@ Main.HumanModel.Anthropometrics = {
 Main.HumanModel.BodyModel.Trunk = {
   AnyFolder AbdominalPressure = {
     // pressure is forces distributed over volume nodes
-    AnyForce3D IAP = {
-      AnyRefFrame &PoA = Main.HumanModel.BodyModel.Trunk.Abdominal.Layer_L5.CavitySegPosterior.VolumePoints.Center;
-      // change in pressure from rest to valsalva: approx. 18.3 kPa --> 18300 N/m^2 [Schünke, 2022]
-      // pressure acts on pelvic outlet with diameter of 9 - 11 cm, assume to be circular with d = 10 cm
-      // F_IAP = p * A - assume it points perfectly downwards
-      // testcase2: cut pressure in half -> IAP = 70 N
-      F = {0, -70.0, 0}*t;
-    };
+    // AnyForce3D IAP = {
+    //   AnyRefFrame &PoA = Main.HumanModel.BodyModel.Trunk.Abdominal.Layer_L5.CavitySegPosterior.VolumePoints.Center;
+    //   // change in pressure from rest to valsalva: approx. 18.3 kPa --> 18300 N/m^2 [Schünke, 2022]
+    //   // pressure acts on pelvic outlet with diameter of 9 - 11 cm, assume to be circular with d = 10 cm
+    //   // F_IAP = p * A - assume it points perfectly downwards
+    //   // testcase2: cut pressure in half -> IAP = 70 N
+    //   F = {0, -70.0, 0}*t;
+    // };
   };
 };
+
+
+// STUDY
+#include "SimplePelvisStudy.any"
 
 
 // OUTPUT
 #include "SimplePelvisOutput.any"
 
 
-// KINEMATIC MEASURES
+// DRAWING OPTIONS
 Main.DrawSettings.KinematicVolume = {
   Opacity = 0.1;
 };

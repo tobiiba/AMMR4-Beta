@@ -1,5 +1,6 @@
 // -------------------------------------------------------------------
-// ------------------ SIMPLEPELVIS TEST VALSALVA 2 -------------------
+// -------------------- SIMPLEPELVIS WORK BRANCH ---------------------
+// --------------------------- pelvicfloor ---------------------------
 // -------------------------------------------------------------------
 
 #include "../libdef.any"
@@ -7,74 +8,77 @@
 
 
 Main = {
- 
+
   ///////////////////////////////////////////////////
-  // Body Model Configuration. 
-  // This would often be located in a seperate 
+  // Body Model Configuration.
+  // This would often be located in a seperate
   // file (BodyModelConfig.any) in other examples
   ///////////////////////////////////////////////////
-  
+
   // New flexible thorax is enabled with:
   // #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_RIGID_
   #define BM_TRUNK_THORACIC_MODEL _THORACIC_MODEL_FLEXIBLE_
-  
+
   // only head, thorax and pelvis required
   #define BM_LEG_MODEL OFF
   #define BM_ARM_LEFT OFF
   #define BM_ARM_RIGHT OFF
-  
+
   // Note: Model doesn't yet work without muscles
   #define BM_TRUNK_MUSCLES ON
-  
+
   // The new thoracic model comes with a full set of
   // ligaments all along the spine. They can be enabled
   // with the following switch.
   #define BM_TRUNK_LIGAMENTS OFF
-  
+
   // Set scaling of pelvic floor
   #define BM_SCALING _SCALING_UNIFORM_
 
   // This example comes with custom fourier drivers for the
-  // spine motion. So here we disable the default drivers 
+  // spine motion. So here we disable the default drivers
   #define BM_MANNEQUIN_DRIVER_PELVIS_THORAX_EXTENSION OFF
   #define BM_MANNEQUIN_DRIVER_PELVIS_THORAX_ROTATION OFF
   #define BM_MANNEQUIN_DRIVER_PELVIS_THORAX_LATERAL_BENDING OFF
-  
-  // Disable neck drivers and link the degrees of freedom to the 
-  // rest of the spine. 
+
+  // Disable neck drivers and link the degrees of freedom to the
+  // rest of the spine.
   #define BM_MANNEQUIN_DRIVER_SKULL_THORAX_FLEXION OFF
   #define BM_MANNEQUIN_DRIVER_SKULL_THORAX_LATERALBENDING OFF
   #define BM_MANNEQUIN_DRIVER_SKULL_THORAX_ROTATION OFF
   #define BM_TRUNK_CERVICAL_THORACIC_LINK ON
-  
-  
+
+
 
   // -------------------------------------------------------------------
   // --------------------------- SIMPLEPELVIS --------------------------
   // -------------------------------------------------------------------
 
   /*
-    Here, all structures and parameters for the SimplePelvis model will be initiated
+    Here, all structures and parameters for the SimplePelvis model will be initiated.
+    If you want SimplePelvis to be actually included into model, switch must be turned ON.
+    Switch turned OFF loads the current version of the thoracic model of AMMR4-Beta.
   */
 
+  #define BM_SIMPLEPELVIS ON
   #include "<ANYBODY_PATH_BODY>/Trunk/SimplePelvis.any"
 
   // -------------------------------------- END OF SIMPLEPELVIS SETUP
-  
-   
+
+
   // Include the human model
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"
 
   AnyFolder Model = {
      AnyFolder& BodyModel = Main.HumanModel.BodyModel;
      AnyFolder& DefaultDrivers = Main.HumanModel.DefaultMannequinDrivers;
-     
+
      AnyReacForce PelvisGroundReactions = {
        AnyKinMeasure& lin = .BodyModel.Interface.Trunk.PelvisPosX.lin;
        AnyKinMeasure& rot = .BodyModel.Interface.Trunk.PelvisRotX.rot;
      };
   };
-  
+
 
   // -------------------------------------------------------------------
   // ------------------------------- STUDY -----------------------------
@@ -82,14 +86,14 @@ Main = {
   AnyBodyStudy Study = {
     AnyFolder& Model = Main.Model;
     InverseDynamics.Criterion.UpperBoundOnOff = Off;
-    InverseDynamics.Criterion.Type = MR_MinMaxStrict; // MuscleRecruitment algorithm
-    // InverseDynamics.Criterion.LowerBoundOnOff = On; // set minimum level of activation for all muscles
+    InverseDynamics.Criterion.Type = MR_MinMaxStrict;     // MuscleRecruitment algorithm
+    // InverseDynamics.Criterion.LowerBoundOnOff = On;    // set minimum level of activation for all muscles
     // InverseDynamics.Criterion.LowerBound = 0.05;
-    
-    InverseDynamics.ForceDepKinOnOff = On;           // command Study to apply FDK during InverseDynamics
-    InverseDynamics.ForceDepKin.ForceTol = 0.75;        // increase value if InvDyn seems stuck in endless loop
-    InverseDynamics.ForceDepKin.MaxNewtonStep = 0.1; // default 0.001, tradeoff between stability and speed
-    
+
+    InverseDynamics.ForceDepKinOnOff = Off;               // command Study to apply FDK during InverseDynamics
+    InverseDynamics.ForceDepKin.ForceTol = 0.75;          // increase value if InvDyn seems stuck in endless loop
+    InverseDynamics.ForceDepKin.MaxNewtonStep = 0.1;      // default 0.001, tradeoff between stability and speed
+
     tStart = 0;
     tEnd = 1;
     Gravity = {0, -9.81, 0.0};
@@ -101,11 +105,11 @@ Main = {
     AnyFolder &ThoracicDrivers      = Main.ThoracicDrivers; // reference drivers of thoracic.main within study
 
     AnyVar PelvisThoraxFlexionDeg = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos[0]*180/pi;
-    
+
     // Include functions to generate a video:
     // -> Run `Study.VideoTool.Preview` to preview the camera view.
     // -> Run `Study.VideoTool.Create_Video` to generate video from the analysis.
-    #include "CreateVideo.any" 
+    #include "CreateVideo.any"
   }; // -------------------------------------- END OF STUDY
 
 
@@ -126,11 +130,11 @@ Main = {
       AnyRefFrame &grf  = .Gnd;
       AnyRefFrame &plv  = .Pelvis;
     };
-    
+
     nStep = 21;
     RminMuscleFiber = {0.9, 0.9, 0.9, 0.9, 0.7, 0.7, 0.8, 0.8, 0.5, 0.5, 0.9, 0.9}; // default 0.5
     RmaxMuscleFiber = {1.1, 1.1, 1.1, 1.1, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.1, 1.1}; // default 1.2
-    
+
    MuscleArr = {
      &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorright,
      &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.ICMposteriorleft,
@@ -145,7 +149,7 @@ Main = {
      &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMright,
      &Main.HumanModel.BodyModel.Trunk.Muscles.SimplePelvisMuscles.MusclePaths.PRMleft
    };
-   
+
    LigamentArr = {
      &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.AnococcygealLigament,
      &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.AnalHiatus,
@@ -162,7 +166,7 @@ Main = {
      &Main.HumanModel.BodyModel.Trunk.ElasticElements.Ligaments.SimplePelvisLigaments.LigamentPaths.TA8
    };
   }; // -------------------------------------- END OF CALIBRATION STUDY
-  
+
 
   // -------------------------------------------------------------------
   // -------------------- ADDITIONAL OPERATIONS ------------------------
@@ -171,7 +175,7 @@ Main = {
   AnyOperationSequence RunApplication = {
     AnyOperation& ref = Main.Study.InverseDynamics;
   };
-    
+
   AnyOperationSequence ModelSetUp = {
     AnyOperation& ref = Main.Study.InitialConditions;
   };
@@ -187,6 +191,5 @@ Main = {
     AnyOperation& op2 = Main.CalibrationStudy.LigamentLengthAdjustment;
     AnyOperation& op3 = Main.Study.InverseDynamics;
   };
-  
+
 }; // -------------------------------------- END OF ADDITIONAL OPERATIONS
-  

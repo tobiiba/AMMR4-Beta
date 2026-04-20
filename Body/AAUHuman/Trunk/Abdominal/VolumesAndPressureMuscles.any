@@ -1,66 +1,69 @@
 /// Folder containing the volume objects for the abdominal layers
 AnyFolder Volumes ={
-  
+
   AnyInt num_points = (
-    ..Data.unscaled.ModelParameters.Abdominal.DiscretizationPosterior + 
+    ..Data.unscaled.ModelParameters.Abdominal.DiscretizationPosterior +
     ..Data.unscaled.ModelParameters.Abdominal.DiscretizationAnterior
   ) * 2;
-  
+
 
   // Volume LowerCavity is modified to integrate SimplePelvis Model
   AnyKinVolumeCylMesh LowerCavity ={
     #include "<ANYBODY_PATH_MODELUTILS>/DrawSettings/KinematicVolume.any"
 
-    // --- SimplePelvis integrated into mesh
-    CylMesh  = ({
-      repmat(.num_points, &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC.PointCenter),
-      ..Layer_SimplePelvis.HiatusLevel.FullEdge_Base,  
-      ..Layer_SimplePelvis.PelvicBowlLevel.FullEdge_Base,
-      ..Layer_Pelvic3.FullEdge_Base,
-      ..Layer_Pelvic2.FullEdge_Base,
-      ..Layer_Pelvic1.FullEdge_Base,
-      ..Layer_L5.FullEdge_Base,
-      ..Layer_L5.FullEdge_Cavity,
-      repmat(.num_points, &..Layer_L5.CavitySegPosterior.VolumePoints.Center)
-    });
+    #if BM_SIMPLEPELVIS == ON
+      // --- SimplePelvis integrated into mesh
+      CylMesh  = ({
+        repmat(.num_points, &Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC.PointCenter),
+        ..Layer_SimplePelvis.HiatusLevel.FullEdge_Base,
+        ..Layer_SimplePelvis.PelvicBowlLevel.FullEdge_Base,
+        ..Layer_Pelvic3.FullEdge_Base,
+        ..Layer_Pelvic2.FullEdge_Base,
+        ..Layer_Pelvic1.FullEdge_Base,
+        ..Layer_L5.FullEdge_Base,
+        ..Layer_L5.FullEdge_Cavity,
+        repmat(.num_points, &..Layer_L5.CavitySegPosterior.VolumePoints.Center)
+      });
 
-    // --- original mesh without SimplePelvis
-    // CylMesh  = ({
-    //   repmat(.num_points, &..Layer_Pelvic5.BaseSegPosterior.Layer5.VolumePoints.Center),
-    //   ..Layer_Pelvic5.FullEdge_Base,    
-    //   ..Layer_Pelvic4.FullEdge_Base,
-    //   ..Layer_Pelvic3.FullEdge_Base,
-    //   ..Layer_Pelvic2.FullEdge_Base,
-    //   ..Layer_Pelvic1.FullEdge_Base,
-    //   ..Layer_L5.FullEdge_Base,
-    //   ..Layer_L5.FullEdge_Cavity,
-    //   repmat(.num_points, &..Layer_L5.CavitySegPosterior.VolumePoints.Center)
-    // });
+    #else
+      // --- original mesh without SimplePelvis
+      CylMesh  = ({
+        repmat(.num_points, &..Layer_Pelvic5.BaseSegPosterior.Layer5.VolumePoints.Center),
+        ..Layer_Pelvic5.FullEdge_Base,
+        ..Layer_Pelvic4.FullEdge_Base,
+        ..Layer_Pelvic3.FullEdge_Base,
+        ..Layer_Pelvic2.FullEdge_Base,
+        ..Layer_Pelvic1.FullEdge_Base,
+        ..Layer_L5.FullEdge_Base,
+        ..Layer_L5.FullEdge_Cavity,
+        repmat(.num_points, &..Layer_L5.CavitySegPosterior.VolumePoints.Center)
+      });
+    #endif
   };
-  
+
   AnyKinVolumeCylMesh L4L5 =   {
     #include "<ANYBODY_PATH_MODELUTILS>/DrawSettings/KinematicVolume.any"
     CylMesh  = ({
-        repmat(.num_points, &..Layer_L5.CavitySegPosterior.VolumePoints.Center),
+      repmat(.num_points, &..Layer_L5.CavitySegPosterior.VolumePoints.Center),
       ..Layer_L5.FullEdge_Cavity,
       ..Layer_L5.FullEdge_Base,
       ..Layer_L4.FullEdge_Base,
       ..Layer_L4.FullEdge_Cavity,
       repmat(.num_points, &..Layer_L4.CavitySegPosterior.VolumePoints.Center)
-    });     
+    });
   };
-  
+
   AnyKinVolumeCylMesh L3L4 =   {
     #include "<ANYBODY_PATH_MODELUTILS>/DrawSettings/KinematicVolume.any"
     CylMesh  = ({
-      repmat(.num_points, &..Layer_L4.CavitySegPosterior.VolumePoints.Center),        
+      repmat(.num_points, &..Layer_L4.CavitySegPosterior.VolumePoints.Center),
       ..Layer_L4.FullEdge_Cavity,
       ..Layer_L4.FullEdge_Base,
       ..Layer_L3.FullEdge_Base,
       ..Layer_L3.FullEdge_Cavity,
-      repmat(.num_points, &..Layer_L3.CavitySegPosterior.VolumePoints.Center)});     
+      repmat(.num_points, &..Layer_L3.CavitySegPosterior.VolumePoints.Center)});
   };
-  
+
   AnyKinVolumeCylMesh L2L3 =   {
     #include "<ANYBODY_PATH_MODELUTILS>/DrawSettings/KinematicVolume.any"
     CylMesh  = ({
@@ -70,9 +73,9 @@ AnyFolder Volumes ={
       ..Layer_L2.FullEdge_Base,
       ..Layer_L2.FullEdge_Cavity,
       repmat(.num_points, &..Layer_L2.CavitySegPosterior.VolumePoints.Center)
-    })  ;     
+    })  ;
   };
-  
+
   AnyKinVolumeCylMesh L1L2 =   {
     #include "<ANYBODY_PATH_MODELUTILS>/DrawSettings/KinematicVolume.any"
     CylMesh  = ({
@@ -82,7 +85,7 @@ AnyFolder Volumes ={
       ..Layer_L1.FullEdge_Base,
       ..Layer_L1.FullEdge_Cavity,
       repmat(.num_points, &..Layer_L1.CavitySegPosterior.VolumePoints.Center)
-    })  ;     
+    })  ;
   };
 
   AnyKinVolumeCylMesh UpperCavity = {
@@ -96,18 +99,16 @@ AnyFolder Volumes ={
       ..Diaphragm.CavitySegSuperoanterior.Layer_T10.FullEdge,
       ..Diaphragm.CavitySegSuperoanterior.Layer_T10.FullEdgeUpper,
       repmat(.num_points, &..Diaphragm.CavitySegSuperoanterior.Layer_T10.VolumeTipNode_Xiphoid)
-    }); 
-    
-    
-    
+    });
+
   };
 };
 
 #if BM_TRUNK_MUSCLES
 AnyFolder PressureActuators = {
-  
+
   AnyVar Strength = 100 * 26600 * ..Scaling.StrengthScaling.Spine.StrengthScale;
-  
+
   AnyRecruitedActuator UpperCavity = {
     AnyKinVolumeCylMesh &ref1 = ..Volumes.UpperCavity;
     Type = NonNegative;
@@ -143,6 +144,6 @@ AnyFolder PressureActuators = {
     Type = NonNegative;
     Strength = .Strength;
     SET_DEFAULT_ACTUATOR_VOLUME;
-  };  
+  };
 };
 #endif

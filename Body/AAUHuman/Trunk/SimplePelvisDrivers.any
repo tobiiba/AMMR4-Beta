@@ -1,63 +1,12 @@
 /*
   In this file all drivers of the SimplePelvis model are defined.
-  The number of drivers and their properties are determined by 
+  The number of drivers and their properties are determined by
   the given joints of the pelvic floor segments in SimplePelvisJoints.any.
     cranial movement  -->  -y
 
   separate drivers for the individual testcases and calibration are defined
 */
 
-
-// -------------------------------------------------------------------
-// ----------------------- TESTCASE DRIVERS --------------------------
-// -------------------------------------------------------------------
-Main = {
-  AnyFolder SimplePelvisDrivers = {
-    // no drivers required for Valsalva testcase
-
-    // AnyKinEqSimpleDriver ActuatorA = {
-    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegA;
-    //   DriverVel = {-0.001}; // mm/s
-    //   Reaction.Type = {Off};
-    //  };
-
-    // AnyKinEqSimpleDriver ActuatorB = {
-    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegB;
-    //   DriverVel = {-0.001}; // mm/s
-    //   Reaction.Type = {Off};
-    // };
-
-    // AnyKinEqSimpleDriver ActuatorC = {
-    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegC;
-    //   DriverVel = {-0.004}; // mm/s
-    //   Reaction.Type = {Off};
-    // };
-
-    // AnyKinEqSimpleDriver ActuatorD = {
-    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegD;
-    //   DriverVel = {-0.006}; // mm/s
-    //   Reaction.Type = {Off};
-    // };
-
-    // AnyKinEqSimpleDriver ActuatorE = {
-    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegE;
-    //   DriverVel = {-0.006}; // mm/s
-    //   Reaction.Type = {Off};
-    // };
-
-    // AnyKinEqSimpleDriver ActuatorF = {
-    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegF;
-    //   DriverVel = {-0.006}; // mm/s
-    //   Reaction.Type = {Off};
-    // };
-
-    // AnyKinEqSimpleDriver ActuatorG = {
-    //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegG;
-    //   DriverVel = {-0.006}; // mm/s
-    //   Reaction.Type = {Off};
-    // };
-  };
-}; 
 
 // reference all drivers of Thoracic.main which are not within the body model in this folder to be added to the study
 Main = {
@@ -68,90 +17,147 @@ Main = {
     AnyKinEqSimpleDriver &MannequinDriver4 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotZ;
     AnyKinEqSimpleDriver &MannequinDriver5 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotY;
     AnyKinEqSimpleDriver &MannequinDriver6 = Main.HumanModel.DefaultMannequinDrivers.PelvisGroundDriverRotX;
-    
+
     // Add a driver which drives the whole spine. The spine rhythms handles the individual DOFs, but rhytms can be disabled
     // for full control of all DOFs. -- was moved from Study to here to keep it tidy
     SimpleFourierDriver Trunk_Extension = {
-       AnyKinMeasure &ref1 = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension;
-       RangeOfMotion = {0, 0}*pi/180;
-       Freq = 1/(Main.Study.tEnd-Main.Study.tStart);
-       Phase = 0*pi/180;
-       Reaction.Type ={Off};
+      AnyKinMeasure &ref1 = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension;
+      RangeOfMotion = {0, 0}*pi/180;
+      Freq = 1/(Main.Study.tEnd-Main.Study.tStart);
+      Phase = 0*pi/180;
+      Reaction.Type ={Off};
     };
     SimpleFourierDriver Trunk_LateralBending = {
-       AnyKinMeasure &ref2 = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
-       RangeOfMotion = {0, 0} *pi/180;
-       Freq = 0.5/(Main.Study.tEnd-Main.Study.tStart);
-       Phase = 180 *pi/180;
-       Reaction.Type ={Off};
+      AnyKinMeasure &ref2 = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
+      RangeOfMotion = {0, 0} *pi/180;
+      Freq = 0.5/(Main.Study.tEnd-Main.Study.tStart);
+      Phase = 180 *pi/180;
+      Reaction.Type ={Off};
     };
     SimpleFourierDriver Trunk_AxialRotation = {
-       AnyKinMeasure &ref3 = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxRotation;
-       RangeOfMotion = {0, 0} *pi/180;
-       Freq = 0.25/(Main.Study.tEnd-Main.Study.tStart);
-       Phase = 0 * pi/180;    
-       Reaction.Type ={Off};
+      AnyKinMeasure &ref3 = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxRotation;
+      RangeOfMotion = {0, 0} *pi/180;
+      Freq = 0.25/(Main.Study.tEnd-Main.Study.tStart);
+      Phase = 0 * pi/180;
+      Reaction.Type ={Off};
     };
   };
-};// ---------------------------------------------- END OF TESTCASE DRIVERS
+};
 
+#if BM_SIMPLEPELVIS == ON
 
+  // -------------------------------------------------------------------
+  // ----------------------- TESTCASE DRIVERS --------------------------
+  // -------------------------------------------------------------------
+  Main = {
+    AnyFolder SimplePelvisDrivers = {
+      // no drivers required for Valsalva testcase
 
-// -------------------------------------------------------------------
-// --------------------- CALIBRATION DRIVERS -------------------------
-// -------------------------------------------------------------------
+      // AnyKinEqSimpleDriver ActuatorA = {
+      //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegA;
+      //   DriverVel = {-0.001}; // mm/s
+      //   Reaction.Type = {Off};
+      //  };
 
-// these drivers should not be changed because they have an impact on the parameters Lf0 and Lt0 of the calibrated muscles
-Main = {
-  AnyFolder SimplePelvisCalibrationDrivers = {
-    AnyKinEqSimpleDriver ActuatorA = {
-      
-      AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegA;
-      DriverPos = {0.005};
-      DriverVel = {-0.01}; // mm/s
-      Reaction.Type = {Off};
-    };
+      // AnyKinEqSimpleDriver ActuatorB = {
+      //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegB;
+      //   DriverVel = {-0.001}; // mm/s
+      //   Reaction.Type = {Off};
+      // };
 
-    AnyKinEqSimpleDriver ActuatorB = {
-      AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegB;
-      DriverPos = {0.005};
-      DriverVel = {-0.01}; // mm/s
-      Reaction.Type = {Off};
-    };
+      // AnyKinEqSimpleDriver ActuatorC = {
+      //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegC;
+      //   DriverVel = {-0.004}; // mm/s
+      //   Reaction.Type = {Off};
+      // };
 
-    AnyKinEqSimpleDriver ActuatorC = {
-      AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegC;
-      DriverPos = {0.02};
-      DriverVel = {-0.03}; // mm/s
-      Reaction.Type = {Off};
-    };
+      // AnyKinEqSimpleDriver ActuatorD = {
+      //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegD;
+      //   DriverVel = {-0.006}; // mm/s
+      //   Reaction.Type = {Off};
+      // };
 
-    AnyKinEqSimpleDriver ActuatorD = {
-      AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegD;
-      DriverPos = {0.02};
-      DriverVel = {-0.03}; // mm/s
-      Reaction.Type = {Off};
-    };
+      // AnyKinEqSimpleDriver ActuatorE = {
+      //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegE;
+      //   DriverVel = {-0.006}; // mm/s
+      //   Reaction.Type = {Off};
+      // };
 
-    AnyKinEqSimpleDriver ActuatorE = {
-      AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegE;
-      DriverPos = {0.02};
-      DriverVel = {-0.03}; // mm/s
-      Reaction.Type = {Off};
-    };
+      // AnyKinEqSimpleDriver ActuatorF = {
+      //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegF;
+      //   DriverVel = {-0.006}; // mm/s
+      //   Reaction.Type = {Off};
+      // };
 
-    AnyKinEqSimpleDriver ActuatorF = {
-      AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegF;
-      DriverPos = {0.02};
-      DriverVel = {-0.03}; // mm/s
-      Reaction.Type = {Off};
-    };
-
-    AnyKinEqSimpleDriver ActuatorG = {
-      AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegG;
-      DriverPos = {0.02};
-      DriverVel = {-0.03}; // mm/s
-      Reaction.Type = {Off};
+      // AnyKinEqSimpleDriver ActuatorG = {
+      //   AnyKinMeasure &jnt = Main.SimplePelvisJoints.jSegG;
+      //   DriverVel = {-0.006}; // mm/s
+      //   Reaction.Type = {Off};
+      // };
     };
   };
-}; // ---------------------------------------------- END OF CALIBRATION DRIVERS
+
+  // ---------------------------------------------- END OF TESTCASE DRIVERS
+
+
+
+  // -------------------------------------------------------------------
+  // --------------------- CALIBRATION DRIVERS -------------------------
+  // -------------------------------------------------------------------
+
+  // these drivers should not be changed because they have an impact on the parameters Lf0 and Lt0 of the calibrated muscles
+  Main = {
+    AnyFolder SimplePelvisCalibrationDrivers = {
+      AnyKinEqSimpleDriver ActuatorA = {
+
+        AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegA;
+        DriverPos = {0.005};
+        DriverVel = {-0.01}; // mm/s
+        Reaction.Type = {Off};
+      };
+
+      AnyKinEqSimpleDriver ActuatorB = {
+        AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegB;
+        DriverPos = {0.005};
+        DriverVel = {-0.01}; // mm/s
+        Reaction.Type = {Off};
+      };
+
+      AnyKinEqSimpleDriver ActuatorC = {
+        AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegC;
+        DriverPos = {0.02};
+        DriverVel = {-0.03}; // mm/s
+        Reaction.Type = {Off};
+      };
+
+      AnyKinEqSimpleDriver ActuatorD = {
+        AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegD;
+        DriverPos = {0.02};
+        DriverVel = {-0.03}; // mm/s
+        Reaction.Type = {Off};
+      };
+
+      AnyKinEqSimpleDriver ActuatorE = {
+        AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegE;
+        DriverPos = {0.02};
+        DriverVel = {-0.03}; // mm/s
+        Reaction.Type = {Off};
+      };
+
+      AnyKinEqSimpleDriver ActuatorF = {
+        AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegF;
+        DriverPos = {0.02};
+        DriverVel = {-0.03}; // mm/s
+        Reaction.Type = {Off};
+      };
+
+      AnyKinEqSimpleDriver ActuatorG = {
+        AnyKinMeasure &jnt = Main.SimplePelvisCalibrationJoints.jSegG;
+        DriverPos = {0.02};
+        DriverVel = {-0.03}; // mm/s
+        Reaction.Type = {Off};
+      };
+    };
+  }; // ---------------------------------------------- END OF CALIBRATION DRIVERS
+
+#endif
