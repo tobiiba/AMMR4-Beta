@@ -63,72 +63,72 @@
         AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
         AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointC.NodeCOCCYX;
         // // set up FDK with ForceDep constraints for all locked DoF
-        // Constraints = {
-        //   CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
-        //   Reaction.Type = {Off, Off, Off, On, On, On};
-        // };
-        // // define springs in the joint for all ForceDep DoF
-        // AnyForce JointStiffness = {
-        //   AnyKinLinear &lin = Main.SimplePelvisJoints.jSegC.Linear;
-        //   // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
-        //   // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
-        //   // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        //   F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
-        // };
+        Constraints = {
+          CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+          Reaction.Type = {Off, Off, Off, On, On, On};
+        };
+        // define springs in the joint for all ForceDep DoF
+        AnyForce JointStiffness = {
+          AnyKinLinear &lin = Main.SimplePelvisJoints.jSegC.Linear;
+          // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+          // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+          // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+          F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        };
       };
 
       AnyStdJoint jSegD = {
         AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_R;
         AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointD.NodePUBIS_R;
         // set up FDK with ForceDep constraints for all locked DoF
-        // Constraints = {
-        //   CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
-        //   Reaction.Type = {Off, Off, Off, On, On, On};
-        // };
-        // // define springs in the joint for all ForceDep DoF
-        // AnyForce JointStiffness = {
-        //   AnyKinLinear &lin = Main.SimplePelvisJoints.jSegD.Linear;
-        //   // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
-        //   // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
-        //   // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        //   F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
-        // };
+        Constraints = {
+          CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+          Reaction.Type = {Off, Off, Off, On, On, On};
+        };
+        // define springs in the joint for all ForceDep DoF
+        AnyForce JointStiffness = {
+          AnyKinLinear &lin = Main.SimplePelvisJoints.jSegD.Linear;
+          // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+          // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+          // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+          F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        };
       };
 
       AnyStdJoint jSegE = {
         AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.PUBIS_L;
         AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointE.NodePUBIS_L;
         // set up FDK with ForceDep constraints for all locked DoF
-        // Constraints = {
-        //   CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
-        //   Reaction.Type = {Off, Off, Off, On, On, On};
-        // };
-        // //  define springs in the joint for all ForceDep DoF
-        // AnyForce JointStiffness = {
-        //   AnyKinLinear &lin = Main.SimplePelvisJoints.jSegE.Linear;
-        //   // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
-        //   // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
-        //   // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        //   F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
-        // };
+        Constraints = {
+          CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+          Reaction.Type = {Off, Off, Off, On, On, On};
+        };
+        //  define springs in the joint for all ForceDep DoF
+        AnyForce JointStiffness = {
+          AnyKinLinear &lin = Main.SimplePelvisJoints.jSegE.Linear;
+          // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+          // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+          // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+          F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        };
       };
 
       AnyStdJoint jSegF = {
         AnyRefFrame &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PICS_ORIGIN.COCCYX;
         AnyRefFrame &Seg = Main.HumanModel.BodyModel.Trunk.Segments.SimplePelvis.SegPointF.NodeCOCCYX;
         // // set up FDK with ForceDep constraints for all locked DoF
-        // Constraints = {
-        //   CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
-        //   Reaction.Type = {Off, Off, Off, On, On, On};
-        // };
-        // // define springs in the joint for all ForceDep DoF
-        // AnyForce JointStiffness = {
-        //   AnyKinLinear &lin = Main.SimplePelvisJoints.jSegF.Linear;
-        //   // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
-        //   // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
-        //   // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
-        //   F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
-        // };
+        Constraints = {
+          CType = {ForceDep, ForceDep, ForceDep, Hard, Hard, Hard};
+          Reaction.Type = {Off, Off, Off, On, On, On};
+        };
+        // define springs in the joint for all ForceDep DoF
+        AnyForce JointStiffness = {
+          AnyKinLinear &lin = Main.SimplePelvisJoints.jSegF.Linear;
+          // estimate stiffness through expected descent at valsalva reported by Hsu (1cm with control group)
+          // and estimated pressure at valsalva of 15 kPa (max 20kPa acc. to Schünke)
+          // calculate area of pelvis from Conjugata Recta (Prometheus) and split force up evenly on all 7 segments
+          F = {-1680*lin.Pos[0], -1680*lin.Pos[1], -1680*lin.Pos[2]}; // nummerical value resembles spring constant (F = D * dL)
+        };
       };
 
       AnyStdJoint jSegG = {

@@ -133,38 +133,38 @@
   // -------------------------------------------------------------------
   Main.Study = {
     AnyStringVar fileID = "Testing-Pelvicfloor";
-    AnyOutputFile SaveOutputAll = {
-      FileName = "OutputData\ " + .fileID + "_complete.csv";
-    NumberFormat.Style  = DecimalNumber;
-      NumberFormat.Digits = 10;
-      Header = {
-        ConstSectionOnOff = Off;          // Switch for the header section containing constant variables
-        ShortenNamesOnOff = ObjNameShort; // Switch for shortening variable names -> see AnyEnumObjNameTruncation
-        VarSectionOnOff   = Off;          // Switch for the variable description section
-      };
-      Search = {
-        "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Segments.Pos*",
-        "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.*",
-        "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Ligaments.Lig*",
-        "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Volume.VolForceVolume",
-        "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Volume.IndForceVolume",
-        "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.FDK.FDK*"
-      };
-    };
+    // AnyOutputFile SaveOutputAll = {
+    //   FileName = "OutputData\ " + .fileID + "_complete.csv";
+    // NumberFormat.Style  = DecimalNumber;
+    //   NumberFormat.Digits = 10;
+    //   Header = {
+    //     ConstSectionOnOff = Off;          // Switch for the header section containing constant variables
+    //     ShortenNamesOnOff = ObjNameShort; // Switch for shortening variable names -> see AnyEnumObjNameTruncation
+    //     VarSectionOnOff   = Off;          // Switch for the variable description section
+    //   };
+    //   Search = {
+    //     "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Segments.Pos*",
+    //     "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Muscles.*",
+    //     "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Ligaments.Lig*",
+    //     "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Volume.VolForceVolume",
+    //     "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Volume.IndForceVolume",
+    //     "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.FDK.FDK*"
+    //   };
+    // };
 
-  // AnyOutputFile SaveOutputPosition = {
-  //   FileName = "OutputData\ " + .fileID + "_position.csv";
-  //   NumberFormat.Style  = DecimalNumber;
-  //   NumberFormat.Digits = 10;
-  //   Header = {
-  //     ConstSectionOnOff = Off;          // Switch for the header section containing constant variables
-  //     ShortenNamesOnOff = ObjNameShort; // Switch for shortening variable names -> see AnyEnumObjNameTruncation
-  //     VarSectionOnOff   = Off;          // Switch for the variable description section
-  //   };
-  //   Search = {
-  //     "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Segments.Pos*",
-  //   };
-  // };
+  AnyOutputFile SaveOutputPosition = {
+    FileName = "OutputData\ " + .fileID + "_position.csv";
+    NumberFormat.Style  = DecimalNumber;
+    NumberFormat.Digits = 10;
+    Header = {
+      ConstSectionOnOff = Off;          // Switch for the header section containing constant variables
+      ShortenNamesOnOff = ObjNameShort; // Switch for shortening variable names -> see AnyEnumObjNameTruncation
+      VarSectionOnOff   = Off;          // Switch for the variable description section
+    };
+    Search = {
+      "Main.HumanModel.BodyModel.SelectedOutput.SimplePelvis.Segments.Pos*",
+    };
+  };
 
   //   AnyOutputFile SaveOutputMusclesLigaments = {
   //     FileName = "OutputData\ " + .fileID + "_Muscles_Ligaments.csv";
