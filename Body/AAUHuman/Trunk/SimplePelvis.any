@@ -37,7 +37,7 @@ Main.HumanModel.BodyModel.Trunk = {
       // pressure acts on pelvic outlet with diameter of 9 - 11 cm, assume to be circular with d = 10 cm
       // F_IAP = p * A - assume it points perfectly downwards
       // testcase: use quarter of pressure -> IAP = 35 N
-      F = {0, -35.0, 0}*t;
+      F = {0, -70.0, 0}*t;
     };
   };
 };
